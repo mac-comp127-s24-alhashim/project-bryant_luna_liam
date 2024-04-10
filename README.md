@@ -1,6 +1,6 @@
 # Minigames!
 Team: Bryant, Luna, & Liam\
-Team Name: BryantLunaLiam\
+Team Name: BryantLunaLiam
 # Project Description!
 Our project consists of minigames that can be played by up to 8 people using a networking platform!\
 The games are similar in style to WarioWare and Kahoot containing simple minigames that people play to rack-up points to decide a winner by the end!\
