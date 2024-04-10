@@ -9,4 +9,5 @@ We chose this project because we thought it'd be fun to have the entire class in
 # Project inspirations!
 The inspiration for this project, as stated before, includes Kahoot and Warioware: quick, short, and fun minigame collections!
 # Implementation!
-This project will need an important network/server implementation that players can join in and play at the same time! We'll also need a sizeable amoount of minigames. I think aiming for around 6-8 minigames, each with variations would work great for this assignment.
+This project will need an important network/server implementation that players can join in and play at the same time! We'll also need a sizeable amoount of minigames. I think aiming for around 6-8 minigames, each with variations would work great for this assignment.\
+Luna will work on the networking, and Liam and Bryant will work on the minigames.
