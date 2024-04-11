@@ -1,13 +1,11 @@
-# Minigames!
+# PLANTS VS. ZOMBIES!
 Team: Bryant, Luna, & Liam\
 Team Name: BryantLunaLiam
 # Project Description!
-Our project consists of minigames that can be played by up to 8 people using a networking platform!\
-The games are similar in style to WarioWare and Kahoot containing simple minigames that people play to rack-up points to decide a winner by the end!\
+Our project consists of a demake (a remake developed on inferior infrastructure) of the popular game Plants Vs. Zombies. It will feature the tower defence elements of Plants Vz. Zombies, such as planting plants, managning sun production, and eliminating zombies.
 # Why we chose this project!
-We chose this project because we thought it'd be fun to have the entire class involved in play testing the game. It was also in our range, coding minigames is simple and intuitive, and Luna's done network applications before.
+We chose this project because we thought it'd be fun to think how the core features of Plants Vs. Zombies would work on Java! Also, I think Plants Vs. Zombies isn't far off from the projects we've done for this class in an internal level.
 # Project inspirations!
-The inspiration for this project, as stated before, includes Kahoot and Warioware: quick, short, and fun minigame collections!
+The inspiration for this project, as stated before, is Plants Vs. Zombies!
 # Implementation!
-This project will need an important network/server implementation that players can join in and play at the same time! We'll also need a sizeable amoount of minigames. I think aiming for around 6-8 minigames, each with variations would work great for this assignment.\
-Luna will work on the networking, and Liam and Bryant will work on the minigames.
+This project would utilize Java's class inheritance; as every plant would derive from the Plant class, and every zombie would derive from the Zombie class. We are aiming to complete at least one level with randomized Zombie positions and at least five different plants (Sunflower, Peashooter, Wallnut, Potato Mine, and Cherry Bomb). The tasks will be split amongst us.
