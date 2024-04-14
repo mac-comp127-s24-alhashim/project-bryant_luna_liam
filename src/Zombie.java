@@ -5,6 +5,7 @@ import edu.macalester.graphics.*;
 // JACK-IN-THE-BOX ZOMBIE
 // DIGGER ZOMBIE
 // NEWSPAPER ZOMBIE
+// ALL 32 x 48 in size
 
 public interface Zombie {
     String type = "";
