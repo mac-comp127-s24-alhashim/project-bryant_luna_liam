@@ -6,14 +6,14 @@ import edu.macalester.graphics.Point;
 
 public class CherryBomb implements Plant{
     
-    public int health;
+    private int health;
     private GraphicsGroup cherryBombSprite;
-    private static final int GRID_SIZE = 32;
-    private static final int SUN_COST = 150; 
+    private static final int GRID_SIZE = 16;
+    private static final int SUN_COST = 50; 
 
 
     public CherryBomb() {
-        this.health = 1000;
+        this.health = 50; 
         loadSprite();
     }
 
@@ -40,7 +40,7 @@ public class CherryBomb implements Plant{
     }
 
     public void takeDamage() {
-        // CHERRY BOMB DOESN'T NEED THIS.
+       
         health -= 50; 
         System.out.println("Cherry Bomb takes damage, health is now " + health);
     }
