@@ -10,6 +10,7 @@ public class Sunflower implements Plant {
     private GraphicsGroup sunflowerSprite;
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 50; 
+    private static final int SUN_PRODUCTION_TIME = 2400;
     private CanvasWindow canvas;
 
 
@@ -18,8 +19,8 @@ public class Sunflower implements Plant {
         loadSprite();
     }
 
-    private void loadSprite(){
-        Image sunflowerImage = new Image("PLANT_PLACEHOLDER.png");
+    public void loadSprite(){
+        Image sunflowerImage = new Image("SUNFLOWER.png");
         sunflowerImage.setMaxHeight(GRID_SIZE);
         sunflowerImage.setMaxWidth(GRID_SIZE);
         sunflowerSprite = new GraphicsGroup();
@@ -37,7 +38,7 @@ public class Sunflower implements Plant {
     }
 
    
-    public void attack() {
+    public void action() {
         
         System.out.println("Sunflower does not attack");
     }
@@ -51,4 +52,6 @@ public class Sunflower implements Plant {
     public int getSunCost() { 
         return SUN_COST;
     }
+
+    /// modify action so that it takes sunproduction time to produce
 }

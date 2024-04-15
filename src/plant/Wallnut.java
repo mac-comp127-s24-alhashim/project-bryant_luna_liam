@@ -19,7 +19,7 @@ public class Wallnut implements Plant{
     }
 
     private void loadSprite(){
-        Image wallnut= new Image("PLANT_PLACEHOLDER.png");
+        Image wallnut = new Image("PLANT_PLACEHOLDER.png");
         wallnut.setMaxHeight(GRID_SIZE);
         wallnut.setMaxWidth(GRID_SIZE);
         wallnutSprite = new GraphicsGroup();

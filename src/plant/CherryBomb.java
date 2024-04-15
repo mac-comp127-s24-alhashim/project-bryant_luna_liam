@@ -19,7 +19,7 @@ public class CherryBomb implements Plant{
         loadSprite();
     }
 
-    private void loadSprite(){
+    public void loadSprite(){
         Image cherryBomb= new Image("PLANT_PLACEHOLDER.png");
         cherryBomb.setMaxHeight(GRID_SIZE);
         cherryBomb.setMaxWidth(GRID_SIZE);
