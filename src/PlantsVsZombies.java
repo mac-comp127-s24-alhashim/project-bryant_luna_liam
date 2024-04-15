@@ -1,4 +1,5 @@
 import edu.macalester.graphics.*;
+import zombies.ZombieManager;
 
 public class PlantsVsZombies {
     private static final int CANVAS_WIDTH = 320;
@@ -17,6 +18,7 @@ public PlantsVsZombies() {
     
 public static void main(String[] args) {
     PlantsVsZombies plantsVsZombies = new PlantsVsZombies();
+    ZombieManager zombieManager = new ZombieManager();
     //plantsVsZombies.run();    
     }
 }
