@@ -48,7 +48,4 @@ public class Sunflower implements Plant {
     public int getSunCost() { 
         return SUN_COST;
     }
-
-
-    
 }
