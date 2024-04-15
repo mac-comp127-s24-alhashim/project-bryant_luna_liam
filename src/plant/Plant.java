@@ -1,4 +1,5 @@
 package plant;
+
 import edu.macalester.graphics.*;
 
 public interface Plant {
@@ -12,6 +13,6 @@ public interface Plant {
     
     public void drawPlant(String type, int health, Point position);
     public void attack();
-    public void takeDamage();
+ 
     
 }
