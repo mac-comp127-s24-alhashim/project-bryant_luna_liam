@@ -46,5 +46,11 @@ public class Peashooter implements Plant{
     public int getSunCost() { 
         return SUN_COST;
     }
+
+    @Override
+    public void removePlant() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removePlant'");
+    }
     
 }
