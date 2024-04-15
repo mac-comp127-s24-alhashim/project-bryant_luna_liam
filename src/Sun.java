@@ -24,6 +24,7 @@ public class Sun {
 
     public void removeSun(){
         canvas.remove(sunSprite);
+        // ADD PLAYER SUN
     }
     
 }
