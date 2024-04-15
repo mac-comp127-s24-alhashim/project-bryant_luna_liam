@@ -1,19 +1,21 @@
 package plant;
 
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 
 public class CherryBomb implements Plant{
     
-    public int health;
+    private int health;
     private GraphicsGroup cherryBombSprite;
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 150; 
+    private CanvasWindow canvas;
 
 
     public CherryBomb() {
-        this.health = 1000;
+        this.health = 1000; 
         loadSprite();
     }
 
@@ -23,6 +25,7 @@ public class CherryBomb implements Plant{
         cherryBomb.setMaxWidth(GRID_SIZE);
         cherryBombSprite = new GraphicsGroup();
         cherryBombSprite.add(cherryBomb);
+        canvas.add(cherryBombSprite);
     }
     public void drawPlant(String type, int health, Point position) {
         double x = position.getX() * GRID_SIZE;
@@ -35,15 +38,14 @@ public class CherryBomb implements Plant{
     }
 
     public void attack() {
-       
-        System.out.println("Cherry Bomb explodes");
+        // Cherry Bomb explodes, dealing 300 damage to zombies
+        System.out.println("Cherry Bomb explodes, dealing 300 damage to zombies");
     }
 
-    public void removePlant() {
-        // CHERRY BOMB DOESN'T NEED THIS.
-        health -= 50; 
-        System.out.println("Cherry Bomb takes damage, health is now " + health);
+    public void removePlant(){
+        canvas.remove(cherryBombSprite);
     }
+
 
     public int getSunCost() { 
         return SUN_COST;

@@ -1,5 +1,6 @@
 package plant;
 
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
@@ -7,12 +8,13 @@ import edu.macalester.graphics.Point;
 public class Wallnut implements Plant{
     private int health;
     private GraphicsGroup wallnutSprite;
-    private static final int GRID_SIZE = 16;
+    private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 50; 
+    private CanvasWindow canvas;
 
 
     public Wallnut() {
-        this.health = 50; 
+        this.health = 54; 
         loadSprite();
     }
 
@@ -22,12 +24,12 @@ public class Wallnut implements Plant{
         wallnut.setMaxWidth(GRID_SIZE);
         wallnutSprite = new GraphicsGroup();
         wallnutSprite.add(wallnut);
+        canvas.add(wallnutSprite);
     }
     public void drawPlant(String type, int health, Point position) {
         double x = position.getX() * GRID_SIZE;
         double y = position.getY() * GRID_SIZE;
 
-        // Set the position of the sprite on the canvas
         wallnutSprite.setPosition(x, y);
         
         System.out.println("Drawing a Wallnut at position " + position);
@@ -37,18 +39,12 @@ public class Wallnut implements Plant{
         System.out.println("Wallnut does not attack");
     }
 
-    public void takeDamage() {
-        health -= 30;
-        System.out.println("Wallnut takes damage, health is now " + health);
-    }
-    public int getSunCost() { 
-        return SUN_COST;
+    public void removePlant(){
+        canvas.remove(wallnutSprite);
     }
 
-    @Override
-    public void removePlant() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removePlant'");
+    public int getSunCost() { 
+        return SUN_COST;
     }
 }
     

@@ -1,5 +1,6 @@
 package plant;
 
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
@@ -7,12 +8,13 @@ import edu.macalester.graphics.Point;
 public class Sunflower implements Plant {
     private int health;
     private GraphicsGroup sunflowerSprite;
-    private static final int GRID_SIZE = 16;
+    private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 50; 
+    private CanvasWindow canvas;
 
 
     public Sunflower() {
-        this.health = 50; 
+        this.health = 6; 
         loadSprite();
     }
 
@@ -22,12 +24,14 @@ public class Sunflower implements Plant {
         sunflowerImage.setMaxWidth(GRID_SIZE);
         sunflowerSprite = new GraphicsGroup();
         sunflowerSprite.add(sunflowerImage);
+        canvas.add(sunflowerSprite);
     }
     public void drawPlant(String type, int health, Point position) {
         double x = position.getX() * GRID_SIZE;
         double y = position.getY() * GRID_SIZE;
 
         sunflowerSprite.setPosition(x, y);
+        canvas.draw();
         
         System.out.println("Drawing a Sunflower at position " + position);
     }
@@ -40,9 +44,8 @@ public class Sunflower implements Plant {
 
 
     public void removePlant() {
+        canvas.remove(sunflowerSprite);
         
-        health -= 10; 
-        System.out.println("Sunflower takes damage, health is now " + health);
     }
 
     public int getSunCost() { 

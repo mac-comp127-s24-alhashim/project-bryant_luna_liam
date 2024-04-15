@@ -1,5 +1,6 @@
 package plant;
 
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
@@ -9,6 +10,7 @@ public class PotatoMine implements Plant {
     private GraphicsGroup potatoMineSprite;
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 25; 
+    private CanvasWindow canvas;
 
 
     public PotatoMine() {
@@ -22,6 +24,7 @@ public class PotatoMine implements Plant {
         PotatoMine.setMaxWidth(GRID_SIZE);
         potatoMineSprite = new GraphicsGroup();
         potatoMineSprite.add(PotatoMine);
+        canvas.add(potatoMineSprite);
     }
 
     public void drawPlant(String type, int health, Point position) {
@@ -35,14 +38,12 @@ public class PotatoMine implements Plant {
     }
 
     public void attack() {
-        
-        System.out.println("Potato Mine does not attack");
+        // Potato Mine explodes, dealing 300 damage to zombies
+        System.out.println("Potato Mine explodes, dealing 300 damage to zombies");
     }
 
-    public void removePlant() {
-        
-        health -= 10; 
-        System.out.println("Potato Mine takes damage, health is now " + health);
+    public void removePlant(){
+        canvas.remove(potatoMineSprite);
     }
 
     public int getSunCost() { 
