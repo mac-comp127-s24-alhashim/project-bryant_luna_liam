@@ -18,7 +18,7 @@ public class Peashooter implements Plant{
         loadSprite();
     }
 
-    private void loadSprite(){
+    public void loadSprite(){
         Image peashooterImage= new Image("PLANT_PLACEHOLDER.png");
         peashooterImage.setMaxHeight(GRID_SIZE);
         peashooterImage.setMaxWidth(GRID_SIZE);
@@ -44,7 +44,7 @@ public class Peashooter implements Plant{
     public void removePlant(){
         canvas.remove(peashooterSprite);
     }
-    public void attack() {
+    public void action() {
         // Peashooter shoots peas, dealing 1 damage to zombies
         System.out.println("Peashooter shoots a pea, dealing 1 damage to zombies");
     }

@@ -18,7 +18,7 @@ public class PotatoMine implements Plant {
         loadSprite();
     }
 
-    private void loadSprite(){
+    public void loadSprite(){
         Image PotatoMine = new Image("PLANT_PLACEHOLDER.png");
         PotatoMine.setMaxHeight(GRID_SIZE);
         PotatoMine.setMaxWidth(GRID_SIZE);
@@ -37,7 +37,7 @@ public class PotatoMine implements Plant {
         System.out.println("Drawing a Potato Mine at position " + position);
     }
 
-    public void attack() {
+    public void action() {
         // Potato Mine explodes, dealing 300 damage to zombies
         System.out.println("Potato Mine explodes, dealing 300 damage to zombies");
     }
