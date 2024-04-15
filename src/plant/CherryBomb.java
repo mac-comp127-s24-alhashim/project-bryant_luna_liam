@@ -8,12 +8,12 @@ public class CherryBomb implements Plant{
     
     private int health;
     private GraphicsGroup cherryBombSprite;
-    private static final int GRID_SIZE = 16;
-    private static final int SUN_COST = 50; 
+    private static final int GRID_SIZE = 32;
+    private static final int SUN_COST = 150; 
 
 
     public CherryBomb() {
-        this.health = 50; 
+        this.health = 1000; 
         loadSprite();
     }
 
@@ -37,12 +37,6 @@ public class CherryBomb implements Plant{
     public void attack() {
        
         System.out.println("Cherry Bomb explodes");
-    }
-
-    public void takeDamage() {
-       
-        health -= 50; 
-        System.out.println("Cherry Bomb takes damage, health is now " + health);
     }
 
     public int getSunCost() { 

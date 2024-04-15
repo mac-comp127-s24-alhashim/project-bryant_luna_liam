@@ -39,11 +39,6 @@ public class PotatoMine implements Plant {
         System.out.println("Potato Mine does not attack");
     }
 
-    public void takeDamage() {
-        
-        health -= 10; 
-        System.out.println("Potato Mine takes damage, health is now " + health);
-    }
 
     public int getSunCost() { 
         return SUN_COST;

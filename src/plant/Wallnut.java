@@ -37,13 +37,8 @@ public class Wallnut implements Plant{
         System.out.println("Wallnut does not attack");
     }
 
-    public void takeDamage() {
-        health -= 30;
-        System.out.println("Wallnut takes damage, health is now " + health);
-    }
     public int getSunCost() { 
-        return SUN_COST;
-    }
+    return SUN_COST;     }
 }
     
 

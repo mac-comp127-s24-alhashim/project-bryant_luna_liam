@@ -38,10 +38,6 @@ public class Peashooter implements Plant{
         System.out.println("Peashooter attacks");
     }
 
-    public void takeDamage() {
-        health -= 10; 
-        System.out.println("Peashooter  takes damage, health is now " + health);
-    }
 
     public int getSunCost() { 
         return SUN_COST;
