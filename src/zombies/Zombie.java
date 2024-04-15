@@ -1,3 +1,4 @@
+package zombies;
 import edu.macalester.graphics.*;
 
 // NORMAL ZOMBIE ~ CONEHEAD, BUCKETHEAD, FLAG, NORMAL
@@ -17,5 +18,7 @@ public interface Zombie {
 
     public void attack();
 
-    public void takeDamage();
+    public void removeZombie();
+
+    // public void takeDamage();
 }

@@ -39,7 +39,7 @@ public class CherryBomb implements Plant{
         System.out.println("Cherry Bomb explodes");
     }
 
-    public void takeDamage() {
+    public void removePlant() {
         // CHERRY BOMB DOESN'T NEED THIS.
         health -= 50; 
         System.out.println("Cherry Bomb takes damage, health is now " + health);

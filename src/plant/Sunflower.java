@@ -17,7 +17,7 @@ public class Sunflower implements Plant {
     }
 
     private void loadSprite(){
-        Image sunflowerImage= new Image("PLANT_PLACEHOLDER.png");
+        Image sunflowerImage = new Image("PLANT_PLACEHOLDER.png");
         sunflowerImage.setMaxHeight(GRID_SIZE);
         sunflowerImage.setMaxWidth(GRID_SIZE);
         sunflowerSprite = new GraphicsGroup();
@@ -39,7 +39,7 @@ public class Sunflower implements Plant {
     }
 
 
-    public void takeDamage() {
+    public void removePlant() {
         
         health -= 10; 
         System.out.println("Sunflower takes damage, health is now " + health);

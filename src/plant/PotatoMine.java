@@ -7,17 +7,17 @@ import edu.macalester.graphics.Point;
 public class PotatoMine implements Plant {
     private int health;
     private GraphicsGroup potatoMineSprite;
-    private static final int GRID_SIZE = 16;
-    private static final int SUN_COST = 50; 
+    private static final int GRID_SIZE = 32;
+    private static final int SUN_COST = 25; 
 
 
     public PotatoMine() {
-        this.health = 50; 
+        this.health = 1000; 
         loadSprite();
     }
 
     private void loadSprite(){
-        Image PotatoMine= new Image("PLANT_PLACEHOLDER.png");
+        Image PotatoMine = new Image("PLANT_PLACEHOLDER.png");
         PotatoMine.setMaxHeight(GRID_SIZE);
         PotatoMine.setMaxWidth(GRID_SIZE);
         potatoMineSprite = new GraphicsGroup();
@@ -39,7 +39,7 @@ public class PotatoMine implements Plant {
         System.out.println("Potato Mine does not attack");
     }
 
-    public void takeDamage() {
+    public void removePlant() {
         
         health -= 10; 
         System.out.println("Potato Mine takes damage, health is now " + health);
