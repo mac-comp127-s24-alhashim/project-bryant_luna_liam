@@ -8,7 +8,6 @@ public class PlantsVsZombies {
     private Image lawn;
     private Image sunBox;
 
-
 public PlantsVsZombies() {
     canvas = new CanvasWindow("Plants vs. Zombies", CANVAS_WIDTH, CANVAS_HEIGHT);
     loadLawn();
@@ -25,12 +24,12 @@ public void loadLawn() {
     lawn.setPosition(0, 0);
     canvas.add(lawn);
 
-}
+    }
 
 public void loadSunBox() {
     sunBox = new Image("\\game\\SUNCOUNT.png");
     sunBox.setPosition(0, 0);
     canvas.add(sunBox);
-}
+    }
 
 }
