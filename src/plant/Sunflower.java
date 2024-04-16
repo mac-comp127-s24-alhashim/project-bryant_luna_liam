@@ -7,7 +7,9 @@ import edu.macalester.graphics.Point;
 
 public class Sunflower implements Plant {
     private int health;
-    private GraphicsGroup sunflowerSprite;
+    private GraphicsGroup sunflower;
+    private static final String SUNFLOWER_SPRITE_PATH = "\\plants\\SUNFLOWER.png";
+    public static final String SUNFLOWER_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_SUNFLOWER.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 50; 
     private static final int SUN_PRODUCTION_TIME = 2400;
@@ -20,18 +22,19 @@ public class Sunflower implements Plant {
     }
 
     public void loadSprite(){
-        Image sunflowerImage = new Image("SUNFLOWER.png");
-        sunflowerImage.setMaxHeight(GRID_SIZE);
-        sunflowerImage.setMaxWidth(GRID_SIZE);
-        sunflowerSprite = new GraphicsGroup();
-        sunflowerSprite.add(sunflowerImage);
-        canvas.add(sunflowerSprite);
+        Image sunflowerSprite = new Image(SUNFLOWER_SPRITE_PATH);
+        sunflowerSprite.setMaxHeight(GRID_SIZE);
+        sunflowerSprite.setMaxWidth(GRID_SIZE);
+        sunflower = new GraphicsGroup();
+        sunflower.add(sunflowerSprite);
+        canvas.add(sunflower);
     }
+
     public void drawPlant(String type, int health, Point position) {
         double x = position.getX() * GRID_SIZE;
         double y = position.getY() * GRID_SIZE;
 
-        sunflowerSprite.setPosition(x, y);
+        sunflower.setPosition(x, y);
         canvas.draw();
         
         System.out.println("Drawing a Sunflower at position " + position);
@@ -39,14 +42,12 @@ public class Sunflower implements Plant {
 
    
     public void action() {
-        
         System.out.println("Sunflower does not attack");
     }
 
 
     public void removePlant() {
-        canvas.remove(sunflowerSprite);
-        
+        canvas.remove(sunflower);   
     }
 
     public int getSunCost() { 

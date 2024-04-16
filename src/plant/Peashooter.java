@@ -7,7 +7,9 @@ import edu.macalester.graphics.Point;
 
 public class Peashooter implements Plant{
     private int health;
-    private GraphicsGroup peashooterSprite;
+    private GraphicsGroup peashooter;
+    private static final String PEASHOOTER_SPRITE_PATH = "\\plants\\PLANT_PLACEHOLDER.png";
+    public static final String PEASHOOTER_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_PEASHOOTER.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 100; 
     private CanvasWindow canvas;
@@ -19,12 +21,12 @@ public class Peashooter implements Plant{
     }
 
     public void loadSprite(){
-        Image peashooterImage= new Image("PLANT_PLACEHOLDER.png");
-        peashooterImage.setMaxHeight(GRID_SIZE);
-        peashooterImage.setMaxWidth(GRID_SIZE);
-        peashooterSprite = new GraphicsGroup();
-        peashooterSprite.add(peashooterImage);
-        canvas.add(peashooterSprite);
+        Image peashooterSprite= new Image(PEASHOOTER_SPRITE_PATH);
+        peashooterSprite.setMaxHeight(GRID_SIZE);
+        peashooterSprite.setMaxWidth(GRID_SIZE);
+        peashooter = new GraphicsGroup();
+        peashooter.add(peashooterSprite);
+        canvas.add(peashooter);
     }
 
     public void drawPlant(String type, int health, Point position) {
@@ -32,7 +34,7 @@ public class Peashooter implements Plant{
         double x = position.getX() * GRID_SIZE;
         double y = position.getY() * GRID_SIZE;
 
-        peashooterSprite.setPosition(x, y);
+        peashooter.setPosition(x, y);
 
         System.out.println("Drawing a Peashooter at position " + position);
     }
@@ -42,7 +44,7 @@ public class Peashooter implements Plant{
     }
 
     public void removePlant(){
-        canvas.remove(peashooterSprite);
+        canvas.remove(peashooter);
     }
     public void action() {
         // Peashooter shoots peas, dealing 1 damage to zombies

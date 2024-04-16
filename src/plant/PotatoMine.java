@@ -7,11 +7,14 @@ import edu.macalester.graphics.Point;
 
 public class PotatoMine implements Plant {
     private int health;
-    private GraphicsGroup potatoMineSprite;
+    private GraphicsGroup potatoMine;
+    private static final String POTATOMINE_SPRITE_PATH = "\\plants\\POTATOMINE.png";
+    private static final String POTATOMINE_BURIED_SPRITE_PATH = "\\plants\\POTATOMINE_BURIED.png";
+    public static final String POTATOMINE_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_POTATOMINE.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 25; 
     private CanvasWindow canvas;
-    private boolean potatoMineReady = false;
+    private boolean potatoMineBuried = true;
 
 
     public PotatoMine() {
@@ -20,12 +23,12 @@ public class PotatoMine implements Plant {
     }
 
     public void loadSprite(){
-        Image PotatoMine = new Image("PLANT_PLACEHOLDER.png");
-        PotatoMine.setMaxHeight(GRID_SIZE);
-        PotatoMine.setMaxWidth(GRID_SIZE);
-        potatoMineSprite = new GraphicsGroup();
-        potatoMineSprite.add(PotatoMine);
-        canvas.add(potatoMineSprite);
+        Image PotatoMineSprite = new Image(POTATOMINE_BURIED_SPRITE_PATH);
+        PotatoMineSprite.setMaxHeight(GRID_SIZE);
+        PotatoMineSprite.setMaxWidth(GRID_SIZE);
+        potatoMine = new GraphicsGroup();
+        potatoMine.add(PotatoMineSprite);
+        canvas.add(potatoMine);
     }
 
     public void drawPlant(String type, int health, Point position) {
@@ -33,7 +36,7 @@ public class PotatoMine implements Plant {
         double y = position.getY() * GRID_SIZE;
 
         // Set the position of the sprite on the canvas
-        potatoMineSprite.setPosition(x, y);
+        potatoMine.setPosition(x, y);
        
         System.out.println("Drawing a Potato Mine at position " + position);
     }
@@ -44,7 +47,7 @@ public class PotatoMine implements Plant {
     }
 
     public void removePlant(){
-        canvas.remove(potatoMineSprite);
+        canvas.remove(potatoMine);
     }
 
     public int getSunCost() { 

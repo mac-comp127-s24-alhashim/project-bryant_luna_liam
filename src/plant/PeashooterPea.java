@@ -7,7 +7,7 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import zombies.Zombie;
 
-public class PeashootersPea {
+public class PeashooterPea {
     /**
      * Represents a ball in the breakout game
      * This uses modified code from a previous assignment
@@ -40,7 +40,7 @@ public class PeashootersPea {
          * @param canvas  The canvas where the ball will be drawn
          */
     
-        public PeashootersPea(
+        public PeashooterPea(
             double centerX,
             double centerY,
             double initialVelocityX,

@@ -7,7 +7,9 @@ import edu.macalester.graphics.Point;
 
 public class Wallnut implements Plant{
     private int health;
-    private GraphicsGroup wallnutSprite;
+    private GraphicsGroup wallnut;
+    private static final String WALLNUT_SPRITE_PATH = "\\plants\\PLANT_PLACEHOLDER.png";
+    public static final String WALLNUT_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_WALLNUT.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 50; 
     private CanvasWindow canvas;
@@ -19,24 +21,25 @@ public class Wallnut implements Plant{
     }
 
     private void loadSprite(){
-        Image wallnut = new Image("PLANT_PLACEHOLDER.png");
-        wallnut.setMaxHeight(GRID_SIZE);
-        wallnut.setMaxWidth(GRID_SIZE);
-        wallnutSprite = new GraphicsGroup();
-        wallnutSprite.add(wallnut);
-        canvas.add(wallnutSprite);
+        Image wallnutSprite = new Image(WALLNUT_SPRITE_PATH);
+        wallnutSprite.setMaxHeight(GRID_SIZE);
+        wallnutSprite.setMaxWidth(GRID_SIZE);
+        wallnut = new GraphicsGroup();
+        wallnut.add(wallnutSprite);
+        canvas.add(wallnut);
     }
+    
     public void drawPlant(String type, int health, Point position) {
         double x = position.getX() * GRID_SIZE;
         double y = position.getY() * GRID_SIZE;
 
-        wallnutSprite.setPosition(x, y);
+        wallnut.setPosition(x, y);
         
         System.out.println("Drawing a Wallnut at position " + position);
     }
     
     public void removePlant(){
-        canvas.remove(wallnutSprite);
+        canvas.remove(wallnut);
     }
 
     public int getSunCost() { 

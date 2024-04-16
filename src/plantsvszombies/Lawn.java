@@ -13,7 +13,7 @@ public class Lawn {
 
     public static final int MAX_COLUMNS = 10;
     public static final int MAX_ROWS = 5;
-    public static final int START_Y = 65;
+    public static final int START_Y = 64;
 
     public Lawn(CanvasWindow canvas) {
         lawn = new ArrayList<>();
