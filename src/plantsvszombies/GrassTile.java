@@ -9,7 +9,7 @@ public class GrassTile extends GraphicsGroup {
     
     public final Color GRASS_COLOR_A = new Color(115, 236, 74);
     public final Color GRASS_COLOR_B = new Color(66, 189, 24);
-    public final Color OUTLINE_COLOR = new Color(47, 78, 58);
+    public final Color OUTLINE_COLOR = new Color(0, 129, 16);
     public static final int TILE_SIZE = 32;
 
     private Rectangle grassTile;

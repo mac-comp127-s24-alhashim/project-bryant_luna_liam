@@ -6,14 +6,15 @@ import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 
 public class Wallnut implements Plant{
-    private int health;
-    private GraphicsGroup wallnut;
+
     private static final String WALLNUT_SPRITE_PATH = "\\plants\\PLANT_PLACEHOLDER.png";
     public static final String WALLNUT_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_WALLNUT.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 50; 
-    private CanvasWindow canvas;
 
+    private int health;
+    private GraphicsGroup wallnut;
+    private CanvasWindow canvas;
 
     public Wallnut() {
         this.health = 54; 
