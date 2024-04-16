@@ -2,14 +2,16 @@ import edu.macalester.graphics.*;
 
 public class Shovel {
     
-    private Image shovelSprite;
+    private CanvasWindow canvas;
+    private GraphicsGroup sunSprite;
+
     
     public Shovel() {
         loadSprite();
     }
 
     private void loadSprite(){
-        shovelSprite = new Image("res\\game\\SHOVEL.png");
+        Image shovelSprite = new Image("res\\game\\SHOVEL.png");
     }
     
 }

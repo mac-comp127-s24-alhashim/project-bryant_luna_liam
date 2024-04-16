@@ -24,7 +24,6 @@ public class ZombieManager {
 
     ScheduledFuture<?> scheduledFuture = executor.scheduleAtFixedRate(helloRunnable, 0, 1, TimeUnit.SECONDS);
     
-
     public ZombieManager() {
         spawnRate = 60;
         System.out.println("Zombie Manager Initialized");

@@ -34,17 +34,19 @@ public class Wallnut implements Plant{
         
         System.out.println("Drawing a Wallnut at position " + position);
     }
-
-    public void attack() {
-        System.out.println("Wallnut does not attack");
-    }
-
+    
     public void removePlant(){
         canvas.remove(wallnutSprite);
     }
 
     public int getSunCost() { 
         return SUN_COST;
+    }
+
+    @Override
+    public void action() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'action'");
     }
 }
     

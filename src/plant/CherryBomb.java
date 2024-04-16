@@ -37,7 +37,7 @@ public class CherryBomb implements Plant{
         System.out.println("Drawing a Cherry Bomb at position " + position);
     }
 
-    public void attack() {
+    public void action() {
         // Cherry Bomb explodes, dealing 300 damage to zombies
         System.out.println("Cherry Bomb explodes, dealing 300 damage to zombies");
     }

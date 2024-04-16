@@ -12,7 +12,7 @@ public interface Plant {
     // SUN COST
     
     public void drawPlant(String type, int health, Point position);
-    public void attack();
+    public void action();
     public int getSunCost();
  
     

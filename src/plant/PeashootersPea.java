@@ -157,13 +157,13 @@ public class PeashootersPea {
          * Checks if the ball intersects with the zombie.
          */
         public boolean intersectsZombie(Zombie zombie) {
-            if (canvas.getElementAt(getX(), getY() + PEA_RADIUS+0.1) instanceof Zombie
-            || canvas.getElementAt(getX(), getY() - PEA_RADIUS-0.1)  instanceof Zombie
-            || canvas.getElementAt(getX() + PEA_RADIUS+0.1, getY())  instanceof Zombie
-            || canvas.getElementAt(getX() - PEA_RADIUS-0.1, getY())  instanceof Zombie) {
-                return true;
+            // if (canvas.getElementAt(getX(), getY() + PEA_RADIUS+0.1) instanceof Zombie
+            // || canvas.getElementAt(getX(), getY() - PEA_RADIUS-0.1)  instanceof Zombie
+            // || canvas.getElementAt(getX() + PEA_RADIUS+0.1, getY())  instanceof Zombie
+            // || canvas.getElementAt(getX() - PEA_RADIUS-0.1, getY())  instanceof Zombie) {
+            //     return true;
                 
-             }
+            //  }
         return false;
     }
     }

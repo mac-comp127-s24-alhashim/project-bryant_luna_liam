@@ -11,6 +11,7 @@ public class PotatoMine implements Plant {
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 25; 
     private CanvasWindow canvas;
+    private boolean potatoMineReady = false;
 
 
     public PotatoMine() {

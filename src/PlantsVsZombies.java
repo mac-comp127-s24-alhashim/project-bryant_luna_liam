@@ -8,11 +8,16 @@ public class PlantsVsZombies {
     private CanvasWindow canvas;
     private Image lawn;
     private Image sunBox;
+    private Image seedPacket;
+    private Sun sun;
 
 public PlantsVsZombies() {
     canvas = new CanvasWindow("Plants vs. Zombies", CANVAS_WIDTH, CANVAS_HEIGHT);
     loadLawn();
     loadSunBox();
+    loadSunPacket();
+    sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+    canvas.add(sun);
     }
     
 public static void main(String[] args) {
@@ -33,5 +38,11 @@ public void loadSunBox() {
     sunBox.setPosition(0, 0);
     canvas.add(sunBox);
     }
+
+public void loadSunPacket() {
+    seedPacket = new Image("\\game\\SEEDPACKET_EMPTY.png");
+    seedPacket.setPosition(sunBox.getImageWidth(),0);
+    canvas.add(seedPacket);
+}
 
 }

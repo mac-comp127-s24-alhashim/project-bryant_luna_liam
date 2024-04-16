@@ -9,7 +9,7 @@ public class Peashooter implements Plant{
     private int health;
     private GraphicsGroup peashooterSprite;
     private static final int GRID_SIZE = 32;
-    private static final int SUN_COST = 50; 
+    private static final int SUN_COST = 100; 
     private CanvasWindow canvas;
 
 
@@ -48,5 +48,4 @@ public class Peashooter implements Plant{
         // Peashooter shoots peas, dealing 1 damage to zombies
         System.out.println("Peashooter shoots a pea, dealing 1 damage to zombies");
     }
-    
 }
