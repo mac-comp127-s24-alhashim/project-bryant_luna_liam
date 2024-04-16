@@ -2,14 +2,16 @@ package plantsvszombies;
 
 import edu.macalester.graphics.*;
 
-import java.awt.Font;
+import java.awt.Color;
+// import java.awt.Font;
 
 import zombies.ZombieManager;
-
 
 public class PlantsVsZombies {
     private static final int CANVAS_WIDTH = 320;
     private static final int CANVAS_HEIGHT = 240;
+    private final short maxSun = 9999;
+    private final Color FONT_COLOR = new Color(41, 41, 41);
     
     private CanvasWindow canvas;
     private Image background;
@@ -18,15 +20,16 @@ public class PlantsVsZombies {
     private Lawn lawn;
     private Sun sun;
     private Shovel shovel;
+    private GraphicsText sunText;
 
-    private short sunCount = 0;
-    private final short maxSun = 9999;
+    private short sunCount;
 
     public PlantsVsZombies() {
         canvas = new CanvasWindow("Plants vs. Zombies", CANVAS_WIDTH, CANVAS_HEIGHT);
 
         loadBackground();
         loadSunBox();
+        initializeSun();
         loadSeedPacket();
         drawLawn();
         loadShovelAndBox();
@@ -39,7 +42,7 @@ public class PlantsVsZombies {
         // canvas.add(sun);
 
     }
-        
+
     public static void main(String[] args) {
         PlantsVsZombies plantsVsZombies = new PlantsVsZombies();
         ZombieManager zombieManager = new ZombieManager();
@@ -83,6 +86,15 @@ public class PlantsVsZombies {
     private void drawLawn() {
         lawn = new Lawn(canvas);
         lawn.generateLawn();
+    }
+
+    private void initializeSun() {
+        sunCount = 0;
+        sunText = new GraphicsText(String.valueOf(sunCount));
+        sunText.setFont(FontStyle.BOLD, 16);
+        sunText.setFillColor(FONT_COLOR);
+        sunText.setCenter(sunBox.getWidth() / 2, sunBox.getHeight() / 2);
+        canvas.add(sunText);
     }
 
 
