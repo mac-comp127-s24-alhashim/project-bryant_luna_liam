@@ -9,7 +9,9 @@ public class PlantsVsZombies {
     private Image background;
     private Image sunBox;
     private Image seedPacket;
-    private Sun sun;
+    private Lawn lawn;
+
+    //private Sun sun;
 
 public PlantsVsZombies() {
     canvas = new CanvasWindow("Plants vs. Zombies", CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -17,9 +19,10 @@ public PlantsVsZombies() {
     loadSunBox();
     loadSeedPacket();
     drawLawn();
+    canvas.draw();
 
-    sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
-    canvas.add(sun);
+    // sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+    // canvas.add(sun);
     }
     
 public static void main(String[] args) {
@@ -48,7 +51,8 @@ public void loadSeedPacket() {
     }
 
 public void drawLawn() {
-    // IMPLEMENT LAWN
+    lawn = new Lawn(canvas);
+    lawn.generateLawn();
     }
 
 
