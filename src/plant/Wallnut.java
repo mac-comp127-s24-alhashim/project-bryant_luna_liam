@@ -10,7 +10,8 @@ public class Wallnut implements Plant{
     private static final String WALLNUT_SPRITE_PATH = "\\plants\\PLANT_PLACEHOLDER.png";
     public static final String WALLNUT_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_WALLNUT.png";
     private static final int GRID_SIZE = 32;
-    private static final int SUN_COST = 50; 
+    private static final int SUN_COST = 50;
+    private static final int RECHARGE_TIME = 30000;  
 
     private int health;
     private GraphicsGroup wallnut;

@@ -11,6 +11,7 @@ public class Peashooter implements Plant{
     public static final String PEASHOOTER_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_PEASHOOTER.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 100; 
+    private static final int RECHARGE_TIME = 7500; 
 
     private int health;
     private GraphicsGroup peashooter;

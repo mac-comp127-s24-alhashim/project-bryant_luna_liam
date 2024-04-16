@@ -6,12 +6,13 @@ import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 
 public class PotatoMine implements Plant {
-    
+
     private static final String POTATOMINE_SPRITE_PATH = "\\plants\\POTATOMINE.png";
     private static final String POTATOMINE_BURIED_SPRITE_PATH = "\\plants\\POTATOMINE_BURIED.png";
     public static final String POTATOMINE_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_POTATOMINE.png";
     private static final int GRID_SIZE = 32;
-    private static final int SUN_COST = 25; 
+    private static final int SUN_COST = 25;
+    private static final int RECHARGE_TIME = 15000;  
 
     private int health;
     private GraphicsGroup potatoMine;
