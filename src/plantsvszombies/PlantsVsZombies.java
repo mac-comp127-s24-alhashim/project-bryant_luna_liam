@@ -1,3 +1,5 @@
+package plantsvszombies;
+
 import edu.macalester.graphics.*;
 import zombies.ZombieManager;
 

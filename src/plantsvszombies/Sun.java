@@ -1,3 +1,5 @@
+package plantsvszombies;
+
 import edu.macalester.graphics.*;
 
 public class Sun extends GraphicsGroup{

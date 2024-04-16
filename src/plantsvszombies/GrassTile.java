@@ -1,3 +1,5 @@
+package plantsvszombies;
+
 import edu.macalester.graphics.Rectangle;
 import edu.macalester.graphics.GraphicsGroup;
 

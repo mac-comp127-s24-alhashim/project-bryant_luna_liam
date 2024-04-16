@@ -1,3 +1,5 @@
+package plantsvszombies;
+
 public class Player {
 
     private int sunCount = 0;
