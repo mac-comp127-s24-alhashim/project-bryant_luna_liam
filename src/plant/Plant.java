@@ -8,12 +8,17 @@ public interface Plant {
     // HEALTH
     // STRING NAME
     // POSITION
-    // 16x16
+    // 32x32
     // SUN COST
     
     public void drawPlant(String type, int health, Point position);
+
+    public void removePlant();
+
     public void action();
+
     public int getSunCost();
  
+    
     
 }
