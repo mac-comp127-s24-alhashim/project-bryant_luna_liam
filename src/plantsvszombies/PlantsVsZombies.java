@@ -13,39 +13,49 @@ import zombies.ZombieManager;
 public class PlantsVsZombies {
     private static final int CANVAS_WIDTH = 320;
     private static final int CANVAS_HEIGHT = 240;
-    private final short maxSun = 9999;
+    //private final short maxSun = 9999;
     private final Color FONT_COLOR = new Color(41, 41, 41);
     
     private static CanvasWindow canvas;
+    private Player player;
+    private String playerName;
     private Image background;
     private Image sunBox;
     private Image shovelBox;
     private Lawn lawn;
-    private Sun sun;
+    //private Sun sun;
     private Shovel shovel;
     private GraphicsText sunText;
+    private GraphicsText nameText;
 
-    private short sunCount;
+    //private short sunCount;
 
     public PlantsVsZombies() {
-        canvas = new CanvasWindow("Plants vs. Zombies", CANVAS_WIDTH, CANVAS_HEIGHT);
-
+        canvas = new CanvasWindow("Plants vs. Zombies: Java Edition", CANVAS_WIDTH, CANVAS_HEIGHT);
+        player = new Player("Bryant", (short) 0);
         loadBackground();
         loadSunBox();
         initializeSun();
         loadSeedPacket();
         drawLawn();
         loadShovelAndBox();
-        sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
-        sun.addToCanvas(canvas);
+        loadPlayerName();
+        // sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+        // sun.addToCanvas(canvas);
+        canvas.performEventAction(() -> 
+            spawnSun());
 
-        canvas.draw();
+       // canvas.draw();
     }
 
     public static void main(String[] args) {
         PlantsVsZombies plantsVsZombies = new PlantsVsZombies();
         ZombieManager zombieManager = new ZombieManager(canvas);
         //plantsVsZombies.run();    
+    }
+
+    private void spawnSun() {
+        System.out.println("BAZINGA!");
     }
 
     private void loadBackground() {
@@ -88,13 +98,19 @@ public class PlantsVsZombies {
     }
 
     private void initializeSun() {
-        sunCount = 0;
-        sunText = new GraphicsText(String.valueOf(sunCount));
+        sunText = new GraphicsText(String.valueOf(player.getSunCount()));
         sunText.setFont(FontStyle.BOLD, 16);
         sunText.setFillColor(FONT_COLOR);
         sunText.setCenter(sunBox.getWidth() / 2, sunBox.getHeight() / 2);
         canvas.add(sunText);
     }
 
-
+    private void loadPlayerName() {
+        nameText = new GraphicsText(player.getName() + "'s House");
+        nameText.setFont(FontStyle.BOLD, 12);
+        nameText.setFillColor(FONT_COLOR);
+        //nameText.setPosition(shovelBox.getWidth() + 12, shovelBox.getY() + (shovelBox.getHeight() / 2) + 4);
+        nameText.setPosition(10, CANVAS_HEIGHT * 0.9825);
+        canvas.add(nameText);
+    }
 }

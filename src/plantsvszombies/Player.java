@@ -2,11 +2,15 @@ package plantsvszombies;
 
 public class Player {
 
-    private int sunCount = 0;
-    private int zombiesKilled = 0; 
+    private final short maxSun = 9999;
 
-    public Player(String name) {
-        // IDK WHAT TO ADD
+    private short sunCount;
+    private int zombiesKilled = 0; 
+    private String playerName;
+
+    public Player(String playerName, short sunCount) {
+        this.playerName = playerName;
+        this.sunCount = sunCount;
     }
 
     public int getSunCount() {
@@ -14,7 +18,13 @@ public class Player {
     }
 
     public void changeSunCount(int sun) {
-        sunCount += sun;
+        if (sunCount <= 0 || sunCount >= maxSun) {
+            sunCount += sun;
+        }
     }
-    
+
+    public String getName() {
+        return playerName;
+    }
+
 }

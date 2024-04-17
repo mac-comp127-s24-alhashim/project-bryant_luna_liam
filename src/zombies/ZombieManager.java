@@ -8,6 +8,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import edu.macalester.graphics.CanvasWindow;
+import plantsvszombies.Sun;
 
 /**
  * Handles the random spawning of zombies on the grid.
