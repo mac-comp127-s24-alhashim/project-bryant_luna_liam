@@ -1,6 +1,7 @@
 package zombies;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -15,6 +16,7 @@ public class ZombieManager {
     int time;
     int spawnRate;
     ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
+    ArrayList<Integer> tileList = new ArrayList<Integer>();
     CanvasWindow canvas;
 
     ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
@@ -48,13 +50,9 @@ public class ZombieManager {
     }
 
     private void summonZombie() {
-        System.out.println("creating zombie in zombiemanager");
         Zombie zombie = new Zombie(1, 1);
-        System.out.println("adding zombie to zombielist");
         zombieList.add(zombie);
-        System.out.println("added zombie to canvas");
         canvas.add(zombie);
-        System.out.println("drawing zombie on canvas");
         canvas.draw();
     }
     

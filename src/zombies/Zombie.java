@@ -29,12 +29,6 @@ public class Zombie extends GraphicsGroup {
     private void createZombie() {
         System.out.println("creating zombie");
         zombieObject = new Image("zombies/ZOMBIE_PLACEHOLDER.png");
-        System.out.println("loaded zombie");
         add(zombieObject);
-        System.out.println("added zombie");
     }
-
-
-
-    // public void drawZombie(String type, int health, Point position);
 }
