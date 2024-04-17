@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * Handles the random spawning of zombies on the grid.
  */
-
 public class ZombieManager {
     int time;
     int spawnRate;

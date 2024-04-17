@@ -50,20 +50,20 @@ public class PlantsVsZombies {
     }
 
     private void loadBackground() {
-        background = new Image("\\game\\LAWN.png");
+        background = new Image("game/LAWN.png");
         background.setPosition(0, 0);
         canvas.add(background);
 
     }
 
     private void loadSunBox() {
-        sunBox = new Image("\\game\\SUNCOUNT.png");
+        sunBox = new Image("game/SUNCOUNT.png");
         sunBox.setPosition(0, 0);
         canvas.add(sunBox);
     }
 
     private void loadShovelAndBox() {
-        shovelBox = new Image("\\game\\SHOVELBOX.png");
+        shovelBox = new Image("game/SHOVELBOX.png");
         shovelBox.setPosition(0, sunBox.getHeight());
         canvas.add(shovelBox);
 

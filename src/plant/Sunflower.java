@@ -7,8 +7,8 @@ import edu.macalester.graphics.Point;
 
 public class Sunflower implements Plant {
 
-    private static final String SUNFLOWER_SPRITE_PATH = "\\plants\\SUNFLOWER.png";
-    public static final String SUNFLOWER_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_SUNFLOWER.png";
+    private static final String SUNFLOWER_SPRITE_PATH = "plants/SUNFLOWER.png";
+    public static final String SUNFLOWER_SEED_SPRITE_PATH = "game/SEEDPACKET_SUNFLOWER.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 50; 
     private static final int SUN_PRODUCTION_TIME = 24000;

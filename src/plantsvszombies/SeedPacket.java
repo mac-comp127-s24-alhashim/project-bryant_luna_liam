@@ -30,7 +30,7 @@ public class SeedPacket {
             case 4: 
                 return CherryBomb.CHERRYBOMB_SEED_SPRITE_PATH;
             default:
-                return "\\game\\SEEDPACKET_EMPTY.png";
+                return "/game/SEEDPACKET_EMPTY.png";
         }
     }
 

@@ -15,7 +15,7 @@ public class Sun {
     }
 
     private void loadSprite() {
-        sunSprite = new Image("\\game\\SUN.png");
+        sunSprite = new Image("game/SUN.png");
         sun = new GraphicsGroup();
         sun.add(sunSprite);
     }

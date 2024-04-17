@@ -7,8 +7,8 @@ import edu.macalester.graphics.Point;
 
 public class CherryBomb implements Plant {
 
-    private static final String CHERRYBOMB_SPRITE_PATH = "\\plants\\PLANT_PLACEHOLDER.png";
-    public static final String CHERRYBOMB_SEED_SPRITE_PATH = "\\game\\SEEDPACKET_CHERRYBOMB.png";
+    private static final String CHERRYBOMB_SPRITE_PATH = "plants/PLANT_PLACEHOLDER.png";
+    public static final String CHERRYBOMB_SEED_SPRITE_PATH = "game/SEEDPACKET_CHERRYBOMB.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 150;
     private static final int RECHARGE_TIME = 40000; 

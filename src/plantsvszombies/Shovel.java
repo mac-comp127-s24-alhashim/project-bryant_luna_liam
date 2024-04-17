@@ -14,7 +14,7 @@ public class Shovel {
     }
 
     private void loadSprite(){
-        shovelSprite = new Image("\\game\\SHOVEL.png");
+        shovelSprite = new Image("game/SHOVEL.png");
         shovel = new GraphicsGroup();
         shovel.add(shovelSprite);
     }
