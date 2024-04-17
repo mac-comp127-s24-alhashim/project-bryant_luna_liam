@@ -22,7 +22,7 @@ public class Wallnut implements Plant{
         loadSprite();
     }
 
-    private void loadSprite(){
+    public void loadSprite(){
         Image wallnutSprite = new Image(WALLNUT_SPRITE_PATH);
         wallnutSprite.setMaxHeight(GRID_SIZE);
         wallnutSprite.setMaxWidth(GRID_SIZE);
@@ -50,8 +50,11 @@ public class Wallnut implements Plant{
 
     @Override
     public void action() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'action'");
+        int damage=10;
+        health-= damage;
+        if (health<=0) {
+            removePlant();
+        }
     }
 }
     
