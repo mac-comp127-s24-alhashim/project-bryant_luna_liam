@@ -40,10 +40,6 @@ public class PlantsVsZombies {
         sun.addToCanvas(canvas);
 
         canvas.draw();
-
-        // sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
-        // canvas.add(sun);
-
     }
 
     public static void main(String[] args) {
