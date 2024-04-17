@@ -1,6 +1,5 @@
 package plantsvszombies;
 
-
 import edu.macalester.graphics.CanvasWindow;
 
 import java.util.ArrayList;
