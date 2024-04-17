@@ -3,7 +3,10 @@ package plantsvszombies;
 import edu.macalester.graphics.*;
 
 import java.awt.Color;
-// import java.awt.Font;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
 
 import zombies.ZombieManager;
 

@@ -53,4 +53,9 @@ public class Peashooter implements Plant{
         // Peashooter shoots peas, dealing 1 damage to zombies
         System.out.println("Peashooter shoots a pea, dealing 1 damage to zombies");
     }
+
+    public void actionActivater() {
+        // Peashooter shoots when there's a zombie walking in its lane.
+    }
+
 }
