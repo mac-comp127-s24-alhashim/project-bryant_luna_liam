@@ -13,7 +13,7 @@ public class PlantsVsZombies {
     private final short maxSun = 9999;
     private final Color FONT_COLOR = new Color(41, 41, 41);
     
-    private CanvasWindow canvas;
+    private static CanvasWindow canvas;
     private Image background;
     private Image sunBox;
     private Image shovelBox;
@@ -45,7 +45,7 @@ public class PlantsVsZombies {
 
     public static void main(String[] args) {
         PlantsVsZombies plantsVsZombies = new PlantsVsZombies();
-        ZombieManager zombieManager = new ZombieManager();
+        ZombieManager zombieManager = new ZombieManager(canvas);
         //plantsVsZombies.run();    
     }
 
