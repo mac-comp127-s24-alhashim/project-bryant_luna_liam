@@ -35,5 +35,9 @@ public class Lawn {
         canvas.add(grassTile);
         lawn.add(grassTile);
     }
+
+    public GrassTile getGrassTile(int n) {
+        return lawn.get(n);
+    }
     
 }

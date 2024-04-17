@@ -11,8 +11,6 @@ public interface Plant {
     // 32x32
     // SUN COST
     
-    String CherryBomb = null;
-
     public void drawPlant(String type, int health, Point position);
 
     public void removePlant();

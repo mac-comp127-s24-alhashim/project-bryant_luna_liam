@@ -5,6 +5,8 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 
+import plantsvszombies.Sun;
+
 public class Sunflower implements Plant {
 
     private static final String SUNFLOWER_SPRITE_PATH = "plants/SUNFLOWER.png";
@@ -19,8 +21,9 @@ public class Sunflower implements Plant {
     private CanvasWindow canvas;
 
 
-    public Sunflower() {
-        this.health = 6; 
+    public Sunflower(CanvasWindow canvas) {
+        this.health = 6;
+        this.canvas = canvas; 
         loadSprite();
     }
 
@@ -43,11 +46,14 @@ public class Sunflower implements Plant {
         System.out.println("Drawing a Sunflower at position " + position);
     }
 
-   
     public void action() {
-        System.out.println("Sunflower does not attack");
+        Sun sun = new Sun(sunflower.getX(), sunflower.getY());
+        sun.addToCanvas(canvas);
     }
 
+    public void actionActivater() {
+        // Sunflower spawns a sun every 24 seconds.
+    }
 
     public void removePlant() {
         canvas.remove(sunflower);   

@@ -49,6 +49,11 @@ public class PotatoMine implements Plant {
         System.out.println("Potato Mine explodes, dealing 300 damage to zombies");
     }
 
+    public void actionActivater() {
+        // Potato Mine activates once it has finished arming itself after 15 seconds or so.
+    }
+
+
     public void removePlant(){
         canvas.remove(potatoMine);
     }
