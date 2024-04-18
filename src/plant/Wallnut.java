@@ -1,5 +1,8 @@
 package plant;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -16,10 +19,12 @@ public class Wallnut implements Plant{
     private int health;
     private GraphicsGroup wallnut;
     private CanvasWindow canvas;
+    private Timer rechargeTimer;
 
     public Wallnut() {
         this.health = 54; 
         loadSprite();
+        startRechargeTimer();
     }
 
     public void loadSprite(){
@@ -55,6 +60,14 @@ public class Wallnut implements Plant{
         if (health<=0) {
             removePlant();
         }
+    }
+    private void startRechargeTimer(){
+        rechargeTimer= new Timer();
+        rechargeTimer.schedule(new TimerTask() {
+            public void run(){
+                health=54;
+            }
+        }, RECHARGE_TIME);
     }
 }
     

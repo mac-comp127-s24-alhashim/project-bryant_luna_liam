@@ -47,7 +47,7 @@ public class Sunflower implements Plant {
             public void run(){
                 action();
             }
-        }, SUN_PRODUCTION_TIME);
+        }, RECHARGE_TIME,SUN_PRODUCTION_TIME);
     }
 
     public void drawPlant(String type, int health, Point position) {
@@ -66,7 +66,8 @@ public class Sunflower implements Plant {
     }
 
     public void removePlant() {
-        canvas.remove(sunflower);   
+        canvas.remove(sunflower);
+        sunProductionTimer.cancel();  
     }
 
     public int getSunCost() { 
