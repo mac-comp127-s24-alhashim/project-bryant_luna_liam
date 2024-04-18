@@ -1,5 +1,8 @@
 package plant;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -11,7 +14,9 @@ public class Peashooter implements Plant{
     public static final String PEASHOOTER_SEED_SPRITE_PATH = "game/SEEDPACKET_PEASHOOTER.png";
     private static final int GRID_SIZE = 32;
     private static final int SUN_COST = 100; 
-    private static final int RECHARGE_TIME = 7500; 
+    private static final int RECHARGE_TIME = 7500;
+    private Timer rechargeTimer; 
+    private boolean readyToActivate = false;
 
     private int health;
     private GraphicsGroup peashooter;
@@ -21,6 +26,8 @@ public class Peashooter implements Plant{
     public Peashooter() {
         this.health = 6; 
         loadSprite();
+        
+        startRechargeTimer();
     }
 
     public void loadSprite(){
@@ -46,16 +53,39 @@ public class Peashooter implements Plant{
         return SUN_COST;
     }
 
+    private void startRechargeTimer() {
+        rechargeTimer= new Timer();
+        rechargeTimer.schedule(new TimerTask() {
+         public void run(){
+         }
+        }, RECHARGE_TIME);
+     }
+    private void stopRechargeTimer() {
+        if (rechargeTimer != null) {
+            rechargeTimer.cancel();
+        }
+    }
     public void removePlant(){
         canvas.remove(peashooter);
+        stopRechargeTimer();
     }
+    
     public void action() {
-        // Peashooter shoots peas, dealing 1 damage to zombies
-        System.out.println("Peashooter shoots a pea, dealing 1 damage to zombies");
-    }
+   
+        if (readyToActivate) {
+            shootPea();
+            readyToActivate = false;
+        }}
 
-    public void actionActivater() {
-        // Peashooter shoots when there's a zombie walking in its lane.
+
+
+    private void shootPea() {
+        double centerX = peashooter.getPosition().getX() + GRID_SIZE / 2;
+        double centerY = peashooter.getPosition().getY() + GRID_SIZE / 2;
+        double initialVelocityX = 5; 
+        double initialVelocityY = 0; 
+        PeashooterPea pea = new PeashooterPea(centerX, centerY, initialVelocityX, initialVelocityY, canvas);
+        pea.addToCanvas(canvas);
     }
 
 }

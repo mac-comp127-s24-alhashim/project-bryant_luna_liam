@@ -42,7 +42,7 @@ public class Wallnut implements Plant{
 
         wallnut.setPosition(x, y);
         
-        System.out.println("Drawing a Wallnut at position " + position);
+   
     }
     
     public void removePlant(){
