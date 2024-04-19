@@ -26,15 +26,19 @@ public class ZombieManager {
     Runnable helloRunnable = () -> {
         time++;
         zombieSpawn();
+        moveZombies();
     };
 
     ScheduledFuture<?> scheduledFuture = executor.scheduleAtFixedRate(helloRunnable, 0, 1, TimeUnit.SECONDS);
     
     public ZombieManager(CanvasWindow canvas) {
         time = 0;
-        spawnRate = 5;
+        spawnRate = 20;
         this.canvas = canvas;
-        System.out.println("Zombie Manager Initialized");
+    }
+
+    private void moveZombies() {
+        for (Zombie zombie : zombieList) zombie.move();
     }
 
     public int getTimeElapsed() {
@@ -43,8 +47,6 @@ public class ZombieManager {
 
     private void zombieSpawn() {
         if (time >= 10) {
-            System.out.println("java");
-            System.out.println(time % spawnRate);
             if ((time % spawnRate) == 0) {
                 summonZombie();
             } 
