@@ -32,13 +32,7 @@ public class PlantsVsZombies {
         canvas = new CanvasWindow("Plants vs. Zombies: Java Edition", CANVAS_WIDTH, CANVAS_HEIGHT);
         player = new Player("Bryant", (short) 0);
         sunflower = new Sunflower(canvas);
-        loadBackground();
-        loadSunBox();
-        initializeSun();
-        loadSeedPacket();
-        drawLawn();
-        loadShovelAndBox();
-        loadPlayerName();
+        loadGame();
         sunflower.drawPlant("Sunflower", 6, lawn.getGrassTile(3).getPosition());
         sunflower.addToCanvas(canvas);
         sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
@@ -59,11 +53,20 @@ public class PlantsVsZombies {
         System.out.println("BAZINGA!");
     }
 
+    private void loadGame() {
+        loadBackground();
+        loadSunBox();
+        initializeSun();
+        loadSeedPacket();
+        drawLawn();
+        loadShovelAndBox();
+        loadPlayerName();
+    }
+
     private void loadBackground() {
         background = new Image("game/LAWN.png");
         background.setPosition(0, 0);
         canvas.add(background);
-
     }
 
     private void loadSunBox() {
