@@ -9,10 +9,11 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 
 import zombies.ZombieManager;
+import plant.*;
 
 public class PlantsVsZombies {
-    private static final int CANVAS_WIDTH = 320;
-    private static final int CANVAS_HEIGHT = 240;
+    public static final int CANVAS_WIDTH = 320;
+    public static final int CANVAS_HEIGHT = 240;
     //private final short maxSun = 9999;
     private final Color FONT_COLOR = new Color(41, 41, 41);
     
@@ -27,12 +28,14 @@ public class PlantsVsZombies {
     private Shovel shovel;
     private GraphicsText sunText;
     private GraphicsText nameText;
+    private Sunflower sunflower;
 
     //private short sunCount;
 
     public PlantsVsZombies() {
         canvas = new CanvasWindow("Plants vs. Zombies: Java Edition", CANVAS_WIDTH, CANVAS_HEIGHT);
         player = new Player("Bryant", (short) 0);
+        sunflower = new Sunflower(canvas);
         loadBackground();
         loadSunBox();
         initializeSun();
@@ -40,6 +43,8 @@ public class PlantsVsZombies {
         drawLawn();
         loadShovelAndBox();
         loadPlayerName();
+        sunflower.drawPlant("Sunflower", 6, lawn.getGrassTile(3).getPosition());
+        sunflower.addToCanvas(canvas);
         // sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
         // sun.addToCanvas(canvas);
         canvas.performEventAction(() -> 

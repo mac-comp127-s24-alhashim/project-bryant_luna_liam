@@ -8,6 +8,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 import edu.macalester.graphics.CanvasWindow;
+import plantsvszombies.PlantsVsZombies;
 import plantsvszombies.Sun;
 
 /**
@@ -51,7 +52,7 @@ public class ZombieManager {
     }
 
     private void summonZombie() {
-        Zombie zombie = new Zombie(1, 1);
+        Zombie zombie = new Zombie(PlantsVsZombies.CANVAS_WIDTH / 2, PlantsVsZombies.CANVAS_HEIGHT / 2);
         zombieList.add(zombie);
         canvas.add(zombie);
         canvas.draw();

@@ -21,13 +21,13 @@ public class Sunflower implements Plant {
 
     private int health;
     private GraphicsGroup sunflower;
-    private CanvasWindow canvas;
+    //private CanvasWindow canvas;
     private Timer sunProductionTimer;
 
 
     public Sunflower(CanvasWindow canvas) {
         this.health = 6;
-        this.canvas = canvas; 
+        //this.canvas = canvas; 
         loadSprite();
         startsunProductionTimer();
     }
@@ -38,7 +38,7 @@ public class Sunflower implements Plant {
         sunflowerSprite.setMaxWidth(GRID_SIZE);
         sunflower = new GraphicsGroup();
         sunflower.add(sunflowerSprite);
-        canvas.add(sunflower);
+        //canvas.add(sunflower);
     }
 
     private void startsunProductionTimer(){
@@ -54,23 +54,27 @@ public class Sunflower implements Plant {
         double x = position.getX() * GRID_SIZE;
         double y = position.getY() * GRID_SIZE;
 
-        sunflower.setPosition(x, y);
-        canvas.draw();
+        sunflower.setPosition(0, 64);
+        //canvas.draw();
         
         System.out.println("Drawing a Sunflower at position " + position);
     }
 
     public void action() {
         Sun sun = new Sun(sunflower.getX(), sunflower.getY());
-        sun.addToCanvas(canvas);
+       // sun.addToCanvas(canvas);
     }
 
     public void removePlant() {
-        canvas.remove(sunflower);
+        //canvas.remove(sunflower);
         sunProductionTimer.cancel();  
     }
 
     public int getSunCost() { 
         return SUN_COST;
+    }
+
+    public void addToCanvas(CanvasWindow canvas) {
+        canvas.add(sunflower);
     }
 }

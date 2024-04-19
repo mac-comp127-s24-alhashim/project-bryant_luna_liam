@@ -26,7 +26,6 @@ public class Peashooter implements Plant{
     public Peashooter() {
         this.health = 6; 
         loadSprite();
-        
         startRechargeTimer();
     }
 
@@ -59,25 +58,24 @@ public class Peashooter implements Plant{
          public void run(){
          }
         }, RECHARGE_TIME);
-     }
+    }
+
     private void stopRechargeTimer() {
         if (rechargeTimer != null) {
             rechargeTimer.cancel();
         }
     }
+
     public void removePlant(){
         canvas.remove(peashooter);
         stopRechargeTimer();
     }
     
     public void action() {
-   
         if (readyToActivate) {
             shootPea();
             readyToActivate = false;
         }}
-
-
 
     private void shootPea() {
         double centerX = peashooter.getPosition().getX() + GRID_SIZE / 2;
