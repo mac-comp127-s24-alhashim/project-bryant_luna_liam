@@ -45,5 +45,9 @@ public class SeedPacket {
     public double getWidth() {
         return seedPacket.getWidth();
     }
+
+    private void plantPlant(int plant) {
+
+    }
     
 }

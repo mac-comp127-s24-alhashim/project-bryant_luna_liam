@@ -52,7 +52,7 @@ public class ZombieManager {
     }
 
     private void summonZombie() {
-        Zombie zombie = new Zombie(PlantsVsZombies.CANVAS_WIDTH / 2, PlantsVsZombies.CANVAS_HEIGHT / 2);
+        Zombie zombie = new Zombie(64*3, 64 - 16);
         zombieList.add(zombie);
         canvas.add(zombie);
         canvas.draw();
