@@ -18,7 +18,6 @@ public class PlantsVsZombies {
     
     private static CanvasWindow canvas;
     private Player player;
-    //private String playerName;
     private Image background;
     private Image sunBox;
     private Image shovelBox;
