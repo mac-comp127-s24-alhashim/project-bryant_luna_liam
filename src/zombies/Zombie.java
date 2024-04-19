@@ -11,17 +11,12 @@ import edu.macalester.graphics.*;
 // ALL 32 x 48 in size
 
 public class Zombie extends GraphicsGroup {
-    private final double X;
-    private final double Y;
     private Image zombieObject;
     String type;
-    int health;
-    Point position;
+    int health = 9;
 
     public Zombie(double x, double y) {
-        this.X = x;
-        this.Y = y;
-        this.setPosition(x, y);
+        setPosition(x, y);
         createZombie();
     }
 
@@ -31,6 +26,20 @@ public class Zombie extends GraphicsGroup {
     }
 
     public void move() {
-        moveBy(-2, 0); // my brain is frie didk 
+        moveBy(-2, 0);
+    }
+
+    public void reduceHealth() {
+        health--;
+        if (health == 0) die();
+    }
+
+    public boolean checkCollisions(GraphicsObject object) {
+        if (getElementAt(getPosition()) == object) return true;
+        return false;
+    }
+
+    private void die() {
+        remove(zombieObject);
     }
 }
