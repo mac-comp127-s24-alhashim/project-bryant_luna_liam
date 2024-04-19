@@ -14,7 +14,6 @@ import plant.*;
 public class PlantsVsZombies {
     public static final int CANVAS_WIDTH = 320;
     public static final int CANVAS_HEIGHT = 240;
-    //private final short maxSun = 9999;
     private final Color FONT_COLOR = new Color(41, 41, 41);
     
     private static CanvasWindow canvas;
