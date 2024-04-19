@@ -1,5 +1,8 @@
 package plant;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -19,12 +22,14 @@ public class Sunflower implements Plant {
     private int health;
     private GraphicsGroup sunflower;
     private CanvasWindow canvas;
+    private Timer sunProductionTimer;
 
 
     public Sunflower(CanvasWindow canvas) {
         this.health = 6;
         this.canvas = canvas; 
         loadSprite();
+        startsunProductionTimer();
     }
 
     public void loadSprite(){
@@ -34,6 +39,15 @@ public class Sunflower implements Plant {
         sunflower = new GraphicsGroup();
         sunflower.add(sunflowerSprite);
         canvas.add(sunflower);
+    }
+
+    private void startsunProductionTimer(){
+        sunProductionTimer= new Timer();
+        sunProductionTimer.schedule(new TimerTask() {
+            public void run(){
+                action();
+            }
+        }, RECHARGE_TIME,SUN_PRODUCTION_TIME);
     }
 
     public void drawPlant(String type, int health, Point position) {
@@ -51,17 +65,12 @@ public class Sunflower implements Plant {
         sun.addToCanvas(canvas);
     }
 
-    public void actionActivater() {
-        // Sunflower spawns a sun every 24 seconds.
-    }
-
     public void removePlant() {
-        canvas.remove(sunflower);   
+        canvas.remove(sunflower);
+        sunProductionTimer.cancel();  
     }
 
     public int getSunCost() { 
         return SUN_COST;
     }
-
-    /// modify action so that it takes sunproduction time to produce
 }

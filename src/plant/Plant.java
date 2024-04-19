@@ -12,13 +12,9 @@ public interface Plant {
     // SUN COST
     
     public void drawPlant(String type, int health, Point position);
-
-    public void removePlant();
-
     public void action();
-
     public int getSunCost();
- 
-    
+    public void removePlant();
+    public void loadSprite();
     
 }

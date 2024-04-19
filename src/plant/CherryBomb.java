@@ -1,5 +1,8 @@
 package plant;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -16,6 +19,8 @@ public class CherryBomb implements Plant {
     private int health;
     private GraphicsGroup cherryBomb;
     private CanvasWindow canvas;
+    private boolean readyToActivate=true;
+    private Timer rechargeTimer;
 
     public CherryBomb() {
         this.health = 1000; 
@@ -42,16 +47,46 @@ public class CherryBomb implements Plant {
     }
 
     public void action() {
-        // Cherry Bomb explodes, dealing 300 damage to zombies
+        if (readyToActivate) {
+            explode(300);
+        } 
+        
         System.out.println("Cherry Bomb explodes, dealing 300 damage to zombies");
     }
 
     public void removePlant(){
         canvas.remove(cherryBomb);
+        stopRechargeTimer();
     }
 
 
     public int getSunCost() { 
         return SUN_COST;
+    }
+
+    private void startRechargeTimer(){
+        rechargeTimer= new Timer();
+        rechargeTimer.schedule(new TimerTask() {
+            public void run(){
+                readyToActivate=true;
+            }
+        }, RECHARGE_TIME);
+    }
+
+    private void stopRechargeTimer(){
+        if (rechargeTimer!=null) {
+            rechargeTimer.cancel();
+        }
+    }
+
+    private void explode(int damage){
+        health-=damage;
+
+        if (health<0) {
+            removePlant();
+        }else{
+            readyToActivate=false;
+            startRechargeTimer();
+        }
     }
 }

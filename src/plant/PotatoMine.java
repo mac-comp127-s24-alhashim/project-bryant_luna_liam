@@ -1,5 +1,8 @@
 package plant;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -18,15 +21,18 @@ public class PotatoMine implements Plant {
     private GraphicsGroup potatoMine;
     private CanvasWindow canvas;
     private boolean potatoMineBuried = true;
+    private boolean readyToActivate= false;
+    private Timer rechargeTimer;
 
 
     public PotatoMine() {
         this.health = 1000; 
         loadSprite();
+        startRechargeTimer();
     }
 
     public void loadSprite(){
-        Image PotatoMineSprite = new Image(POTATOMINE_BURIED_SPRITE_PATH);
+        Image PotatoMineSprite = new Image(potatoMineBuried?POTATOMINE_BURIED_SPRITE_PATH: POTATOMINE_SPRITE_PATH);
         PotatoMineSprite.setMaxHeight(GRID_SIZE);
         PotatoMineSprite.setMaxWidth(GRID_SIZE);
         potatoMine = new GraphicsGroup();
@@ -44,23 +50,45 @@ public class PotatoMine implements Plant {
         System.out.println("Drawing a Potato Mine at position " + position);
     }
 
-    public void action() {
-        // Potato Mine explodes, dealing 300 damage to zombies
-        System.out.println("Potato Mine explodes, dealing 300 damage to zombies");
+       private void startRechargeTimer() {
+       rechargeTimer= new Timer();
+       rechargeTimer.schedule(new TimerTask() {
+        public void run(){
+            readyToActivate= true;
+        }
+       }, RECHARGE_TIME);
     }
 
-    public void actionActivater() {
-        // Potato Mine activates once it has finished arming itself after 15 seconds or so.
+    
+    private void stopRechargeTimer() {
+        if (rechargeTimer != null) {
+            rechargeTimer.cancel();
+        }
     }
 
 
     public void removePlant(){
         canvas.remove(potatoMine);
+        stopRechargeTimer();;
     }
 
     public int getSunCost() { 
         return SUN_COST;
     }
 
+    public void explode(int damage){
+        System.out.println("Potato Mine explodes, dealing"+ damage+ "damage to zombies");
+        health-=damage;
+        if (health<=0) {
+            removePlant();
+        }
+    }
+    public void action(){
+        if (readyToActivate) {
+            explode(300);
+        }else{
+            System.out.println("Potato Mine is not ready to active");
+        }
+    }
     
 }

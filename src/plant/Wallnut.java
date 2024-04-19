@@ -1,5 +1,8 @@
 package plant;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -16,13 +19,15 @@ public class Wallnut implements Plant{
     private int health;
     private GraphicsGroup wallnut;
     private CanvasWindow canvas;
+    private Timer rechargeTimer;
 
     public Wallnut() {
         this.health = 54; 
         loadSprite();
+        startRechargeTimer();
     }
 
-    private void loadSprite(){
+    public void loadSprite(){
         Image wallnutSprite = new Image(WALLNUT_SPRITE_PATH);
         wallnutSprite.setMaxHeight(GRID_SIZE);
         wallnutSprite.setMaxWidth(GRID_SIZE);
@@ -37,7 +42,7 @@ public class Wallnut implements Plant{
 
         wallnut.setPosition(x, y);
         
-        System.out.println("Drawing a Wallnut at position " + position);
+   
     }
     
     public void removePlant(){
@@ -50,8 +55,19 @@ public class Wallnut implements Plant{
 
     @Override
     public void action() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'action'");
+        int damage=10;
+        health-= damage;
+        if (health<=0) {
+            removePlant();
+        }
+    }
+    private void startRechargeTimer(){
+        rechargeTimer= new Timer();
+        rechargeTimer.schedule(new TimerTask() {
+            public void run(){
+                health=54;
+            }
+        }, RECHARGE_TIME);
     }
 }
     
