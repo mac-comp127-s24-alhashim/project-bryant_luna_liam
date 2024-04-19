@@ -24,7 +24,7 @@ public class PlantsVsZombies {
     private Image sunBox;
     private Image shovelBox;
     private Lawn lawn;
-    //private Sun sun;
+    private Sun sun;
     private Shovel shovel;
     private GraphicsText sunText;
     private GraphicsText nameText;
@@ -45,8 +45,8 @@ public class PlantsVsZombies {
         loadPlayerName();
         sunflower.drawPlant("Sunflower", 6, lawn.getGrassTile(3).getPosition());
         sunflower.addToCanvas(canvas);
-        // sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
-        // sun.addToCanvas(canvas);
+        sun = new Sun(CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2);
+        sun.addToCanvas(canvas);
         canvas.performEventAction(() -> 
             spawnSun());
 
