@@ -27,8 +27,8 @@ public class SeedPacket {
                 return Wallnut.WALLNUT_SEED_SPRITE_PATH;
             case 3:
                 return PotatoMine.POTATOMINE_SEED_SPRITE_PATH;
-            case 4: 
-                return CherryBomb.CHERRYBOMB_SEED_SPRITE_PATH;
+            // case 4: 
+            //     return CherryBomb.CHERRYBOMB_SEED_SPRITE_PATH;
             default:
                 return "/game/SEEDPACKET_EMPTY.png";
         }

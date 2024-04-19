@@ -1,6 +1,7 @@
 package plantsvszombies;
 
 import edu.macalester.graphics.*;
+import plant.*;
 
 import java.awt.Color;
 import javax.sound.sampled.AudioInputStream;
@@ -9,7 +10,6 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 
 import zombies.ZombieManager;
-import plant.*;
 
 public class PlantsVsZombies {
     public static final int CANVAS_WIDTH = 320;

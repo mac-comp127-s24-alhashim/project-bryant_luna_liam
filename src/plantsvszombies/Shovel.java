@@ -1,6 +1,8 @@
 package plantsvszombies;
 
 import edu.macalester.graphics.*;
+import plant.*;
+import zombies.ZombieManager;
 
 public class Shovel {
     
@@ -12,6 +14,8 @@ public class Shovel {
         loadSprite();
         setCenter(x, y);
     }
+
+    int n = ZombieManager.getTimeElapsed();
 
     private void loadSprite(){
         shovelSprite = new Image("game/SHOVEL.png");
