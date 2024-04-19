@@ -7,7 +7,7 @@ import edu.macalester.graphics.Point;
 
 public class Projectile {
 
-    private static final String PEA_SPRITE_PATH = "plants/PEASHOOTER_PEA.png";
+    private final String PROJECTILE_SPRITE_PATH;
     private final int PROJECTILE_DAMAGE;
     
     private CanvasWindow canvas;
@@ -15,16 +15,17 @@ public class Projectile {
     private GraphicsGroup pea;
     private Image peaSprite;
 
-    public Projectile(CanvasWindow canvas, Point location, int damage) {
+    public Projectile(CanvasWindow canvas, Point location, int damage, String spritePath) {
         this.canvas = canvas;
         this.location = location;
         PROJECTILE_DAMAGE = damage;
+        PROJECTILE_SPRITE_PATH = spritePath;
         loadSprite();
         setCenter();
     }
 
     private void loadSprite() {
-        peaSprite = new Image(PEA_SPRITE_PATH);
+        peaSprite = new Image(PROJECTILE_SPRITE_PATH);
         pea = new GraphicsGroup();
         pea.add(peaSprite);
     }

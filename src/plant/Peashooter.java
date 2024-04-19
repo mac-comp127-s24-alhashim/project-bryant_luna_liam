@@ -9,6 +9,7 @@ public class Peashooter implements Plant {
 
     private static final String PEASHOOTER_SPRITE_PATH = "plants/PLANT_PLACEHOLDER.png";
     public static final String PEASHOOTER_SEED_SPRITE_PATH = "plants/SEEDPACKET_PEASHOOTER.png";
+    public final String PEASHOOTER_PEA_SPRITE_PATH = "plants/PEASHOOTER_PEA.png";
     public final int SUN_COST = 100;
     private final double RECHARGE_TIME_SECONDS = 7.5;
     private final double PEA_SHOOTING_RATE = 1.5;
@@ -39,7 +40,7 @@ public class Peashooter implements Plant {
     }
 
     public void action() {
-        Projectile pea = new Projectile(canvas, getPosition(), PEASHOOTER_DAMAGE);
+        Projectile pea = new Projectile(canvas, getPosition(), PEASHOOTER_DAMAGE, PEASHOOTER_PEA_SPRITE_PATH);
         pea.addToCanvas();
     }
 
