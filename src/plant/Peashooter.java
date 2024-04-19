@@ -1,8 +1,5 @@
 package plant;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -12,15 +9,22 @@ public class Peashooter implements Plant {
 
     private static final String PEASHOOTER_SPRITE_PATH = "plants/PLANT_PLACEHOLDER.png";
     public static final String PEASHOOTER_SEED_SPRITE_PATH = "plants/SEEDPACKET_PEASHOOTER.png";
-    public static final int SUN_COST = 100;
-    private static final double RECHARGE_TIME_SECONDS = 7.5;
+    public final int SUN_COST = 100;
+    private final double RECHARGE_TIME_SECONDS = 7.5;
+    private final double PEA_SHOOTING_RATE = 1.5;
+    private final int PEASHOOTER_DAMAGE = 1;
     
     public int health = 6;
+    private CanvasWindow canvas;
+    private Point location;
     private GraphicsGroup peashooter;
     private Image peashooterSprite;
 
-    public Peashooter() {
+    public Peashooter(CanvasWindow canvas, Point location) {
+        this.canvas = canvas;
+        this.location = location;
         loadSprite();
+        setPosition();
     }
 
     public void loadSprite() {
@@ -29,8 +33,14 @@ public class Peashooter implements Plant {
         peashooter.add(peashooterSprite);
     }
 
+    public void actionActivator() {
+        // ACTIVATE ACTION WHEN THERE IS A ZOMBIE IN PEASHOOTER'S LANE
+        action();
+    }
+
     public void action() {
-        // CREATE A PEA WHEN ZOMBIE IS IN THE SAME LANE.
+        Projectile pea = new Projectile(canvas, getPosition(), PEASHOOTER_DAMAGE);
+        pea.addToCanvas();
     }
 
     public int getSunCost() {
@@ -41,15 +51,34 @@ public class Peashooter implements Plant {
         return RECHARGE_TIME_SECONDS;
     }
 
-    public void receiveDamage() {
-        health--;
+    public double getFireRate() {
+        return PEA_SHOOTING_RATE;
     }
 
-    public void addToCanvas(CanvasWindow canvas) {
+    public void receiveDamage() {
+        health--;
+        checkDeath();
+    }
+
+    public void checkDeath() {
+        if (health <= 0) {
+            removeFromCanvas();
+        }
+    }
+
+    public Point getPosition() {
+        return location;
+    }
+
+    public void setPosition() {
+        peashooter.setPosition(location);
+    }
+
+    public void addToCanvas() {
         canvas.add(peashooter);
     }
 
-    public void removeFromCanvas(CanvasWindow canvas) {
+    public void removeFromCanvas() {
         canvas.remove(peashooter);
     }
 

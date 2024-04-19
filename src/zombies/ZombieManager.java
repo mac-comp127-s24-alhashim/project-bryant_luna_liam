@@ -53,7 +53,7 @@ public class ZombieManager {
     }
 
     private void zombieSpawn() {
-        Random random = new Random()
+        Random random = new Random();
         if (time >= 10) {
             if ((time % spawnRate) == 0) {
                 GrassTile chosenTile = tileList.get(random.nextInt((4 - 0) + 1) + 0);

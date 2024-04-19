@@ -6,12 +6,18 @@ public class Sun {
     
     private final int SUN_VALUE = 25;
 
+    private CanvasWindow canvas;
+    private Point location;
     private Image sunSprite;
     private GraphicsGroup sun;
+    private boolean spawnType; // TRUE = spawned by game | FALSE = spawned by a sun producer
 
-    public Sun(double x, double y) {
+    public Sun(CanvasWindow canvas, Point location, Boolean spawnType) {
+        this.canvas = canvas;
+        this.location = location;
+        this.spawnType = spawnType;
         loadSprite();
-        setCenter(x, y);
+        setCenter();
     }
 
     private void loadSprite() {
@@ -20,15 +26,21 @@ public class Sun {
         sun.add(sunSprite);
     }
 
-    public void setCenter(double x, double y) {
-        sun.setCenter(x, y);
+    private void setCenter() {
+        sun.setCenter(location);
     }
 
-    public void addToCanvas(CanvasWindow canvas) {
+    public void addToCanvas() {
         canvas.add(sun);
     }
 
-    public void clickSun(Player player, CanvasWindow canvas) {
+    public void updatePosition() {
+        if (spawnType == true) {
+            sun.moveBy(0, -1);
+        }
+    }
+
+    public void clickSun(Player player) {
         player.changeSunCount(SUN_VALUE);
         removeSun(canvas);
     }

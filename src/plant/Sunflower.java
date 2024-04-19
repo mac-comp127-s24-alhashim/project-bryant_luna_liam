@@ -1,80 +1,86 @@
-// package plant;
+package plant;
 
-// import java.util.Timer;
-// import java.util.TimerTask;
+import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.Image;
+import edu.macalester.graphics.Point;
 
-// import edu.macalester.graphics.CanvasWindow;
-// import edu.macalester.graphics.GraphicsGroup;
-// import edu.macalester.graphics.Image;
-// import edu.macalester.graphics.Point;
+import plantsvszombies.Sun;
 
-// import plantsvszombies.Sun;
+public class Sunflower implements Plant {
 
-// public class Sunflower implements Plant {
+    private static final String SUNFLOWER_SPRITE_PATH = "plants/SUNFLOWER.png";
+    public static final String SUNFLOWER_SEED_SPRITE_PATH = "plants/SEEDPACKET_SUNFLOWER.png";
+    public static final int SUN_COST = 50;
+    private static final double RECHARGE_TIME_SECONDS = 24;
+    private static final double SUN_PRODUCTION_RATE = 24;
+    
+    public int health = 6;
+    private CanvasWindow canvas;
+    private Point location;
+    private GraphicsGroup sunflower;
+    private Image sunflowerSprite;
 
-//     private static final String SUNFLOWER_SPRITE_PATH = "plants/SUNFLOWER.png";
-//     public static final String SUNFLOWER_SEED_SPRITE_PATH = "game/SEEDPACKET_SUNFLOWER.png";
-//     private static final int GRID_SIZE = 32;
-//     private static final int SUN_COST = 50; 
-//     private static final int SUN_PRODUCTION_TIME = 24000;
-//     private static final int RECHARGE_TIME = 24000; 
+    public Sunflower(CanvasWindow canvas, Point location) {
+        this.canvas = canvas;
+        this.location = location;
+        loadSprite();
+        setPosition();
+    }
 
-//     private int health;
-//     private GraphicsGroup sunflower;
-//     //private CanvasWindow canvas;
-//     private Timer sunProductionTimer;
+    public void loadSprite() {
+        sunflowerSprite = new Image(SUNFLOWER_SPRITE_PATH);
+        sunflower = new GraphicsGroup();
+        sunflower.add(sunflowerSprite);
+    }
 
+    public void actionActivator() {
+        // EVERY 24 SECONDS.
+        action();
+    }
 
-//     public Sunflower(CanvasWindow canvas) {
-//         this.health = 6;
-//         //this.canvas = canvas; 
-//         loadSprite();
-//         startsunProductionTimer();
-//     }
+    public void action() {
+        Sun sun = new Sun(canvas, getCenter(), false);
+        sun.addToCanvas();
+    }
 
-//     public void loadSprite(){
-//         Image sunflowerSprite = new Image(SUNFLOWER_SPRITE_PATH);
-//         sunflowerSprite.setMaxHeight(GRID_SIZE);
-//         sunflowerSprite.setMaxWidth(GRID_SIZE);
-//         sunflower = new GraphicsGroup();
-//         sunflower.add(sunflowerSprite);
-//         //canvas.add(sunflower);
-//     }
+    public int getSunCost() {
+        return SUN_COST;
+    }
 
-//     private void startsunProductionTimer(){
-//         sunProductionTimer= new Timer();
-//         sunProductionTimer.schedule(new TimerTask() {
-//             public void run(){
-//                 action();
-//             }
-//         }, RECHARGE_TIME,SUN_PRODUCTION_TIME);
-//     }
+    public double getRechargeTime() {
+        return RECHARGE_TIME_SECONDS;
+    }
 
-//     public void drawPlant(String type, int health, Point position) {
-//         double x = position.getX() * GRID_SIZE;
-//         double y = position.getY() * GRID_SIZE;
+    public void receiveDamage() {
+        health--;
+        checkDeath();
+    }
 
-//         sunflower.setPosition(0, 64);
-//         //canvas.draw();
-        
-//         System.out.println("Drawing a Sunflower at position " + position);
-//     }
+    public void checkDeath() {
+        if (health <= 0) {
+            removeFromCanvas();
+        }
+    }
 
-//     public void action() {
-//         Sun sun = new Sun(sunflower.getX(), sunflower.getY());
-//        // sun.addToCanvas(canvas);
-//     }
+    public Point getPosition() {
+        return location;
+    }
 
-//     public void removePlant() {
-//         //canvas.remove(sunflower);
-//         sunProductionTimer.cancel();  
-//     }
+    public Point getCenter() {
+        return sunflower.getCenter();
+    }
 
-//     public int getSunCost() { 
-//         return SUN_COST;
-//     }
+    public void setPosition() {
+        sunflower.setPosition(location);
+    }
 
-//     public void addToCanvas(CanvasWindow canvas) {
-//         canvas.add(sunflower);
-//     }
-// }
+    public void addToCanvas() {
+        canvas.add(sunflower);
+    }
+
+    public void removeFromCanvas() {
+        canvas.remove(sunflower);
+    }
+    
+}

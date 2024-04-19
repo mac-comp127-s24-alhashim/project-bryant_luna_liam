@@ -1,11 +1,12 @@
 package plant;
 
-import edu.macalester.graphics.*;
-import zombies.ZombieManager;
+import edu.macalester.graphics.Point;
 
 public interface Plant {
 
     void loadSprite();
+
+    // void actionActivator();
 
     void action();
 
@@ -13,17 +14,16 @@ public interface Plant {
 
     double getRechargeTime();
 
-    void receiveDamage();
+    // void receiveDamage();
 
-    void addToCanvas(CanvasWindow canvas);
+    // void checkDeath();
+
+    Point getPosition();
+
+    void setPosition();
+
+    void addToCanvas();
     
-    void removeFromCanvas(CanvasWindow canvas);
-
-    // SUNFLOWER, PEASHOOTER, WALLNUT, POTATO MINE, CHERRY BOMB
-    // HEALTH
-    // STRING NAME
-    // POSITION
-    // 32x32
-    // SUN COST
+    void removeFromCanvas();
     
 }

@@ -23,10 +23,10 @@ public class SeedPacket {
                 return Sunflower.SUNFLOWER_SEED_SPRITE_PATH;
             case 1:
                 return Peashooter.PEASHOOTER_SEED_SPRITE_PATH;
-            case 2:
-                return Wallnut.WALLNUT_SEED_SPRITE_PATH;
-            case 3:
-                return PotatoMine.POTATOMINE_SEED_SPRITE_PATH;
+            // case 2:
+            //     return Wallnut.WALLNUT_SEED_SPRITE_PATH;
+            // case 3:
+            //     return PotatoMine.POTATOMINE_SEED_SPRITE_PATH;
             // case 4: 
             //     return CherryBomb.CHERRYBOMB_SEED_SPRITE_PATH;
             default:
