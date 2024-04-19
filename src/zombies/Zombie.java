@@ -22,17 +22,15 @@ public class Zombie extends GraphicsGroup {
         this.X = x;
         this.Y = y;
         this.setPosition(x, y);
-        System.out.println("got thru constructor");
         createZombie();
     }
 
     private void createZombie() {
-        System.out.println("creating zombie");
         zombieObject = new Image("zombies/NORMAL_ZOMBIE.png");
         add(zombieObject);
     }
 
-    private void moveZombie() {
-        this.setX(-1); // my brain is frie didk 
+    public void move() {
+        moveBy(-2, 0); // my brain is frie didk 
     }
 }
