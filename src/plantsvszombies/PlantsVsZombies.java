@@ -19,7 +19,7 @@ public class PlantsVsZombies {
     
     private static CanvasWindow canvas;
     private Player player;
-    private String playerName;
+    //private String playerName;
     private Image background;
     private Image sunBox;
     private Image shovelBox;
@@ -29,8 +29,6 @@ public class PlantsVsZombies {
     private GraphicsText sunText;
     private GraphicsText nameText;
     private Sunflower sunflower;
-
-    //private short sunCount;
 
     public PlantsVsZombies() {
         canvas = new CanvasWindow("Plants vs. Zombies: Java Edition", CANVAS_WIDTH, CANVAS_HEIGHT);
