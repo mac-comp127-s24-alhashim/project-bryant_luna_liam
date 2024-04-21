@@ -10,12 +10,12 @@ import edu.macalester.graphics.*;
 // NEWSPAPER ZOMBIE
 // ALL 32 x 48 in size
 
-public class Zombie extends GraphicsGroup {
+public class NormalZombie extends GraphicsGroup {
     private Image zombieObject;
     String type;
     int health = 9;
 
-    public Zombie(double x, double y) {
+    public NormalZombie(double x, double y) {
         setPosition(x, y);
         createZombie();
     }

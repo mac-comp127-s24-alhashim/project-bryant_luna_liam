@@ -1,12 +1,8 @@
 package plantsvszombies;
 
 import edu.macalester.graphics.*;
-import plant.*;
-import zombies.ZombieManager;
 
 public class Shovel {
-    
-    // private CanvasWindow canvas;
     private Image shovelSprite;
     private GraphicsGroup shovel;
 
@@ -15,12 +11,10 @@ public class Shovel {
         setCenter(x, y);
     }
 
-    int n = ZombieManager.getTimeElapsed();
+    int n = PvZ.getTime();
 
     private void loadSprite(){
-        shovelSprite = new Image("game/SHOVEL.png");
-        shovel = new GraphicsGroup();
-        shovel.add(shovelSprite);
+
     }
 
     public void setCenter(double x, double y) {

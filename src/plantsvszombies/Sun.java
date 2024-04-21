@@ -2,8 +2,10 @@ package plantsvszombies;
 
 import edu.macalester.graphics.*;
 
+/*
+ * Handles the creation and spawning of collectible suns.
+ */
 public class Sun {
-    
     private final int SUN_VALUE = 25;
 
     private CanvasWindow canvas;
@@ -40,10 +42,10 @@ public class Sun {
         }
     }
 
-    public void clickSun(Player player) {
-        player.changeSunCount(SUN_VALUE);
-        removeSun(canvas);
-    }
+    // public void clickSun(Player player) {
+    //     player.changeSunCount(SUN_VALUE);
+    //     removeSun(canvas);
+    // }
 
     private void removeSun(CanvasWindow canvas){
         canvas.remove(sun);

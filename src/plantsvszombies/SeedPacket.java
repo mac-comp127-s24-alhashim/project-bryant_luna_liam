@@ -1,6 +1,7 @@
 package plantsvszombies;
 
 import edu.macalester.graphics.*;
+
 import plant.*;
 
 public class SeedPacket {
