@@ -48,7 +48,7 @@ public class UI extends GraphicsGroup{
         //     seedPacket.addToCanvas(canvas);
         // }
 
-        sunText = new GraphicsText(String.valueOf(PvZ.getSunCount()));
+        sunText = new GraphicsText(String.valueOf(PvZ.sunCount));
         sunText.setFont(FontStyle.BOLD, 16);
         sunText.setFillColor(FONT_COLOR);
         sunText.setCenter(sunBox.getWidth() / 2, sunBox.getHeight() / 2);
@@ -59,5 +59,12 @@ public class UI extends GraphicsGroup{
         nameText.setFillColor(FONT_COLOR);
         nameText.setPosition(10, canvas.getHeight() * 0.9825);
         add(nameText);
+    }
+
+    /**
+     * Updates the UI text.
+     */
+    public void update() {
+        sunText.setText(String.valueOf(PvZ.sunCount));
     }
 }

@@ -40,8 +40,8 @@ public class Sunflower implements Plant {
     }
 
     public void action() {
-        Sun sun = new Sun(canvas, getCenter(), false);
-        sun.addToCanvas();
+        Sun sun = new Sun(getCenter(), false);
+        canvas.add(sun);
     }
 
     public int getSunCost() {
