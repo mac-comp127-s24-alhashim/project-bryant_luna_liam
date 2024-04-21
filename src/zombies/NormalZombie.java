@@ -10,18 +10,18 @@ import edu.macalester.graphics.*;
 // NEWSPAPER ZOMBIE
 // ALL 32 x 48 in size
 
+/**
+ * A normal zombie. No special abilities.
+ */
 public class NormalZombie extends GraphicsGroup {
-    private Image zombieObject;
+    private static Image zombieObject = new Image("zombies/NORMAL_ZOMBIE.png");;
+    static final double ZOMBIE_WIDTH = zombieObject.getWidth();
+    static final double ZOMBIE_HEIGHT = zombieObject.getHeight();
     String type;
     int health = 9;
 
     public NormalZombie(double x, double y) {
         setPosition(x, y);
-        createZombie();
-    }
-
-    private void createZombie() {
-        zombieObject = new Image("zombies/NORMAL_ZOMBIE.png");
         add(zombieObject);
     }
 

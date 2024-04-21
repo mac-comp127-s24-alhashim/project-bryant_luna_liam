@@ -1,6 +1,7 @@
 package plantsvszombies;
 
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.Point;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,14 +11,18 @@ import java.util.List;
  */
 public class Lawn {
     private CanvasWindow canvas;
-    private static List<GrassTile> lawn;
+    private static List<GrassTile> tileList;
+
+    // Part of a quick and dirty fix, see below
+    private static List<Point> pointList;
 
     public static final int MAX_COLUMNS = 10;
     public static final int MAX_ROWS = 5;
     public static final int START_Y = 64;
 
     public Lawn(CanvasWindow canvas) {
-        lawn = new ArrayList<>();
+        tileList = new ArrayList<GrassTile>();
+        pointList = new ArrayList<Point>();
         this.canvas = canvas;
         generateLawn();
     }
@@ -28,7 +33,16 @@ public class Lawn {
      * @return
      */
     public static GrassTile getGrassTile(int n) {
-        return lawn.get(n);
+        return tileList.get(n);
+    }
+
+    /**
+     * Get a specific grass tile's position on the canvas.
+     * @param id Number of grass tile, going from left to right, 0 to 39.
+     * @return
+     */
+    public static Point getGrassTilePosition(int n) {
+        return pointList.get(n);
     }
 
     private void generateLawn() {
@@ -38,8 +52,13 @@ public class Lawn {
                 int x = ((GrassTile.TILE_SIZE * n));
                 int tileNumber = (i + n);
                 GrassTile grassTile = new GrassTile(x, y, tileNumber);
-                lawn.add(grassTile);
+                tileList.add(grassTile);
                 canvas.add(grassTile);
+
+                // This is a quick and dirty fix for not being able to
+                // get the position of a grass tile on the screen, for some reason
+                Point tilePosition = new Point(x, y);
+                pointList.add(tilePosition);
             }
         }
     }

@@ -2,8 +2,6 @@ package plantsvszombies;
 
 import edu.macalester.graphics.*;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -29,7 +27,6 @@ public class PvZ {
     private UI ui = new UI(canvas);
     private ZombieManager zombieManager;
     private Lawn lawn;
-    private Shovel shovel;
     private Image background = new Image("game/LAWN.png");
 
     // Player Statistics
@@ -40,13 +37,6 @@ public class PvZ {
     
     ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
-    // Gets called every second
-    Runnable pvzRunnable = () -> {
-        timeInSeconds++;
-    };
-
-    ScheduledFuture<?> mainScheduledFuture = executor.scheduleAtFixedRate(pvzRunnable, 0, 1, TimeUnit.SECONDS);
-
     public PvZ() {
         background.setPosition(0, 0);
         canvas.add(background);
@@ -54,8 +44,13 @@ public class PvZ {
         zombieManager = new ZombieManager(canvas);
         canvas.add(ui);
 
-        // canvas.performEventAction(() -> 
-        //     spawnSun());
+        // Gets called every second
+        Runnable pvzRunnable = () -> {
+            timeInSeconds++;
+            zombieManager.runScheduledTasks();
+        };
+            
+        ScheduledFuture<?> mainScheduledFuture = executor.scheduleAtFixedRate(pvzRunnable, 0, 1, TimeUnit.SECONDS);
     }
 
     public static void main(String[] args) {

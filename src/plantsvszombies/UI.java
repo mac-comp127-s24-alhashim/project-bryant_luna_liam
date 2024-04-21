@@ -17,6 +17,7 @@ public class UI extends GraphicsGroup{
     private Image background;
     private Image sunBox;
     private Image shovelBox;
+    private Image shovelSprite;
     private GraphicsText sunText;
     private GraphicsText nameText;
 
@@ -31,11 +32,10 @@ public class UI extends GraphicsGroup{
         shovelBox.setPosition(0, sunBox.getHeight());
         add(shovelBox);
 
-        double shovelBoxCenterX = shovelBox.getX() + shovelBox.getWidth() / 2;
-        double shovelBoxCenterY = shovelBox.getY() + shovelBox.getHeight() / 2;
-
-        Image shovelSprite = new Image("game/SHOVEL.png");
-        shovelSprite.setPosition(shovelBoxCenterX, shovelBoxCenterY);
+        shovelSprite = new Image("game/SHOVEL.png");
+        double shovelXMargin = (shovelBox.getWidth() - shovelSprite.getWidth()) / 2;
+        double shovelYMargin = (shovelBox.getHeight() - shovelSprite.getHeight()) / 2;
+        shovelSprite.setPosition(shovelBox.getX() + shovelXMargin, shovelBox.getY() + shovelYMargin);
         add(shovelSprite);
 
         // shovel = new Shovel(shovelBoxCenterX, shovelBoxCenterY);
