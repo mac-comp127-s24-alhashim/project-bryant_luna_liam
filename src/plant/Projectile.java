@@ -12,8 +12,8 @@ public class Projectile {
     
     private CanvasWindow canvas;
     private Point location;
-    private GraphicsGroup pea;
-    private Image peaSprite;
+    private GraphicsGroup projectile;
+    private Image projectileSprite;
 
     public Projectile(CanvasWindow canvas, Point location, int damage, String spritePath) {
         this.canvas = canvas;
@@ -25,29 +25,33 @@ public class Projectile {
     }
 
     private void loadSprite() {
-        peaSprite = new Image(PROJECTILE_SPRITE_PATH);
-        pea = new GraphicsGroup();
-        pea.add(peaSprite);
+        projectileSprite = new Image(PROJECTILE_SPRITE_PATH);
+        projectile = new GraphicsGroup();
+        projectile.add(projectileSprite);
     }
 
     private void setCenter() {
-        pea.setCenter(location);
+        projectile.setCenter(location);
     }
 
     public Point getPosition() {
-        return pea.getPosition();
+        return projectile.getPosition();
     }
 
     public void updatePosition() {
-        pea.moveBy(+1, 0);
+        projectile.moveBy(+1, 0);
+    }
+
+    public int getDamage() {
+        return PROJECTILE_DAMAGE;
     }
 
     public void addToCanvas() {
-        canvas.add(pea);
+        canvas.add(projectile);
     }
 
     public void removeFromCavas() {
-        canvas.remove(pea);
+        canvas.remove(projectile);
     }
 }
     

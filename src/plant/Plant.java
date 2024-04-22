@@ -8,7 +8,7 @@ public interface Plant {
 
     // void actionActivator();
 
-    void action();
+    // void action();
 
     int getSunCost();
 

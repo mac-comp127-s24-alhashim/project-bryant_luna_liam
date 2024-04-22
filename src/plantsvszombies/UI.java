@@ -11,10 +11,10 @@ import edu.macalester.graphics.Image;
 /**
  * Handles the UI elements in the game.
  */
-public class UI extends GraphicsGroup{
+public class UI extends GraphicsGroup {
+
     private final Color FONT_COLOR = new Color(41, 41, 41);
     private final CanvasWindow canvas;
-    private Image background;
     private Image sunBox;
     private Image shovelBox;
     static Image shovelSprite;

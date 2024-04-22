@@ -7,7 +7,7 @@ import edu.macalester.graphics.Point;
 
 public class Peashooter implements Plant {
 
-    private static final String PEASHOOTER_SPRITE_PATH = "plants/PLANT_PLACEHOLDER.png";
+    private static final String PEASHOOTER_SPRITE_PATH = "plants/PEASHOOTER.png";
     public static final String PEASHOOTER_SEED_SPRITE_PATH = "game/SEEDPACKET_PEASHOOTER.png";
     public final String PEASHOOTER_PEA_SPRITE_PATH = "plants/PEASHOOTER_PEA.png";
     public final int SUN_COST = 100;
