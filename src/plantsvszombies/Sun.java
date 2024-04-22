@@ -11,6 +11,7 @@ import edu.macalester.graphics.*;
  * Handles the creation of a sun.
  */
 public class Sun extends GraphicsGroup {
+    
     private final int SUN_VALUE = 25;
     private CanvasWindow canvas;
     private Point location;

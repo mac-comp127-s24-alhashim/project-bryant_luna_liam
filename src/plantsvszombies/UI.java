@@ -23,11 +23,26 @@ public class UI extends GraphicsGroup {
 
     public UI(CanvasWindow canvas) {
         this.canvas = canvas;
+        loadSunBox();
+        loadShovelAndBox();
+        loadSeedPackets();
+        loadSunText();
+        loadNameText();
+    }
 
+    /**
+     * Loads the box containing the sun text.
+     */
+    private void loadSunBox() {
         sunBox = new Image("game/SUNCOUNT.png");
         sunBox.setPosition(0, 0);
         add(sunBox);
+    }
 
+    /**
+     * Loads the shovel and its box containing it.
+     */
+    private void loadShovelAndBox() {
         shovelBox = new Image("game/SHOVELBOX.png");
         shovelBox.setPosition(0, sunBox.getHeight());
         add(shovelBox);
@@ -37,23 +52,35 @@ public class UI extends GraphicsGroup {
         double shovelYMargin = (shovelBox.getHeight() - shovelSprite.getHeight()) / 2;
         shovelSprite.setPosition(shovelBox.getX() + shovelXMargin, shovelBox.getY() + shovelYMargin);
         add(shovelSprite);
+    }
 
-        // shovel = new Shovel(shovelBoxCenterX, shovelBoxCenterY);
-        // shovel.addToCanvas(canvas);
-
+    /**
+     * Loads the seed packets displaying each plant.
+     */
+    private void loadSeedPackets() {
         for (int n = 0; n <= 4; n++) {
             SeedPacket seedPacket = new SeedPacket(n);
             int x = (int) (sunBox.getImageWidth() + (seedPacket.getWidth() * n));
             seedPacket.setPosition(x ,0);
             seedPacket.addToCanvas(canvas);
         }
+    }
 
+    /**
+     * Loads the sun counter.
+     */
+    private void loadSunText() {
         sunText = new GraphicsText(String.valueOf(PvZ.sunCount));
         sunText.setFont(FontStyle.BOLD, 16);
         sunText.setFillColor(FONT_COLOR);
         sunText.setCenter(sunBox.getWidth() / 2, sunBox.getHeight() / 2);
         add(sunText);
+    }
 
+    /**
+     * Loads the name text.
+     */
+    private void loadNameText() {
         nameText = new GraphicsText(PvZ.getPlayerName() + "'s House");
         nameText.setFont(FontStyle.BOLD, 12);
         nameText.setFillColor(FONT_COLOR);
