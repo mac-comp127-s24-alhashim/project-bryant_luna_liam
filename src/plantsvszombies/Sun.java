@@ -23,7 +23,7 @@ public class Sun extends GraphicsGroup {
      * Creates a sun.
      * @param canvas
      * @param location
-     * @param spawnType Set true if spawned by game, false if spawned by a sunflower.
+     * @param spawnType Set true if spawned by game, false if spawned by a sun producer.
      */
     public Sun(Point location, Boolean spawnType) {
         this.location = location;
