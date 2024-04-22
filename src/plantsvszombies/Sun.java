@@ -38,7 +38,7 @@ public class Sun extends GraphicsGroup {
             updatePosition();
         };
             
-        ScheduledFuture<?> scheduledFuture = executor.scheduleAtFixedRate(sunRunnable, 0, 250, TimeUnit.MILLISECONDS);
+        ScheduledFuture <?> scheduledFuture = executor.scheduleAtFixedRate(sunRunnable, 0, 250, TimeUnit.MILLISECONDS);
     }
 
     /**
@@ -59,7 +59,7 @@ public class Sun extends GraphicsGroup {
     public void updatePosition() {
         // The sun will not move if it is not spawned by the game.
         if (spawnType == true) {
-            moveBy(0, 1);
+            moveBy(0, 3);
         }
     }
 }
