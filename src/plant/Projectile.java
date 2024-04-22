@@ -39,7 +39,7 @@ public class Projectile {
     }
 
     public void updatePosition() {
-        projectile.moveBy(+1, 0);
+        projectile.moveBy(+3, 0);
     }
 
     public int getDamage() {

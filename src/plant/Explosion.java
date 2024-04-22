@@ -30,6 +30,7 @@ public class Explosion extends GraphicsGroup {
     private void createExplosionDrawing() {
         explosion.setFillColor(EXPLOSION_COLOR);
         explosion.setCenter(location.getX(), location.getY());
+        addToCanvas();
     }
 
     public void addToCanvas() {

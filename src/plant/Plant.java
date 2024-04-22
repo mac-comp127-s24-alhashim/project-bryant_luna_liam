@@ -6,17 +6,9 @@ public interface Plant {
 
     void loadSprite();
 
-    // void actionActivator();
-
-    // void action();
-
     int getSunCost();
 
     double getRechargeTime();
-
-    // void receiveDamage();
-
-    // void checkDeath();
 
     Point getPosition();
 
