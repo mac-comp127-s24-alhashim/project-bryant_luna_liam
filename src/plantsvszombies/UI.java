@@ -17,7 +17,7 @@ public class UI extends GraphicsGroup{
     private Image background;
     private Image sunBox;
     private Image shovelBox;
-    private Image shovelSprite;
+    static Image shovelSprite;
     private GraphicsText sunText;
     private GraphicsText nameText;
 

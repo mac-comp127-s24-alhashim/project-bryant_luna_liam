@@ -73,7 +73,22 @@ public class PvZ {
                 sun = null;
                 ui.update();
             }
+        });
 
+        /*
+         * Determines what element is under the mouse when a drag
+         * occurs, and runs that element's task for drag events accordingly.
+         */
+
+        // TODO: Started work on deteting drag events, but the shovel is moving
+        // erratically. Fix this and implement shovel features once they're ready
+        canvas.onDrag(handler -> {
+            GraphicsObject clickedObject = canvas.getElementAt(handler.getPosition());
+
+
+            if (clickedObject == UI.shovelSprite) {
+                UI.shovelSprite.setPosition(handler.getPosition());
+            }
         });
     }
 
