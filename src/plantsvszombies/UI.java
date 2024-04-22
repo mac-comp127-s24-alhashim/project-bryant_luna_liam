@@ -25,7 +25,7 @@ public class UI extends GraphicsGroup {
         this.canvas = canvas;
         loadSunBox();
         loadShovelAndBox();
-        loadSeedPackets();
+        //loadSeedPackets();
         loadSunText();
         loadNameText();
     }
@@ -54,17 +54,17 @@ public class UI extends GraphicsGroup {
         add(shovelSprite);
     }
 
-    /**
-     * Loads the seed packets displaying each plant.
-     */
-    private void loadSeedPackets() {
-        for (int n = 0; n <= 4; n++) {
-            SeedPacket seedPacket = new SeedPacket(n);
-            int x = (int) (sunBox.getImageWidth() + (seedPacket.getWidth() * n));
-            seedPacket.setPosition(x ,0);
-            seedPacket.addToCanvas(canvas);
-        }
-    }
+    // /**
+    //  * Loads the seed packets displaying each plant.
+    //  */
+    // private void loadSeedPackets() {  
+    //     for (int n = 0; n <= 4; n++) {
+    //         SeedPacket seedPacket = new SeedPacket(canvas, n);
+    //         int x = (int) (sunBox.getImageWidth() + (seedPacket.getWidth() * n));
+    //         seedPacket.setPosition(x ,0);
+    //         seedPacket.addToCanvas();
+    //     }      
+    // }
 
     /**
      * Loads the sun counter.

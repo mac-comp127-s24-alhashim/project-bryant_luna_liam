@@ -8,8 +8,10 @@ public class SeedPacket {
 
     GraphicsGroup seedPacket;
     Image seedPacketSprite;
+    CanvasWindow canvas;
 
-    public SeedPacket(int plant) {
+    public SeedPacket(CanvasWindow canvas, int plant) {
+        this.canvas = canvas;
         loadSprite(plant);
     }
 
@@ -36,7 +38,7 @@ public class SeedPacket {
         }
     }
 
-    public void addToCanvas(CanvasWindow canvas) {
+    public void addToCanvas() {
         canvas.add(seedPacket);
     }
 

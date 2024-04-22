@@ -41,12 +41,12 @@ public class PvZ {
     ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     public PvZ() {
-        background.setPosition(0, 0);
         canvas.add(background);
         lawn = new Lawn(canvas);
         sun = null; // No suns when constructed
         zombieManager = new ZombieManager(canvas);
         canvas.add(ui);
+        loadSeedPackets();
 
         // Gets called every second
         Runnable pvzRunnable = () -> {
@@ -124,5 +124,17 @@ public class PvZ {
                 canvas.add(sun);
             }
         }
+    }
+
+    /**
+     * Loads the seed packets displaying each plant.
+     */
+    private void loadSeedPackets() {  
+        for (int n = 0; n <= 4; n++) {
+            SeedPacket seedPacket = new SeedPacket(canvas, n);
+            int x = (int) (64 + (seedPacket.getWidth() * n));
+            seedPacket.setPosition(x ,0);
+            seedPacket.addToCanvas();
+        }      
     }
 }
