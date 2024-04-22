@@ -93,5 +93,6 @@ public class UI extends GraphicsGroup {
      */
     public void update() {
         sunText.setText(String.valueOf(PvZ.sunCount));
+        sunText.setCenter(sunBox.getWidth() / 2, sunBox.getHeight() / 2);
     }
 }
