@@ -41,12 +41,12 @@ public class UI extends GraphicsGroup{
         // shovel = new Shovel(shovelBoxCenterX, shovelBoxCenterY);
         // shovel.addToCanvas(canvas);
 
-        // for (int n = 0; n <= 4; n++) {
-        //     SeedPacket seedPacket = new SeedPacket(n);
-        //     int x = (int) (sunBox.getImageWidth() + (seedPacket.getWidth() * n));
-        //     seedPacket.setPosition(x ,0);
-        //     seedPacket.addToCanvas(canvas);
-        // }
+        for (int n = 0; n <= 4; n++) {
+            SeedPacket seedPacket = new SeedPacket(n);
+            int x = (int) (sunBox.getImageWidth() + (seedPacket.getWidth() * n));
+            seedPacket.setPosition(x ,0);
+            seedPacket.addToCanvas(canvas);
+        }
 
         sunText = new GraphicsText(String.valueOf(PvZ.sunCount));
         sunText.setFont(FontStyle.BOLD, 16);
