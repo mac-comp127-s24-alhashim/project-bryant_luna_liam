@@ -28,57 +28,91 @@ public class Peashooter implements Plant {
         setPosition();
     }
 
+    /**
+     * Loads the peashooter sprite.
+     */
     public void loadSprite() {
         peashooterSprite = new Image(PEASHOOTER_SPRITE_PATH);
         peashooter = new GraphicsGroup();
         peashooter.add(peashooterSprite);
     }
 
+    /**
+     * Activates the pea shooting when there's a zombie in the Peashooter's lane.  
+     */
     public void actionActivator() {
-        // ACTIVATE ACTION WHEN THERE IS A ZOMBIE IN PEASHOOTER'S LANE
         action();
     }
-
+    /**
+     * Shoots a pea.
+     */
     public void action() {
         Projectile pea = new Projectile(canvas, getPosition(), PEASHOOTER_DAMAGE, PEASHOOTER_PEA_SPRITE_PATH);
         pea.addToCanvas();
     }
 
+    /**
+     * @return Peashooter's sun cost.
+     */
     public int getSunCost() {
         return SUN_COST;
     }
 
+    /**
+     * @return Peashooter's recharge time.
+     */
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
     }
 
+    /**
+     * @return Peashooter's fire rate.
+     */
     public double getFireRate() {
         return PEA_SHOOTING_RATE;
     }
 
+    /**
+     * Substracts the Peashooter's health by one.
+     */
     public void receiveDamage() {
         health--;
         checkDeath();
     }
 
+    /**
+     * If Peashooter's health goes below zero, it is removed from canvas.
+     */
     public void checkDeath() {
         if (health <= 0) {
             removeFromCanvas();
         }
     }
-
+    
+    /**
+     * @return Peashooter's location.
+     */
     public Point getPosition() {
         return location;
     }
 
+    /**
+     * Sets the Peashooter's position to the given location.
+     */
     public void setPosition() {
         peashooter.setPosition(location);
     }
-
+    
+    /**
+     * Adds Peashooter to the canvas.
+     */
     public void addToCanvas() {
         canvas.add(peashooter);
     }
 
+    /**
+     * Removes Peashooter from the canvas.
+     */
     public void removeFromCanvas() {
         canvas.remove(peashooter);
     }
