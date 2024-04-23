@@ -32,7 +32,7 @@ public class PvZ {
     private Sun sun;
 
     // Player Statistics
-    private static String playerName = "Bryant";
+    private static String playerName = "Player";
     static int sunCount = 0;
     private static int zombiesKilled = 0;
     private final short maxSun = 9999;

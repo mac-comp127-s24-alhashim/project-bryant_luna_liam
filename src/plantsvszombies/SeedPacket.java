@@ -51,7 +51,6 @@ public class SeedPacket {
     }
 
     private void plantPlant(int plant) {
-
     }
     
 }
