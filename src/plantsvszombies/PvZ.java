@@ -93,41 +93,36 @@ public class PvZ {
 
                 if (clickedObject.equals(UI.sunflowerPacket)) {
                     if (sunCount >= Sunflower.SUN_COST) {
-                        Sunflower sunflower = new Sunflower(canvas, handler.getPosition());
+                        Sunflower sunflower = new Sunflower(canvas, Lawn.getPlantPoint(handler.getPosition()));
                         plantList.add(sunflower);
                         
                     }
                     
                 } else if (clickedObject.equals(UI.peashooterPacket)) {
                     if (sunCount >= Peashooter.SUN_COST) {
-                        Peashooter peashooter = new Peashooter(canvas, handler.getPosition());
+                        Peashooter peashooter = new Peashooter(canvas, Lawn.getPlantPoint(handler.getPosition()));
                         plantList.add(peashooter);
                         
                     }
                 } else if (clickedObject.equals(UI.wallnutPacket)) {
                     if (sunCount >= Wallnut.SUN_COST) {
-                        Wallnut wallnut = new Wallnut(canvas, handler.getPosition());
+                        Wallnut wallnut = new Wallnut(canvas, Lawn.getPlantPoint(handler.getPosition()));
                         plantList.add(wallnut);
                     }
                 } else if (clickedObject.equals(UI.potatoMinePacket)) {
                     if (sunCount >= PotatoMine.SUN_COST) {
-                        PotatoMine potatoMine = new PotatoMine(canvas, handler.getPosition(), true);
+                        PotatoMine potatoMine = new PotatoMine(canvas, Lawn.getPlantPoint(handler.getPosition()), true);
                         plantList.add(potatoMine);
                     }
                 } else if (clickedObject.equals(UI.cherryBombPacket)) {
                     if (sunCount >= CherryBomb.SUN_COST) {
-                        CherryBomb cherryBomb = new CherryBomb(canvas, handler.getPosition());
+                        CherryBomb cherryBomb = new CherryBomb(canvas, Lawn.getPlantPoint(handler.getPosition()));
                         plantList.add(cherryBomb);
                     }
                 }
             }
             UI.update();
         });
-
-        /*
-         * Determines what element is under the mouse when a drag
-         * occurs, and runs that element's task for drag events accordingly.
-         */
     }
 
     public static void main(String[] args) {
