@@ -2,11 +2,14 @@ package plantsvszombies;
 
 import edu.macalester.graphics.*;
 
+import java.awt.Window;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+
+import javax.swing.JOptionPane;
 
 import zombies.ZombieManager;
 
@@ -25,7 +28,6 @@ public class PvZ {
     private static int timeInSeconds = 0;
 
     // Game elements
-    // private nameBox = new 
     private UI ui = new UI(canvas);
     private ZombieManager zombieManager;
     private Lawn lawn;
@@ -33,7 +35,7 @@ public class PvZ {
     private Sun sun;
 
     // Player Statistics
-    private static String playerName = "Player";
+    private static String playerName;
     static int sunCount = 0;
     private static int zombiesKilled = 0;
     private final short maxSun = 9999;
@@ -92,6 +94,7 @@ public class PvZ {
     }
 
     public static void main(String[] args) {
+        playerName = JOptionPane.showInputDialog("What is your name?");
         PvZ plantsVsZombies = new PvZ();
     }
 

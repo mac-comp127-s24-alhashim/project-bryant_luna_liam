@@ -4,13 +4,6 @@ import java.util.List;
 import java.util.Random;
 import edu.macalester.graphics.*;
 
-// NORMAL ZOMBIE ~ CONEHEAD, BUCKETHEAD, FLAG, NORMAL
-// FOOTBALL ZOMBIE
-// JACK-IN-THE-BOX ZOMBIE
-// DIGGER ZOMBIE
-// NEWSPAPER ZOMBIE
-// ALL 32 x 48 in size
-
 /**
  * A normal zombie. No special abilities.
  */
@@ -33,22 +26,20 @@ public class NormalZombie extends GraphicsGroup {
         add(zombieSprite);
 
         int randomNumber = random.nextInt(10);
-        System.out.println(randomNumber);
 
         if (randomNumber <= 8 && randomNumber >= 6) {
+            coneSprite.setPosition(x, y - 10);
             add(coneSprite);
             zombieType = 1;
         }
         else if (randomNumber == 9) {
             add(bucketSprite);
             zombieType = 2;
+            coneSprite.setPosition(x, y - 6);
         }
         else {
             zombieType = 0;
         }
-        
-        System.out.println(zombieType);
-
     }
 
     public void move() {
