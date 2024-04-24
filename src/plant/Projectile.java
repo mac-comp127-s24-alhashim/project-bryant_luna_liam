@@ -5,6 +5,8 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 
+import zombies.*;
+
 public class Projectile {
 
     private final String PROJECTILE_SPRITE_PATH;
@@ -52,6 +54,14 @@ public class Projectile {
 
     public void removeFromCavas() {
         canvas.remove(projectile);
+    }
+
+    public void dealDamage() {
+        for (NormalZombie zombie : ZombieManager.getZombies()) {
+            if (zombie.checkCollisions(projectile)) {
+                zombie.reduceHealth(PROJECTILE_DAMAGE);
+            }
+        }
     }
 }
     

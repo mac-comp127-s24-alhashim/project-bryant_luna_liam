@@ -5,6 +5,8 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.Point;
 
+import zombies.*;
+
 import java.awt.Color;
 
 
@@ -41,6 +43,14 @@ public class Explosion extends GraphicsGroup {
 
     public void removeFromCavas() {
         canvas.remove(explosion);
+    }
+
+     public void dealDamage() {
+        for (NormalZombie zombie : ZombieManager.getZombies()) {
+            if (zombie.checkCollisions(explosion)) {
+                zombie.reduceHealth(EXPLOSION_DAMAGE);
+            }
+        }
     }
     
 }

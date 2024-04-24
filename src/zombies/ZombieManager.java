@@ -16,7 +16,7 @@ import plantsvszombies.PvZ;
 public class ZombieManager {
     final int GRACE_TIME;
     int spawnRate;
-    ArrayList<NormalZombie> zombieList = new ArrayList<NormalZombie>();
+    static ArrayList<NormalZombie> zombieList = new ArrayList<NormalZombie>();
     ArrayList<Point> tileList = new ArrayList<Point>();
     CanvasWindow canvas;
     
@@ -63,5 +63,9 @@ public class ZombieManager {
                 canvas.draw();
             } 
         }
+    }
+
+    public static ArrayList<NormalZombie> getZombies() {
+        return zombieList;
     }
 }

@@ -46,21 +46,22 @@ public class NormalZombie extends GraphicsGroup {
         moveBy(-2, 0);
     }
 
-    public void reduceHealth() {
+    public void reduceHealth(int damage) {
         switch (zombieType) {
             case 0:
-                zombieHealth--;
+                zombieHealth -= damage;
                 if (zombieHealth <= 0) die();
                 break;
             case 1: 
-                coneHealth--;
+                coneHealth -= damage;
                 if (coneHealth <= 0) coneDie();
             case 2:
-                bucketHealth--;
+                bucketHealth -= damage;
                 if (bucketHealth <= 0) bucketDie();
         }
-        zombieHealth--;
+        zombieHealth -= damage;
         if (zombieHealth == 0) die();
+        System.out.println("Zombie health: " + zombieHealth);
     }
 
     public boolean checkCollisions(GraphicsObject object) {
@@ -81,4 +82,5 @@ public class NormalZombie extends GraphicsGroup {
         zombieType = 0;
         remove(bucketSprite);
     }
+    
 }
