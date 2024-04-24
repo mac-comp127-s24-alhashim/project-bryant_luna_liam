@@ -12,6 +12,7 @@ import java.util.List;
  * Handles the creation of the lawn and manages the grass tiles on the lawn.
  */
 public class Lawn {
+    
     private CanvasWindow canvas;
     private static List<GrassTile> tileList;
 

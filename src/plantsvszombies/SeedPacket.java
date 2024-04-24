@@ -78,7 +78,7 @@ public class SeedPacket {
                 CherryBomb cherryBomb = new CherryBomb(canvas, location);
                 cherryBomb.addToCanvas();
             default:
-                // PLANT NOTHING.about
+                System.out.println("BAZINGA!");
         }
     }
 
