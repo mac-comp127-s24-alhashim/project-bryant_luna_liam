@@ -28,14 +28,14 @@ public class NormalZombie extends GraphicsGroup {
         int randomNumber = random.nextInt(10);
 
         if (randomNumber <= 8 && randomNumber >= 6) {
-            coneSprite.setPosition(x, y - 10);
             add(coneSprite);
+            coneSprite.moveBy(0, -10);
             zombieType = 1;
         }
         else if (randomNumber == 9) {
             add(bucketSprite);
+            bucketSprite.moveBy(0, -5);
             zombieType = 2;
-            coneSprite.setPosition(x, y - 6);
         }
         else {
             zombieType = 0;

@@ -4,6 +4,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
+import plantsvszombies.PvZ;
 
 public class Wallnut implements Plant {
 
@@ -23,12 +24,14 @@ public class Wallnut implements Plant {
         this.location = location;
         loadSprite();
         setPosition();
+        PvZ.sunCount -= SUN_COST;
     }
 
     public void loadSprite() {
         wallnutSprite = new Image(SPRITE_PATH);
         wallnut = new GraphicsGroup();
         wallnut.add(wallnutSprite);
+        addToCanvas();
     }
 
     public int getSunCost() {

@@ -4,6 +4,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
+import plantsvszombies.PvZ;
 
 public class Peashooter implements Plant {
 
@@ -35,6 +36,8 @@ public class Peashooter implements Plant {
         peashooterSprite = new Image(SPRITE_PATH);
         peashooter = new GraphicsGroup();
         peashooter.add(peashooterSprite);
+        addToCanvas();
+        PvZ.sunCount -= SUN_COST;
     }
 
     /**

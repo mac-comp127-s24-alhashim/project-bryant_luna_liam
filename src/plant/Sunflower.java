@@ -4,7 +4,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
-
+import plantsvszombies.PvZ;
 import plantsvszombies.Sun;
 
 public class Sunflower implements Plant {
@@ -26,12 +26,14 @@ public class Sunflower implements Plant {
         this.location = location;
         loadSprite();
         setPosition();
+        PvZ.sunCount -= SUN_COST;
     }
 
     public void loadSprite() {
         sunflowerSprite = new Image(SPRITE_PATH);
         sunflower = new GraphicsGroup();
         sunflower.add(sunflowerSprite);
+        addToCanvas();
     }
 
     public void actionActivator() {

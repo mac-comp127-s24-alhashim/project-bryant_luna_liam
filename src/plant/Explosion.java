@@ -10,7 +10,7 @@ import java.awt.Color;
 
 public class Explosion extends GraphicsGroup {
 
-    private final Color EXPLOSION_COLOR = new Color(255, 255, 255, 128);
+    private final Color EXPLOSION_COLOR = new Color(255, 87, 0, 128);
     private final int EXPLOSION_DAMAGE;
 
     private CanvasWindow canvas;
@@ -29,7 +29,7 @@ public class Explosion extends GraphicsGroup {
 
     private void createExplosionDrawing() {
         explosion.setFillColor(EXPLOSION_COLOR);
-        explosion.setCenter(location.getX(), location.getY());
+        explosion.setCenter(location.getX() + 16, location.getY() + 16);
         addToCanvas();
     }
 

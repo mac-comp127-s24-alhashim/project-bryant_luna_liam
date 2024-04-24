@@ -4,6 +4,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
+import plantsvszombies.PvZ;
 
 public class PotatoMine implements Plant {
     
@@ -29,6 +30,7 @@ public class PotatoMine implements Plant {
         this.isBuried = isBuried;
         loadSprite();
         setPosition();
+        PvZ.sunCount -= SUN_COST;
     }
 
     public void loadSprite() {
@@ -40,6 +42,7 @@ public class PotatoMine implements Plant {
         }
         potatoMine = new GraphicsGroup();
         potatoMine.add(potatoMineSprite);
+        addToCanvas();
     }
 
     public void armUp() {
