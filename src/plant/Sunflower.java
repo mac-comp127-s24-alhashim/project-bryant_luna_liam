@@ -9,8 +9,8 @@ import plantsvszombies.Sun;
 
 public class Sunflower implements Plant {
 
-    private static final String SUNFLOWER_SPRITE_PATH = "plants/SUNFLOWER.png";
-    public static final String SUNFLOWER_SEED_SPRITE_PATH = "game/SEEDPACKET_SUNFLOWER.png";
+    private static final String SPRITE_PATH = "plants/SUNFLOWER.png";
+    public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_SUNFLOWER.png";
     public static final int SUN_COST = 50;
     private static final double RECHARGE_TIME_SECONDS = 24;
     private static final double SUN_PRODUCTION_RATE = 24;
@@ -29,7 +29,7 @@ public class Sunflower implements Plant {
     }
 
     public void loadSprite() {
-        sunflowerSprite = new Image(SUNFLOWER_SPRITE_PATH);
+        sunflowerSprite = new Image(SPRITE_PATH);
         sunflower = new GraphicsGroup();
         sunflower.add(sunflowerSprite);
     }

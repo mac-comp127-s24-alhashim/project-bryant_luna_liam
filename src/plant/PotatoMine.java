@@ -7,9 +7,9 @@ import edu.macalester.graphics.Point;
 
 public class PotatoMine implements Plant {
     
-    private static final String POTATOMINE_SPRITE_PATH = "plants/POTATOMINE.png";
-    private static final String POTATOMINE_BURIED_SPRITE_PATH = "plants/POTATOMINE_BURIED.png";
-    public static final String POTATOMINE_SEED_SPRITE_PATH = "game/SEEDPACKET_POTATOMINE.png";
+    private static final String SPRITE_PATH = "plants/POTATOMINE.png";
+    private static final String BURIED_SPRITE_PATH = "plants/POTATOMINE_BURIED.png";
+    public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_POTATOMINE.png";
     public static final int SUN_COST = 25;
     private static final double RECHARGE_TIME_SECONDS = 20;
     private static final double ARM_TIME = 15;
@@ -33,10 +33,10 @@ public class PotatoMine implements Plant {
 
     public void loadSprite() {
         if (!isBuried) {
-            potatoMineSprite = new Image(POTATOMINE_SPRITE_PATH);
+            potatoMineSprite = new Image(SPRITE_PATH);
         }
         else {
-            potatoMineSprite = new Image(POTATOMINE_BURIED_SPRITE_PATH);
+            potatoMineSprite = new Image(BURIED_SPRITE_PATH);
         }
         potatoMine = new GraphicsGroup();
         potatoMine.add(potatoMineSprite);
@@ -45,7 +45,7 @@ public class PotatoMine implements Plant {
     public void armUp() {
         // AFTER 20 SECONDS HAVE PASSED, CHANGE ISBURIED TO FALSE.
         isBuried = false;
-        potatoMineSprite.setImagePath(POTATOMINE_SPRITE_PATH);
+        potatoMineSprite.setImagePath(SPRITE_PATH);
     }
 
     public void actionActivator() {

@@ -7,8 +7,8 @@ import edu.macalester.graphics.Point;
 
 public class Peashooter implements Plant {
 
-    private static final String PEASHOOTER_SPRITE_PATH = "plants/PEASHOOTER.png";
-    public static final String PEASHOOTER_SEED_SPRITE_PATH = "game/SEEDPACKET_PEASHOOTER.png";
+    private static final String SPRITE_PATH = "plants/PEASHOOTER.png";
+    public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_PEASHOOTER.png";
     public final String PEASHOOTER_PEA_SPRITE_PATH = "plants/PEASHOOTER_PEA.png";
     public static final int SUN_COST = 100;
     private final double RECHARGE_TIME_SECONDS = 7.5;
@@ -32,7 +32,7 @@ public class Peashooter implements Plant {
      * Loads the peashooter sprite.
      */
     public void loadSprite() {
-        peashooterSprite = new Image(PEASHOOTER_SPRITE_PATH);
+        peashooterSprite = new Image(SPRITE_PATH);
         peashooter = new GraphicsGroup();
         peashooter.add(peashooterSprite);
     }

@@ -15,7 +15,7 @@ public class Sun extends GraphicsGroup {
     private final int SUN_VALUE = 25;
     private CanvasWindow canvas;
     private Point location;
-    private Image sunSprite;
+    static Image sunSprite;
     private GraphicsGroup sun;
     private boolean spawnType;
     private double time;
@@ -47,7 +47,7 @@ public class Sun extends GraphicsGroup {
      * This should only be run when the user clicks on this sun.
      */
     public void click() {
-        PvZ.sunCount = PvZ.sunCount + SUN_VALUE;
+        PvZ.sunCount += SUN_VALUE;
         remove(sunSprite);
     }
 

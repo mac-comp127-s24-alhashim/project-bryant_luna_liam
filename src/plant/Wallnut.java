@@ -7,8 +7,8 @@ import edu.macalester.graphics.Point;
 
 public class Wallnut implements Plant {
 
-    private static final String WALLNUT_SPRITE_PATH = "plants/WALLNUT.png";
-    public static final String WALLNUT_SEED_SPRITE_PATH = "game/SEEDPACKET_WALLNUT.png";
+    private static final String SPRITE_PATH = "plants/WALLNUT.png";
+    public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_WALLNUT.png";
     public static final int SUN_COST = 50;
     private static final double RECHARGE_TIME_SECONDS = 30;
     
@@ -26,7 +26,7 @@ public class Wallnut implements Plant {
     }
 
     public void loadSprite() {
-        wallnutSprite = new Image(WALLNUT_SPRITE_PATH);
+        wallnutSprite = new Image(SPRITE_PATH);
         wallnut = new GraphicsGroup();
         wallnut.add(wallnutSprite);
     }
