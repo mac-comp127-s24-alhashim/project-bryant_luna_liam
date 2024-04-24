@@ -28,9 +28,9 @@ public class UI extends GraphicsGroup {
     private static GraphicsObject currentObjInMotion;
 
     // Background UI elements
-    Image sunBox;
+    static Image sunBox;
     static Image shovelBox;
-    private GraphicsText sunText;
+    private static GraphicsText sunText;
     private GraphicsText nameText;
 
     // Movable objects and their default locations
@@ -104,7 +104,7 @@ public class UI extends GraphicsGroup {
     /**
      * Updates the UI text.
      */
-    public void update() {
+    public static void update() {
         sunText.setText(String.valueOf(PvZ.sunCount));
         sunText.setCenter(sunBox.getWidth() / 2, sunBox.getHeight() / 2);
     }

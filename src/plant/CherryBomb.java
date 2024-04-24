@@ -4,6 +4,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
+import plantsvszombies.PvZ;
 
 public class CherryBomb implements Plant {
     
@@ -12,7 +13,7 @@ public class CherryBomb implements Plant {
     public static final int SUN_COST = 150;
     private static final double RECHARGE_TIME_SECONDS = 40;
     private static final int CHERRYBOMB_DAMAGE = 100;
-    private static final int CHERRYBOMB_EXPLOSION_RADIUS = 32;
+    private static final int CHERRYBOMB_EXPLOSION_RADIUS = 48;
     
     private CanvasWindow canvas;
     private Point location;
@@ -25,12 +26,15 @@ public class CherryBomb implements Plant {
         this.location = location;
         loadSprite();
         setPosition();
+        explosion = new Explosion(canvas, CHERRYBOMB_EXPLOSION_RADIUS, location, CHERRYBOMB_DAMAGE);
+        PvZ.sunCount -= SUN_COST;
     }
 
     public void loadSprite() {
         cherryBombSprite = new Image(SPRITE_PATH);
         cherryBomb = new GraphicsGroup();
         cherryBomb.add(cherryBombSprite);
+        addToCanvas();
     }
 
     public void action() {
