@@ -1,5 +1,8 @@
 package plant;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -12,8 +15,8 @@ public class Peashooter implements Plant {
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_PEASHOOTER.png";
     public final String PEASHOOTER_PEA_SPRITE_PATH = "plants/PEASHOOTER_PEA.png";
     public static final int SUN_COST = 100;
-    private final double RECHARGE_TIME_SECONDS = 7.5;
-    private final double PEA_SHOOTING_RATE = 1.5;
+    private final int RECHARGE_TIME_SECONDS = 7500;
+    private final int PEA_SHOOTING_RATE = 1500;
     private final int PEASHOOTER_DAMAGE = 1;
     
     public int health = 6;
@@ -21,10 +24,12 @@ public class Peashooter implements Plant {
     private Point location;
     private GraphicsGroup peashooter;
     private Image peashooterSprite;
+    private List<Projectile> peas;
 
     public Peashooter(CanvasWindow canvas, Point location) {
         this.canvas = canvas;
         this.location = location;
+        peas = new ArrayList<Projectile>();
         loadSprite();
         setPosition();
     }
@@ -43,14 +48,16 @@ public class Peashooter implements Plant {
     /**
      * Activates the pea shooting when there's a zombie in the Peashooter's lane.  
      */
-    public void actionActivator() {
-        action();
+    public void runScheduledTasks () {
+        if ((PvZ.time % PEA_SHOOTING_RATE) == 0) action();
+        for (Projectile pea : peas) pea.updatePosition();
     }
     /**
      * Shoots a pea.
      */
     public void action() {
         Projectile pea = new Projectile(canvas, getPosition(), PEASHOOTER_DAMAGE, PEASHOOTER_PEA_SPRITE_PATH);
+        peas.add(pea);
         pea.addToCanvas();
     }
 

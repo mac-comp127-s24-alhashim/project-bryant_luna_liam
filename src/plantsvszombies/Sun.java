@@ -1,10 +1,5 @@
 package plantsvszombies;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
-
 import edu.macalester.graphics.*;
 
 /*
@@ -30,16 +25,10 @@ public class Sun extends GraphicsGroup {
         this.location = location;
         this.spawnType = spawnType;
         loadSprite();
+    }
 
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-
-        // Every 250ms, the sun's position gets updated.
-        Runnable sunRunnable = () -> {
-            time++;
-            updatePosition();
-        };
-            
-        ScheduledFuture <?> scheduledFuture = executor.scheduleAtFixedRate(sunRunnable, 0, 250, TimeUnit.MILLISECONDS);
+    public void runScheduledTasks() {
+        if ((PvZ.time % 50) == 0) updatePosition();
     }
 
     /**
@@ -60,7 +49,7 @@ public class Sun extends GraphicsGroup {
     public void updatePosition() {
         // The sun will not move if it is not spawned by the game.
         if (spawnType == true) {
-            moveBy(0, 3);
+            moveBy(0, 1);
         }
     }
 }

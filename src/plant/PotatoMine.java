@@ -12,8 +12,8 @@ public class PotatoMine implements Plant {
     private static final String BURIED_SPRITE_PATH = "plants/POTATOMINE_BURIED.png";
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_POTATOMINE.png";
     public static final int SUN_COST = 25;
-    private static final double RECHARGE_TIME_SECONDS = 20;
-    private static final double ARM_TIME = 15;
+    private static final double RECHARGE_TIME_SECONDS = 20000;
+    private static final double ARM_TIME = 15000;
     private static final int POTATOMINE_DAMAGE = 100;
     private static final int POTATOMINE_EXPLOSION_RADIUS = 16;
     
@@ -51,7 +51,7 @@ public class PotatoMine implements Plant {
         potatoMineSprite.setImagePath(SPRITE_PATH);
     }
 
-    public void actionActivator() {
+    public void runScheduledTasks() {
         // ACTIVATE ACTION WHEN THERE IS A ZOMBIE IN ITS TILE.
         if (!isBuried) {
             action();
@@ -86,5 +86,7 @@ public class PotatoMine implements Plant {
     public void removeFromCanvas() {
         canvas.remove(potatoMine);
     }
+
+
 
 }

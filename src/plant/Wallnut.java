@@ -11,7 +11,7 @@ public class Wallnut implements Plant {
     private static final String SPRITE_PATH = "plants/WALLNUT.png";
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_WALLNUT.png";
     public static final int SUN_COST = 50;
-    private static final double RECHARGE_TIME_SECONDS = 30;
+    private static final double RECHARGE_TIME_SECONDS = 30000;
     
     public int health = 54;
     private CanvasWindow canvas;
@@ -40,6 +40,10 @@ public class Wallnut implements Plant {
 
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
+    }
+
+    public void runScheduledTasks() {
+        //
     }
 
     public void receiveDamage() {

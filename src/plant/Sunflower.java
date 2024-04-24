@@ -12,8 +12,8 @@ public class Sunflower implements Plant {
     private static final String SPRITE_PATH = "plants/SUNFLOWER.png";
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_SUNFLOWER.png";
     public static final int SUN_COST = 50;
-    private static final double RECHARGE_TIME_SECONDS = 24;
-    private static final double SUN_PRODUCTION_RATE = 24;
+    private static final double RECHARGE_TIME_SECONDS = 24000;
+    private static final double SUN_PRODUCTION_RATE = 24000;
     
     public int health = 6;
     private CanvasWindow canvas;
@@ -36,7 +36,7 @@ public class Sunflower implements Plant {
         addToCanvas();
     }
 
-    public void actionActivator() {
+    public void runScheduledPlantTasks() {
         // EVERY 24 SECONDS.
         action();
     }
@@ -83,6 +83,12 @@ public class Sunflower implements Plant {
 
     public void removeFromCanvas() {
         canvas.remove(sunflower);
+    }
+
+    @Override
+    public void runScheduledTasks() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'runScheduledTasks'");
     }
     
 }

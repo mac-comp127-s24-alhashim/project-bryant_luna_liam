@@ -23,7 +23,7 @@ public class Projectile {
         PROJECTILE_DAMAGE = damage;
         PROJECTILE_SPRITE_PATH = spritePath;
         loadSprite();
-        setCenter();
+        setPosition();
     }
 
     private void loadSprite() {
@@ -32,8 +32,8 @@ public class Projectile {
         projectile.add(projectileSprite);
     }
 
-    private void setCenter() {
-        projectile.setCenter(location);
+    private void setPosition() {
+        projectile.setPosition(location);
     }
 
     public Point getPosition() {
@@ -41,7 +41,7 @@ public class Projectile {
     }
 
     public void updatePosition() {
-        projectile.moveBy(+3, 0);
+        projectile.moveBy(+1, 0);
     }
 
     public int getDamage() {

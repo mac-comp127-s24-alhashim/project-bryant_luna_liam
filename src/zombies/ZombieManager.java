@@ -21,18 +21,18 @@ public class ZombieManager {
     CanvasWindow canvas;
     
     public ZombieManager(CanvasWindow canvas) {
-        GRACE_TIME = 3;
-        spawnRate = 20;
+        GRACE_TIME = 3000;
+        spawnRate = 20000;
         this.canvas = canvas;
-        tileList.add(Lawn.getGrassTilePosition(10-1));
-        tileList.add(Lawn.getGrassTilePosition(20-1));
-        tileList.add(Lawn.getGrassTilePosition(30-1));
-        tileList.add(Lawn.getGrassTilePosition(40-1));
-        tileList.add(Lawn.getGrassTilePosition(50-1));
+        tileList.add(Lawn.getGrassTilePosition(9));
+        tileList.add(Lawn.getGrassTilePosition(19));
+        tileList.add(Lawn.getGrassTilePosition(29));
+        tileList.add(Lawn.getGrassTilePosition(39));
+        tileList.add(Lawn.getGrassTilePosition(49));
     }
 
     public void runScheduledTasks() {
-        moveZombies();
+        if ((PvZ.time % 1000) == 0) moveZombies();
         zombieSpawn();
     }
 

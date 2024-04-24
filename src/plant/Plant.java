@@ -17,5 +17,7 @@ public interface Plant {
     void addToCanvas();
     
     void removeFromCanvas();
+
+	void runScheduledTasks();
     
 }
