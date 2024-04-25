@@ -65,8 +65,8 @@ public class NormalZombie extends GraphicsGroup {
     }
 
     public boolean checkCollisions(GraphicsObject object) {
+        System.out.println(object);
         if (getElementAt(getPosition()) == object) return true;
-        
         return false;
     }
 

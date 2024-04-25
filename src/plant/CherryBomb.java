@@ -6,7 +6,7 @@ import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 
-public class CherryBomb implements Plant {
+public class CherryBomb extends GraphicsGroup {
     
     private static final String SPRITE_PATH = "plants/CHERRYBOMB.png";
     public static final String CHERRYBOMB_SEED_SPRITE_PATH = "game/SEEDPACKET_CHERRYBOMB.png";
@@ -21,9 +21,8 @@ public class CherryBomb implements Plant {
     private Image cherryBombSprite;
     private Explosion explosion;
 
-    public CherryBomb(CanvasWindow canvas, Point location) {
-        this.canvas = canvas;
-        this.location = location;
+    public CherryBomb() {
+    
         loadSprite();
         setPosition();
         explosion = new Explosion(canvas, CHERRYBOMB_EXPLOSION_RADIUS, location, CHERRYBOMB_DAMAGE);
@@ -50,7 +49,7 @@ public class CherryBomb implements Plant {
         return RECHARGE_TIME_SECONDS;
     }
 
-    public Point getPosition() {
+    public Point getposition() {
         return location;
     }
 
@@ -64,12 +63,6 @@ public class CherryBomb implements Plant {
 
     public void removeFromCanvas() {
         canvas.remove(cherryBomb);
-    }
-
-    // @Override
-    public void runScheduledTasks() {
-        // // TODO Auto-generated method stub
-        // throw new UnsupportedOperationException("Unimplemented method 'runScheduledTasks'");
     }
     
 }

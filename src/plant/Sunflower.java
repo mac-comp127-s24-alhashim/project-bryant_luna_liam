@@ -22,8 +22,7 @@ public class Sunflower extends GraphicsGroup {
     private Image sunflowerSprite;
 
     public Sunflower() {
-        this.canvas = canvas;
-        this.location = location;
+   
         loadSprite();
         setPosition();
         PvZ.sunCount -= SUN_COST;
@@ -64,11 +63,11 @@ public class Sunflower extends GraphicsGroup {
         }
     }
 
-    public Point getPosition() {
+    public Point getposition() {
         return location;
     }
 
-    public Point getCenter() {
+    public Point getcenter() {
         return sunflower.getCenter();
     }
 
@@ -84,10 +83,6 @@ public class Sunflower extends GraphicsGroup {
         canvas.remove(sunflower);
     }
 
-    @Override
-    public void runScheduledTasks() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'runScheduledTasks'");
-    }
+  
     
 }

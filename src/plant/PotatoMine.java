@@ -24,10 +24,7 @@ public class PotatoMine extends GraphicsGroup {
     private Boolean isBuried;
     private Explosion explosion;
 
-    public PotatoMine(CanvasWindow canvas, Point location, Boolean isBuried) {
-        this.canvas = canvas;
-        this.location = location;
-        this.isBuried = isBuried;
+    public PotatoMine() {
         loadSprite();
         setPosition();
         PvZ.sunCount -= SUN_COST;
@@ -72,7 +69,7 @@ public class PotatoMine extends GraphicsGroup {
         return RECHARGE_TIME_SECONDS;
     }
 
-    public Point getPosition() {
+    public Point getposition() {
         return location;
     }
 

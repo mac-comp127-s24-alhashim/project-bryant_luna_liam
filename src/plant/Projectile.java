@@ -41,7 +41,7 @@ public class Projectile extends GraphicsGroup {
         projectile.setPosition(location);
     }
 
-    public Point getPosition() {
+    public Point getposition() {
         return projectile.getPosition();
     }
 

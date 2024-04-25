@@ -6,7 +6,7 @@ import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 
-public class Wallnut implements Plant {
+public class Wallnut extends GraphicsGroup {
 
     private static final String SPRITE_PATH = "plants/WALLNUT.png";
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_WALLNUT.png";
@@ -19,15 +19,17 @@ public class Wallnut implements Plant {
     private GraphicsGroup wallnut;
     private Image wallnutSprite;
 
-    public Wallnut(CanvasWindow canvas, Point location) {
-        this.canvas = canvas;
-        this.location = location;
+    public Wallnut() {
         loadSprite();
         setPosition();
         PvZ.sunCount -= SUN_COST;
     }
 
-    public void loadSprite() {
+    public Wallnut() {
+		//TODO Auto-generated constructor stub
+	}
+
+	public void loadSprite() {
         wallnutSprite = new Image(SPRITE_PATH);
         wallnut = new GraphicsGroup();
         wallnut.add(wallnutSprite);
@@ -57,7 +59,7 @@ public class Wallnut implements Plant {
         }
     }
 
-    public Point getPosition() {
+    public Point getposition() {
         return location;
     }
 
