@@ -20,20 +20,9 @@ public class Wallnut extends GraphicsGroup {
     private Image wallnutSprite;
 
     public Wallnut() {
-        loadSprite();
-        setPosition();
-        PvZ.sunCount -= SUN_COST;
-    }
-
-    public Wallnut() {
-		//TODO Auto-generated constructor stub
-	}
-
-	public void loadSprite() {
         wallnutSprite = new Image(SPRITE_PATH);
-        wallnut = new GraphicsGroup();
-        wallnut.add(wallnutSprite);
-        addToCanvas();
+        add(wallnutSprite);
+        PvZ.sunCount -= SUN_COST;
     }
 
     public int getSunCost() {
@@ -43,40 +32,5 @@ public class Wallnut extends GraphicsGroup {
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
     }
-
-    public void runScheduledTasks() {
-        //
-    }
-
-    public void receiveDamage() {
-        health--;
-        checkDeath();
-    }
-
-    public void checkDeath() {
-        if (health <= 0) {
-            removeFromCanvas();
-        }
-    }
-
-<<<<<<< Updated upstream
-    public Point getposition() {
-        return location;
-    }
-
-=======
->>>>>>> Stashed changes
-    public void setPosition() {
-        wallnut.setPosition(location);
-    }
-
-    public void addToCanvas() {
-        canvas.add(wallnut);
-    }
-
-    public void removeFromCanvas() {
-        canvas.remove(wallnut);
-    }
-    
 }
 

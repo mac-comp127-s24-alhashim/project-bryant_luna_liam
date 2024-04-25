@@ -22,23 +22,14 @@ public class CherryBomb extends GraphicsGroup {
     private Explosion explosion;
 
     public CherryBomb() {
-    
-        loadSprite();
-        setPosition();
-        explosion = new Explosion(canvas, CHERRYBOMB_EXPLOSION_RADIUS, location, CHERRYBOMB_DAMAGE);
+        cherryBombSprite = new Image(SPRITE_PATH);
+        add(cherryBombSprite);
+        // explosion = new Explosion(canvas, CHERRYBOMB_EXPLOSION_RADIUS, location, CHERRYBOMB_DAMAGE);
         PvZ.sunCount -= SUN_COST;
     }
 
-    public void loadSprite() {
-        cherryBombSprite = new Image(SPRITE_PATH);
-        cherryBomb = new GraphicsGroup();
-        cherryBomb.add(cherryBombSprite);
-        addToCanvas();
-    }
-
     public void action() {
-        explosion = new Explosion(canvas, CHERRYBOMB_EXPLOSION_RADIUS, location, CHERRYBOMB_DAMAGE);
-        removeFromCanvas();
+        // explosion = new Explosion(canvas, CHERRYBOMB_EXPLOSION_RADIUS, location, CHERRYBOMB_DAMAGE);
     }
 
     public int getSunCost() {
@@ -49,23 +40,4 @@ public class CherryBomb extends GraphicsGroup {
         return RECHARGE_TIME_SECONDS;
     }
 
-<<<<<<< Updated upstream
-    public Point getposition() {
-        return location;
-    }
-
-=======
->>>>>>> Stashed changes
-    public void setPosition() {
-        cherryBomb.setPosition(location);
-    }
-
-    public void addToCanvas() {
-        canvas.add(cherryBomb);
-    }
-
-    public void removeFromCanvas() {
-        canvas.remove(cherryBomb);
-    }
-    
 }

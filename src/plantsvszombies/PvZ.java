@@ -54,6 +54,7 @@ public class PvZ {
         lawn = new Lawn(canvas);
         sun = null; // No suns when constructed
         zombieManager = new ZombieManager(canvas);
+        plantManager = new PlantManager(canvas);
         canvas.add(ui);
 
 
@@ -63,7 +64,6 @@ public class PvZ {
             zombieManager.runScheduledTasks();
             spawnSun();
             sun.runScheduledTasks();
-            runScheduledPlantTasks();
         };
             
         ScheduledFuture<?> mainScheduledFuture = executor.scheduleAtFixedRate(pvzRunnable, 0, 1, TimeUnit.MILLISECONDS);
@@ -94,7 +94,6 @@ public class PvZ {
                     if (sunCount >= Sunflower.SUN_COST) {
                         plantManager.addPlant(0, Lawn.getPlantPoint(handler.getPosition()));
                     }
-                    
                 } else if (clickedObject.equals(UI.peashooterPacket)) {
                     if (sunCount >= Peashooter.SUN_COST) {
                         plantManager.addPlant(1, Lawn.getPlantPoint(handler.getPosition()));
@@ -150,10 +149,6 @@ public class PvZ {
                 canvas.add(sun);
             }
         }
-    }
-
-    private void runScheduledPlantTasks() {
-        for (Plant plant : plantList) plant.runScheduledTasks();
     }
 
     // /**

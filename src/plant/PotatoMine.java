@@ -25,21 +25,15 @@ public class PotatoMine extends GraphicsGroup {
     private Explosion explosion;
 
     public PotatoMine() {
-        loadSprite();
-        setPosition();
-        PvZ.sunCount -= SUN_COST;
-    }
-
-    public void loadSprite() {
+        isBuried = true;
         if (!isBuried) {
             potatoMineSprite = new Image(SPRITE_PATH);
         }
         else {
             potatoMineSprite = new Image(BURIED_SPRITE_PATH);
         }
-        potatoMine = new GraphicsGroup();
-        potatoMine.add(potatoMineSprite);
-        addToCanvas();
+        add(potatoMineSprite);
+        PvZ.sunCount -= SUN_COST;
     }
 
     public void armUp() {
@@ -57,8 +51,7 @@ public class PotatoMine extends GraphicsGroup {
     }
 
     public void action() {
-        explosion = new Explosion(canvas, POTATOMINE_EXPLOSION_RADIUS, location, POTATOMINE_DAMAGE);
-        removeFromCanvas();
+        // explosion = new Explosion(canvas, POTATOMINE_EXPLOSION_RADIUS, location, POTATOMINE_DAMAGE);
     }
 
     public int getSunCost() {
@@ -67,22 +60,6 @@ public class PotatoMine extends GraphicsGroup {
 
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
-    }
-
-    public Point getposition() {
-        return location;
-    }
-
-    public void setPosition() {
-        potatoMine.setPosition(location);
-    }
-
-    public void addToCanvas() {
-        canvas.add(potatoMine);
-    }
-
-    public void removeFromCanvas() {
-        canvas.remove(potatoMine);
     }
 
 

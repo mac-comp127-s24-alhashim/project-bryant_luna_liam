@@ -22,17 +22,13 @@ public class Sunflower extends GraphicsGroup {
     private Image sunflowerSprite;
 
     public Sunflower() {
-   
         loadSprite();
-        setPosition();
         PvZ.sunCount -= SUN_COST;
     }
 
     public void loadSprite() {
         sunflowerSprite = new Image(SPRITE_PATH);
-        sunflower = new GraphicsGroup();
-        sunflower.add(sunflowerSprite);
-        addToCanvas();
+        add(sunflowerSprite);
     }
 
     public void runScheduledPlantTasks() {
@@ -41,7 +37,6 @@ public class Sunflower extends GraphicsGroup {
 
     public void action() {
         Sun sun = new Sun(getCenter(), false);
-        canvas.add(sun);
     }
 
     public int getSunCost() {
@@ -52,37 +47,4 @@ public class Sunflower extends GraphicsGroup {
         return RECHARGE_TIME_SECONDS;
     }
 
-    public void receiveDamage() {
-        health--;
-        checkDeath();
-    }
-
-    public void checkDeath() {
-        if (health <= 0) {
-            removeFromCanvas();
-        }
-    }
-
-    public Point getposition() {
-        return location;
-    }
-
-    public Point getcenter() {
-        return sunflower.getCenter();
-    }
-
-    public void setPosition() {
-        sunflower.setPosition(location);
-    }
-
-    public void addToCanvas() {
-        canvas.add(sunflower);
-    }
-
-    public void removeFromCanvas() {
-        canvas.remove(sunflower);
-    }
-
-  
-    
 }
