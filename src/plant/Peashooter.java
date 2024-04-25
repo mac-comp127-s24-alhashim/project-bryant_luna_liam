@@ -32,6 +32,7 @@ public class Peashooter implements Plant {
         peas = new ArrayList<Projectile>();
         loadSprite();
         setPosition();
+        PvZ.sunCount -= SUN_COST;
     }
 
     /**
@@ -42,7 +43,6 @@ public class Peashooter implements Plant {
         peashooter = new GraphicsGroup();
         peashooter.add(peashooterSprite);
         addToCanvas();
-        PvZ.sunCount -= SUN_COST;
     }
 
     /**
@@ -59,6 +59,7 @@ public class Peashooter implements Plant {
         Projectile pea = new Projectile(canvas, getPosition(), PEASHOOTER_DAMAGE, PEASHOOTER_PEA_SPRITE_PATH);
         peas.add(pea);
         pea.addToCanvas();
+        
     }
 
     /**

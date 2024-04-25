@@ -46,15 +46,16 @@ public class PotatoMine implements Plant {
     }
 
     public void armUp() {
-        // AFTER 20 SECONDS HAVE PASSED, CHANGE ISBURIED TO FALSE.
         isBuried = false;
         potatoMineSprite.setImagePath(SPRITE_PATH);
     }
 
     public void runScheduledTasks() {
-        // ACTIVATE ACTION WHEN THERE IS A ZOMBIE IN ITS TILE.
         if (!isBuried) {
             action();
+        }
+        else {
+            armUp();
         }
     }
 

@@ -4,7 +4,7 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
-
+import plantsvszombies.PvZ;
 import zombies.*;
 
 public class Projectile {
@@ -40,8 +40,12 @@ public class Projectile {
         return projectile.getPosition();
     }
 
-    public void updatePosition() {
+    public Boolean updatePosition() {
         projectile.moveBy(+1, 0);
+        if (projectile.getX() <= PvZ.CANVAS_WIDTH + projectile.getWidth() && projectile.getX() >= 0) {
+            return false;
+        }
+        return true;
     }
 
     public int getDamage() {

@@ -42,7 +42,7 @@ public class PvZ {
 
     // Player Statistics
     private static String playerName;
-    public static int sunCount = 25;
+    public static int sunCount = 9999;
     private static int zombiesKilled = 0;
     private final short maxSun = 9999;
     Random random = new Random();
