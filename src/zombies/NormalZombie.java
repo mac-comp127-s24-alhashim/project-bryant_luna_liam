@@ -8,7 +8,7 @@ import edu.macalester.graphics.*;
  * A normal zombie. No special abilities.
  */
 public class NormalZombie extends GraphicsGroup {
-
+    
     private static Image zombieSprite = new Image("zombies/NORMAL_ZOMBIE.png");
     private Image coneSprite = new Image("zombies/CONE.png");
     private Image bucketSprite = new Image("zombies/BUCKET.png");
@@ -66,6 +66,7 @@ public class NormalZombie extends GraphicsGroup {
 
     public boolean checkCollisions(GraphicsObject object) {
         if (getElementAt(getPosition()) == object) return true;
+        
         return false;
     }
 

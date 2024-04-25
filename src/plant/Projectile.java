@@ -1,5 +1,8 @@
 package plant;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
@@ -7,7 +10,7 @@ import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 import zombies.*;
 
-public class Projectile {
+public class Projectile extends GraphicsGroup {
 
     private final String PROJECTILE_SPRITE_PATH;
     private final int PROJECTILE_DAMAGE;
@@ -16,10 +19,12 @@ public class Projectile {
     private Point location;
     private GraphicsGroup projectile;
     private Image projectileSprite;
+    private List<Projectile> projectiles;
 
-    public Projectile(CanvasWindow canvas, Point location, int damage, String spritePath) {
+    public Projectile(CanvasWindow canvas, Point location, int damage, String spritePath, List<Projectile> projectiles) {
         this.canvas = canvas;
         this.location = location;
+        this.projectiles = projectiles;
         PROJECTILE_DAMAGE = damage;
         PROJECTILE_SPRITE_PATH = spritePath;
         loadSprite();
@@ -40,12 +45,12 @@ public class Projectile {
         return projectile.getPosition();
     }
 
-    public Boolean updatePosition() {
+    public void updatePosition() {
         projectile.moveBy(+1, 0);
         if (projectile.getX() <= PvZ.CANVAS_WIDTH + projectile.getWidth() && projectile.getX() >= 0) {
-            return false;
+            canvas.remove(projectile);
+            projectiles.remove(this);
         }
-        return true;
     }
 
     public int getDamage() {

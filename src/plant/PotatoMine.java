@@ -6,7 +6,7 @@ import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 
-public class PotatoMine implements Plant {
+public class PotatoMine extends GraphicsGroup {
     
     private static final String SPRITE_PATH = "plants/POTATOMINE.png";
     private static final String BURIED_SPRITE_PATH = "plants/POTATOMINE_BURIED.png";
@@ -52,10 +52,10 @@ public class PotatoMine implements Plant {
 
     public void runScheduledTasks() {
         if (!isBuried) {
-            action();
+            //action();
         }
         else {
-            armUp();
+            if ((PvZ.time % ARM_TIME) == 0) action();
         }
     }
 

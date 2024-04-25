@@ -7,7 +7,7 @@ import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 import plantsvszombies.Sun;
 
-public class Sunflower implements Plant {
+public class Sunflower extends GraphicsGroup {
 
     private static final String SPRITE_PATH = "plants/SUNFLOWER.png";
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_SUNFLOWER.png";
@@ -21,7 +21,7 @@ public class Sunflower implements Plant {
     private GraphicsGroup sunflower;
     private Image sunflowerSprite;
 
-    public Sunflower(CanvasWindow canvas, Point location) {
+    public Sunflower() {
         this.canvas = canvas;
         this.location = location;
         loadSprite();
@@ -37,8 +37,7 @@ public class Sunflower implements Plant {
     }
 
     public void runScheduledPlantTasks() {
-        // EVERY 24 SECONDS.
-        action();
+        if ((PvZ.time % SUN_PRODUCTION_RATE) == 0) action();
     }
 
     public void action() {
