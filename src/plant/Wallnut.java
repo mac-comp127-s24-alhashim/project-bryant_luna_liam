@@ -59,10 +59,13 @@ public class Wallnut extends GraphicsGroup {
         }
     }
 
+<<<<<<< Updated upstream
     public Point getposition() {
         return location;
     }
 
+=======
+>>>>>>> Stashed changes
     public void setPosition() {
         wallnut.setPosition(location);
     }

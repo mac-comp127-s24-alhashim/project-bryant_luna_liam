@@ -49,10 +49,13 @@ public class CherryBomb extends GraphicsGroup {
         return RECHARGE_TIME_SECONDS;
     }
 
+<<<<<<< Updated upstream
     public Point getposition() {
         return location;
     }
 
+=======
+>>>>>>> Stashed changes
     public void setPosition() {
         cherryBomb.setPosition(location);
     }
