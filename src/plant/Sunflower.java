@@ -32,7 +32,7 @@ public class Sunflower extends GraphicsGroup {
     }
 
     public void runScheduledPlantTasks() {
-        if ((PvZ.time % SUN_PRODUCTION_RATE) == 0) action();
+        if ((PvZ.frame % SUN_PRODUCTION_RATE) == 0) action();
     }
 
     public void action() {

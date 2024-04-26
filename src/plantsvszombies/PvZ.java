@@ -27,7 +27,7 @@ public class PvZ {
 
     private static CanvasWindow canvas = new CanvasWindow("Plants vs. Zombies: Java Edition", CANVAS_WIDTH, CANVAS_HEIGHT);;
 
-    public static long time = 0;
+    public static long frame = 0;
 
     // Game elements
     private UI ui = new UI(canvas);
@@ -47,7 +47,7 @@ public class PvZ {
     private final short maxSun = 9999;
     Random random = new Random();
     
-    ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+    // ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     public PvZ() {
         canvas.add(background);
@@ -60,31 +60,31 @@ public class PvZ {
 
 
         // Gets called every millisecond
-        Runnable pvzRunnable = () -> {
-            time++;
+        canvas.animate(runnable -> {
+            frame++;
 
-            // Tasks to run every 7ms
-            if ((time % 7) == 0) {
+            // Tasks to run every 7 frames
+            if ((frame % 7) == 0) {
                 plantManager.moveProjectiles();
             }
 
-            // Tasks to run every 100ms
-            if ((time % 100) == 0) {
+            // Tasks to run every 60 frames
+            if ((frame % 60) == 0) {
                 if (gameSun != null) gameSun.moveBy(0, 1);
             }
 
             // Tasks to run every 1.5 seconds
-            if ((time % 1500) == 0) {
+            if ((frame % 90) == 0) {
                 plantManager.shootPeas();
             }
 
             // Tasks to run every 24 seconds
-            if ((time % 24000) == 0) {
+            if ((frame % 1440) == 0) {
                 plantManager.produceSunflowerSuns();
             }
 
             // Tasks to run every 12.5 seconds
-            if ((time % 12500) == 0) {
+            if ((frame % 750) == 0) {
                 spawnSun();
             }
 
@@ -93,9 +93,7 @@ public class PvZ {
             zombieManager.runScheduledTasks();
             // spawnSun();
             // sun.runScheduledTasks();
-        };
-            
-        ScheduledFuture<?> mainScheduledFuture = executor.scheduleAtFixedRate(pvzRunnable, 0, 1, TimeUnit.MILLISECONDS);
+        });
 
         /*
          * Determines what element is under the mouse when a click
@@ -156,8 +154,8 @@ public class PvZ {
      * Returns the elapsed program time, in seconds.
      * @return
      */
-    public static long getTime() {
-        return time;
+    public static long getFrame() {
+        return frame;
     }
 
     /**
