@@ -45,8 +45,8 @@ public class Explosion extends GraphicsGroup {
         canvas.remove(explosion);
     }
 
-    public void dealDamage() {
-        for (NormalZombie zombie : ZombieManager.getZombies()) {
+    public void dealDamage(ZombieManager zombieManager) {
+        for (NormalZombie zombie : zombieManager.getZombies()) {
             if (zombie.checkCollisions(explosion)) {
                 zombie.reduceHealth(EXPLOSION_DAMAGE);
             }

@@ -21,7 +21,7 @@ public class ZombieManager {
     CanvasWindow canvas;
     
     public ZombieManager(CanvasWindow canvas) {
-        GRACE_TIME = 3000;
+        GRACE_TIME = 1200;
         spawnRate = 20000;
         this.canvas = canvas;
         tileList.add(Lawn.getGrassTilePosition(9));
@@ -37,7 +37,7 @@ public class ZombieManager {
     public void moveZombies() {
         for (NormalZombie zombie : zombieList) zombie.move();
     }
-
+    
     /*
      * If all conditions are right, spawns a zombie.
      * Zombies will not spawn within the set grace time, and
@@ -58,7 +58,10 @@ public class ZombieManager {
         }
     }
 
-    public static ArrayList<NormalZombie> getZombies() {
+    /*
+     * 
+     */
+    public ArrayList<NormalZombie> getZombies() {
         return zombieList;
     }
 }

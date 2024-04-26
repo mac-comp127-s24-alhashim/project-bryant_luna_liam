@@ -11,6 +11,7 @@ import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 import plantsvszombies.Sun;
+import zombies.NormalZombie;
 
 /**
  * Manages the placement and logic of plants. Handles projectiles and explosions
@@ -105,16 +106,12 @@ public class PlantManager {
      * Meant to be run every 1.5 seconds. Handles peashooter logic:
      * Summons a projectile.
      */
-    public void shootPeas() {
-        System.out.println("attempting to shoot");
+    public void shootProjectile() {
         if (peashooters != null) { // Check for sunflowers
             for (Peashooter peashooter : peashooters) {
-                System.out.println("creating projectile");
                 Projectile projectile = new Projectile(peashooter.getPosition(), Peashooter.PEASHOOTER_DAMAGE, Peashooter.PEA_SPRITE_PATH);
-                System.out.println("created projectile");
                 projectiles.add(projectile);
                 canvas.add(projectile);
-                System.out.println("added projectile");
             }
         }
     }
@@ -122,18 +119,29 @@ public class PlantManager {
     /**
      * Meant to be run every 7 frames. Handles movement of projectiles.
      */
-    public void moveProjectiles() {
+    public void moveProjectiles(NormalZombie zombie) {
         if (projectiles != null) {
             Iterator<Projectile> iterator = projectiles.iterator();
-
             Projectile projectile;
             while (iterator.hasNext()) {
                 projectile = iterator.next();
+                damageZombies(projectile, zombie);
                 if (projectile.getX() > PvZ.CANVAS_WIDTH) {
                     iterator.remove();
                     canvas.remove(projectile);
                 } else projectile.moveBy(1, 0);
             }
         }
+    }
+
+    private void damageZombies(Projectile projectile, NormalZombie zombie) {
+        if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(projectile.getPosition())) {
+            zombie.reduceHealth(projectile.getDamage());
+            System.out.print("BAZINGA!");
+        }
+        else {
+            System.out.println("NOT BAZINGA!");
+        }
+        System.out.println(canvas.getElementAt(projectile.getPosition()));
     }
 }

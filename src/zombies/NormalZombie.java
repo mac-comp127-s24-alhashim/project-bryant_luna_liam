@@ -43,7 +43,11 @@ public class NormalZombie extends GraphicsGroup {
     }
 
     public void move() {
-        moveBy(-2, 0);
+        moveBy(-0.046875, 0);
+    }
+
+    public NormalZombie getZombie() {
+        return this;
     }
 
     public void reduceHealth(int damage) {
@@ -65,7 +69,6 @@ public class NormalZombie extends GraphicsGroup {
     }
 
     public boolean checkCollisions(GraphicsObject object) {
-        System.out.println(object);
         if (getElementAt(getPosition()) == object) return true;
         return false;
     }

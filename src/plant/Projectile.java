@@ -22,6 +22,7 @@ public class Projectile extends GraphicsGroup {
         PROJECTILE_SPRITE_PATH = spritePath;
         projectileSprite = new Image(PROJECTILE_SPRITE_PATH);
         setPosition(location);
+        moveBy(32 - projectileSprite.getWidth(), 0);
         add(projectileSprite);
     }
 
@@ -42,8 +43,8 @@ public class Projectile extends GraphicsGroup {
     //     }
     // }
 
-    public void dealDamage() {
-        for (NormalZombie zombie : ZombieManager.getZombies()) {
+    public void dealDamage(ZombieManager zombieManager) {
+        for (NormalZombie zombie : zombieManager.getZombies()) {
             if (zombie.checkCollisions(this)) {
                 zombie.reduceHealth(PROJECTILE_DAMAGE);
             }

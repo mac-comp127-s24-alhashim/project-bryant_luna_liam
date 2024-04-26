@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import zombies.ZombieManager;
+import zombies.*;
 
 /**
  * The game of Plants. vs Zombies, programmed in Java.
@@ -65,11 +65,12 @@ public class PvZ {
 
             // Tasks to run every 1 frame
             if ((frame % 1) == 0) {
-                plantManager.moveProjectiles();
+                for (NormalZombie zombie : zombieManager.getZombies()) {                
+                    plantManager.moveProjectiles(zombie); 
+                }
                 if (gameSun != null) {
-                    gameSun.moveBy(0, 1);
+                    gameSun.moveBy(0, 0.33);
                     if (gameSun.getY() >= PvZ.CANVAS_HEIGHT) {
-                        System.out.println("SUN IS OUT");
                         canvas.remove(gameSun);
                         gameSun = null;
                     }
@@ -79,7 +80,7 @@ public class PvZ {
 
             // Tasks to run every 1.5 seconds
             if ((frame % 90) == 0) {
-                plantManager.shootPeas();
+                plantManager.shootProjectile();
             }
 
             // Tasks to run every 24 seconds
@@ -183,8 +184,8 @@ public class PvZ {
     }
 
     private void collectSun() {
-        if (sunCount >= 9999) {
-            sunCount = 9999;
+        if (sunCount >= maxSun) {
+            sunCount = maxSun;
         }
         else {
             sunCount += 25;
