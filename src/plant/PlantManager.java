@@ -132,7 +132,7 @@ public class PlantManager {
                 if (projectile.getX() > PvZ.CANVAS_WIDTH) {
                     iterator.remove();
                     canvas.remove(projectile);
-                } else projectile.moveBy(5, 0);
+                } else projectile.moveBy(1, 0);
             }
         }
     }

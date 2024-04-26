@@ -63,14 +63,18 @@ public class PvZ {
         canvas.animate(runnable -> {
             frame++;
 
-            // Tasks to run every 7 frames
-            if ((frame % 7) == 0) {
+            // Tasks to run every 1 frame
+            if ((frame % 1) == 0) {
                 plantManager.moveProjectiles();
-            }
-
-            // Tasks to run every 60 frames
-            if ((frame % 60) == 0) {
-                if (gameSun != null) gameSun.moveBy(0, 1);
+                if (gameSun != null) {
+                    gameSun.moveBy(0, 1);
+                    if (gameSun.getY() >= PvZ.CANVAS_HEIGHT) {
+                        System.out.println("SUN IS OUT");
+                        canvas.remove(gameSun);
+                        gameSun = null;
+                    }
+                }
+                zombieManager.moveZombies();
             }
 
             // Tasks to run every 1.5 seconds
@@ -83,16 +87,15 @@ public class PvZ {
                 plantManager.produceSunflowerSuns();
             }
 
-            // Tasks to run every 12.5 seconds
-            if ((frame % 750) == 0) {
+            // Tasks to run every 10 seconds
+            if ((frame % 600) == 0) {
                 spawnSun();
             }
 
-
-
-            zombieManager.runScheduledTasks();
-            // spawnSun();
-            // sun.runScheduledTasks();
+            // Tasks to run every 15 seconds
+            if ((frame % 900) == 0) {
+                zombieManager.zombieSpawn();
+            }
         });
 
         /*

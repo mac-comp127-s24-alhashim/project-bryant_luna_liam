@@ -31,15 +31,10 @@ public class ZombieManager {
         tileList.add(Lawn.getGrassTilePosition(49));
     }
 
-    public void runScheduledTasks() {
-        if ((PvZ.frame % 1000) == 0) moveZombies();
-        zombieSpawn();
-    }
-
     /*
      * Moves all the zombies on the canvas.
      */
-    private void moveZombies() {
+    public void moveZombies() {
         for (NormalZombie zombie : zombieList) zombie.move();
     }
 
@@ -48,20 +43,18 @@ public class ZombieManager {
      * Zombies will not spawn within the set grace time, and
      * one zombie will spawn at the set spawn rate.
      */
-    private void zombieSpawn() {
+    public void zombieSpawn() {
         Random random = new Random();
         if (PvZ.getFrame() >= GRACE_TIME) {
-            if ((PvZ.getFrame() % spawnRate) == 0) {
-                Point chosenPos = tileList.get(random.nextInt((4 - 0) + 1) + 0);
-                double x = chosenPos.getX() + (GrassTile.TILE_SIZE - (GrassTile.TILE_SIZE * 0.25));
-                // Weird bug where zombies spawn one tile under, dirty
-                // fix is to just subtract a tile
-                double y = ((NormalZombie.ZOMBIE_HEIGHT - GrassTile.TILE_SIZE) + chosenPos.getY()) - GrassTile.TILE_SIZE;
-                NormalZombie zombie = new NormalZombie(x, y);
-                zombieList.add(zombie);
-                canvas.add(zombie);
-                canvas.draw();
-            } 
+            Point chosenPos = tileList.get(random.nextInt((4 - 0) + 1) + 0);
+            double x = chosenPos.getX() + (GrassTile.TILE_SIZE - (GrassTile.TILE_SIZE * 0.25));
+            // Weird bug where zombies spawn one tile under, dirty
+            // fix is to just subtract a tile
+            double y = ((NormalZombie.ZOMBIE_HEIGHT - GrassTile.TILE_SIZE) + chosenPos.getY()) - GrassTile.TILE_SIZE;
+            NormalZombie zombie = new NormalZombie(x, y);
+            zombieList.add(zombie);
+            canvas.add(zombie);
+            canvas.draw();
         }
     }
 
