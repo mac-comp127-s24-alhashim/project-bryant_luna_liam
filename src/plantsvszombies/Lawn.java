@@ -43,11 +43,13 @@ public class Lawn {
 
     /**
      * Get the position to be used when a plant is placed on a grass tile.
+     * If a tile is not found, returns null.
      * @param n
      * @return
      */
     public static Point getPlantPoint(Point point) {
         GraphicsObject tile = grassTiles.getElementAt(point);
+        if (tile == null) return null;
         Point plantPoint = tile.getPosition();
         return plantPoint;
     }

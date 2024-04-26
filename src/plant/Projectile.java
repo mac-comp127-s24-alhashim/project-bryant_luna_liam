@@ -15,63 +15,34 @@ public class Projectile extends GraphicsGroup {
     private final String PROJECTILE_SPRITE_PATH;
     private final int PROJECTILE_DAMAGE;
     
-    private CanvasWindow canvas;
-    private Point location;
-    private GraphicsGroup projectile;
     private Image projectileSprite;
-    private List<Projectile> projectiles;
 
-    public Projectile(CanvasWindow canvas, Point location, int damage, String spritePath, List<Projectile> projectiles) {
-        this.canvas = canvas;
-        this.location = location;
-        this.projectiles = projectiles;
+    public Projectile(Point location, int damage, String spritePath) {
         PROJECTILE_DAMAGE = damage;
         PROJECTILE_SPRITE_PATH = spritePath;
-        loadSprite();
-        setPosition();
-    }
-
-    private void loadSprite() {
         projectileSprite = new Image(PROJECTILE_SPRITE_PATH);
-        projectile = new GraphicsGroup();
-        projectile.add(projectileSprite);
+        setPosition(location);
+        add(projectileSprite);
     }
 
-    private void setPosition() {
-        projectile.setPosition(location);
-    }
-
-    public Point getposition() {
-        return projectile.getPosition();
-    }
-
-    public void updatePosition() {
-        projectile.moveBy(+1, 0);
-        if (projectile.getX() <= PvZ.CANVAS_WIDTH + projectile.getWidth() && projectile.getX() >= 0) {
-            canvas.remove(projectile);
-            projectiles.remove(this);
-        }
-    }
+    // public void updatePosition() {
+    //     projectile.moveBy(+1, 0);
+    //     if (projectile.getX() <= PvZ.CANVAS_WIDTH + projectile.getWidth() && projectile.getX() >= 0) {
+    //         remove(projectile);
+    //     }
+    // }
 
     public int getDamage() {
         return PROJECTILE_DAMAGE;
     }
 
-    public void addToCanvas() {
-        canvas.add(projectile);
-    }
-
-    public void removeFromCavas() {
-        canvas.remove(projectile);
-    }
-
-    public void dealDamage() {
-        for (NormalZombie zombie : ZombieManager.getZombies()) {
-            if (zombie.checkCollisions(projectile)) {
-                zombie.reduceHealth(PROJECTILE_DAMAGE);
-            }
-        }
-    }
+    // public void dealDamage() {
+    //     for (NormalZombie zombie : ZombieManager.getZombies()) {
+    //         if (zombie.checkCollisions(this)) {
+    //             zombie.reduceHealth(PROJECTILE_DAMAGE);
+    //         }
+    //     }
+    // }
 }
     
     

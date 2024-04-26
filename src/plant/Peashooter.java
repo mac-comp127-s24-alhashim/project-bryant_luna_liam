@@ -13,11 +13,11 @@ public class Peashooter extends GraphicsGroup {
 
     private static final String SPRITE_PATH = "plants/PEASHOOTER.png";
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_PEASHOOTER.png";
-    public final String PEASHOOTER_PEA_SPRITE_PATH = "plants/PEASHOOTER_PEA.png";
+    public final static String PEA_SPRITE_PATH = "plants/PEASHOOTER_PEA.png";
     public static final int SUN_COST = 100;
     private final int RECHARGE_TIME_SECONDS = 7500;
     private final int PEA_SHOOTING_RATE = 1500;
-    private final int PEASHOOTER_DAMAGE = 1;
+    final static int PEASHOOTER_DAMAGE = 1;
     
     public int health = 6;
     private CanvasWindow canvas;
@@ -33,22 +33,22 @@ public class Peashooter extends GraphicsGroup {
         PvZ.sunCount -= SUN_COST;
     }
 
-    /**
-     * Activates the pea shooting when there's a zombie in the Peashooter's lane.  
-     */
-    public void runScheduledTasks () {
-        if ((PvZ.time % PEA_SHOOTING_RATE) == 0) action();
-        for (Projectile pea : peas) pea.updatePosition();
-    }
+    // /**
+    //  * Activates the pea shooting when there's a zombie in the Peashooter's lane.  
+    //  */
+    // public void runScheduledTasks () {
+    //     if ((PvZ.time % PEA_SHOOTING_RATE) == 0) action();
+    //     for (Projectile pea : peas) pea.updatePosition();
+    // }
     
-    /**
-     * Shoots a pea.
-     */
-    public void action() {
-        Projectile pea = new Projectile(canvas, getPosition(), PEASHOOTER_DAMAGE, PEASHOOTER_PEA_SPRITE_PATH, peas);
-        peas.add(pea);
-        pea.addToCanvas();    
-    }
+    // /**
+    //  * Shoots a pea.
+    //  */
+    // public void action() {
+    //     Projectile pea = new Projectile(getPosition(), PEASHOOTER_DAMAGE, PEA_SPRITE_PATH);
+    //     peas.add(pea);
+    //     pea.addToCanvas();    
+    // }
 
     /**
      * Substracts the Peashooter's health by one.

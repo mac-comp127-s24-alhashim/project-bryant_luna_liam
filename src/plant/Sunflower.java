@@ -12,7 +12,7 @@ public class Sunflower extends GraphicsGroup {
     private static final String SPRITE_PATH = "plants/SUNFLOWER.png";
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_SUNFLOWER.png";
     public static final int SUN_COST = 50;
-    private static final double RECHARGE_TIME_SECONDS = 24000;
+    private static final double RECHARGE_TIME= 24000;
     private static final double SUN_PRODUCTION_RATE = 24000;
     
     public int health = 6;
@@ -42,9 +42,4 @@ public class Sunflower extends GraphicsGroup {
     public int getSunCost() {
         return SUN_COST;
     }
-
-    public double getRechargeTime() {
-        return RECHARGE_TIME_SECONDS;
-    }
-
 }
