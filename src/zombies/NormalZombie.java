@@ -59,12 +59,12 @@ public class NormalZombie extends GraphicsGroup {
             case 1: 
                 coneHealth -= damage;
                 if (coneHealth <= 0) coneDie();
+                break;
             case 2:
                 bucketHealth -= damage;
                 if (bucketHealth <= 0) bucketDie();
+                break;
         }
-        zombieHealth -= damage;
-        if (zombieHealth == 0) die();
         System.out.println("Zombie health: " + zombieHealth);
     }
 
