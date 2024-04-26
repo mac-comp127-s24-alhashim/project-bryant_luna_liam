@@ -3,6 +3,7 @@ package plant;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
@@ -63,7 +64,6 @@ public class PlantManager {
                 if (PvZ.sunCount >= Wallnut.SUN_COST) {
                     Wallnut wallnut= new Wallnut();
                     wallnut.setPosition(position);
-                    // plants.add(wallnut);
                     canvas.add(wallnut);
                 }
                 break;
@@ -71,7 +71,6 @@ public class PlantManager {
                 if (PvZ.sunCount >= PotatoMine.SUN_COST) {
                     PotatoMine potatomine= new PotatoMine();
                     potatomine.setPosition(position);
-                    // plants.add(potatomine);
                     canvas.add(potatomine);
                 }
                 break;
@@ -79,7 +78,6 @@ public class PlantManager {
                 if (PvZ.sunCount >= CherryBomb.SUN_COST) {
                     CherryBomb cherrybomb= new CherryBomb();
                     cherrybomb.setPosition(position);
-                    // plants.add(cherrybomb);
                     canvas.add(cherrybomb);
                 }
                 break;
@@ -122,16 +120,19 @@ public class PlantManager {
     }
 
     /**
-     * Meant to be run every 100ms. Handles movement of projectiles.
+     * Meant to be run every 7 frames. Handles movement of projectiles.
      */
     public void moveProjectiles() {
         if (projectiles != null) {
-            for (Projectile projectile : projectiles) {
-                projectile.moveBy(1, 0);
+            Iterator<Projectile> iterator = projectiles.iterator();
+
+            Projectile projectile;
+            while (iterator.hasNext()) {
+                projectile = iterator.next();
                 if (projectile.getX() > PvZ.CANVAS_WIDTH) {
+                    iterator.remove();
                     canvas.remove(projectile);
-                    projectiles.remove(projectile);
-                }
+                } else projectile.moveBy(5, 0);
             }
         }
     }

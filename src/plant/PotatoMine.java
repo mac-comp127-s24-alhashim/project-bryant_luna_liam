@@ -46,7 +46,7 @@ public class PotatoMine extends GraphicsGroup {
             //action();
         }
         else {
-            if ((PvZ.time % ARM_TIME) == 0) action();
+            if ((PvZ.frame % ARM_TIME) == 0) action();
         }
     }
 

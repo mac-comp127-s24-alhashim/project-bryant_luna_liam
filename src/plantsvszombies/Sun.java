@@ -28,7 +28,7 @@ public class Sun extends GraphicsGroup {
     }
 
     public void runScheduledTasks() {
-        if ((PvZ.time % 50) == 0) updatePosition();
+        if ((PvZ.frame % 50) == 0) updatePosition();
     }
 
     /**

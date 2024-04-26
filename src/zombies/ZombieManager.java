@@ -32,7 +32,7 @@ public class ZombieManager {
     }
 
     public void runScheduledTasks() {
-        if ((PvZ.time % 1000) == 0) moveZombies();
+        if ((PvZ.frame % 1000) == 0) moveZombies();
         zombieSpawn();
     }
 
@@ -50,8 +50,8 @@ public class ZombieManager {
      */
     private void zombieSpawn() {
         Random random = new Random();
-        if (PvZ.getTime() >= GRACE_TIME) {
-            if ((PvZ.getTime() % spawnRate) == 0) {
+        if (PvZ.getFrame() >= GRACE_TIME) {
+            if ((PvZ.getFrame() % spawnRate) == 0) {
                 Point chosenPos = tileList.get(random.nextInt((4 - 0) + 1) + 0);
                 double x = chosenPos.getX() + (GrassTile.TILE_SIZE - (GrassTile.TILE_SIZE * 0.25));
                 // Weird bug where zombies spawn one tile under, dirty
