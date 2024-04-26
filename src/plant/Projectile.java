@@ -36,13 +36,19 @@ public class Projectile extends GraphicsGroup {
         return PROJECTILE_DAMAGE;
     }
 
-    // public void dealDamage() {
-    //     for (NormalZombie zombie : ZombieManager.getZombies()) {
-    //         if (zombie.checkCollisions(this)) {
-    //             zombie.reduceHealth(PROJECTILE_DAMAGE);
-    //         }
+    // public void dealDamage(NormalZombie zombie) {
+    //     if (zombie.checkCollisions(this)) {
+    //         zombie.reduceHealth(PROJECTILE_DAMAGE);
     //     }
     // }
+
+    public void dealDamage() {
+        for (NormalZombie zombie : ZombieManager.getZombies()) {
+            if (zombie.checkCollisions(this)) {
+                zombie.reduceHealth(PROJECTILE_DAMAGE);
+            }
+        }
+    }
 }
     
     
