@@ -64,7 +64,6 @@ public class PlantManager {
                 if (PvZ.sunCount >= Wallnut.SUN_COST) {
                     Wallnut wallnut= new Wallnut();
                     wallnut.setPosition(position);
-                    // plants.add(wallnut);
                     canvas.add(wallnut);
                 }
                 break;
@@ -72,7 +71,6 @@ public class PlantManager {
                 if (PvZ.sunCount >= PotatoMine.SUN_COST) {
                     PotatoMine potatomine= new PotatoMine();
                     potatomine.setPosition(position);
-                    // plants.add(potatomine);
                     canvas.add(potatomine);
                 }
                 break;
@@ -80,7 +78,6 @@ public class PlantManager {
                 if (PvZ.sunCount >= CherryBomb.SUN_COST) {
                     CherryBomb cherrybomb= new CherryBomb();
                     cherrybomb.setPosition(position);
-                    // plants.add(cherrybomb);
                     canvas.add(cherrybomb);
                 }
                 break;
