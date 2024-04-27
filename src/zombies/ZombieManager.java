@@ -16,12 +16,12 @@ import plantsvszombies.PvZ;
 public class ZombieManager {
     final int GRACE_TIME;
     int spawnRate;
-    static ArrayList<NormalZombie> zombieList = new ArrayList<NormalZombie>();
+    static ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
     ArrayList<Point> tileList = new ArrayList<Point>();
     CanvasWindow canvas;
     
     public ZombieManager(CanvasWindow canvas) {
-        GRACE_TIME = 1200;
+        GRACE_TIME = 0;
         spawnRate = 20000;
         this.canvas = canvas;
         tileList.add(Lawn.getGrassTilePosition(9));
@@ -35,7 +35,7 @@ public class ZombieManager {
      * Moves all the zombies on the canvas.
      */
     public void moveZombies() {
-        for (NormalZombie zombie : zombieList) zombie.move();
+        for (Zombie zombie : zombieList) zombie.move();
     }
     
     /*
@@ -50,8 +50,8 @@ public class ZombieManager {
             double x = chosenPos.getX() + (GrassTile.TILE_SIZE - (GrassTile.TILE_SIZE * 0.25));
             // Weird bug where zombies spawn one tile under, dirty
             // fix is to just subtract a tile
-            double y = ((NormalZombie.ZOMBIE_HEIGHT - GrassTile.TILE_SIZE) + chosenPos.getY()) - GrassTile.TILE_SIZE;
-            NormalZombie zombie = new NormalZombie(x, y);
+            double y = ((Zombie.ZOMBIE_HEIGHT - GrassTile.TILE_SIZE) + chosenPos.getY()) - GrassTile.TILE_SIZE;
+            Zombie zombie = new Zombie(x, y);
             zombieList.add(zombie);
             canvas.add(zombie);
             canvas.draw();
@@ -61,7 +61,7 @@ public class ZombieManager {
     /*
      * 
      */
-    public ArrayList<NormalZombie> getZombies() {
+    public ArrayList<Zombie> getZombies() {
         return zombieList;
     }
 }

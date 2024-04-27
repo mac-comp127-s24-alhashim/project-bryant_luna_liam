@@ -12,7 +12,7 @@ public class CherryBomb extends GraphicsGroup {
     public static final String CHERRYBOMB_SEED_SPRITE_PATH = "game/SEEDPACKET_CHERRYBOMB.png";
     public static final int SUN_COST = 150;
     private static final double RECHARGE_TIME_SECONDS = 40000;
-    private static final int CHERRYBOMB_DAMAGE = 100;
+    private static final int CHERRYBOMB_DAMAGE = 1800;
     private static final int CHERRYBOMB_EXPLOSION_RADIUS = 48;
     
     private CanvasWindow canvas;

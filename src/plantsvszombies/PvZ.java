@@ -42,7 +42,7 @@ public class PvZ {
 
     // Player Statistics
     private static String playerName;
-    public static int sunCount = 500;
+    public static int sunCount = 0;
     private static int zombiesKilled = 0;
     private final short maxSun = 9999;
     Random random = new Random();
@@ -65,7 +65,7 @@ public class PvZ {
 
             // Tasks to run every 1 frame
             if ((frame % 1) == 0) {
-                for (NormalZombie zombie : zombieManager.getZombies()) {                
+                for (Zombie zombie : zombieManager.getZombies()) {                
                     plantManager.moveProjectiles(zombie); 
                 }
                 if (gameSun != null) {
@@ -78,9 +78,11 @@ public class PvZ {
                 zombieManager.moveZombies();
             }
 
-            // Tasks to run every 1.5 seconds
-            if ((frame % 90) == 0) {
+            // Tasks to run every 3 seconds
+            if ((frame % 180) == 0) {
+                if (zombieManager.getZombies().size() > 0) {
                 plantManager.shootProjectile();
+                }
             }
 
             // Tasks to run every 24 seconds
@@ -94,7 +96,7 @@ public class PvZ {
             }
 
             // Tasks to run every 15 seconds
-            if ((frame % 900) == 0) {
+            if ((frame % 60) == 0) {
                 zombieManager.zombieSpawn();
             }
         });

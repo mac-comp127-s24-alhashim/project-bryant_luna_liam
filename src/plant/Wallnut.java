@@ -13,7 +13,7 @@ public class Wallnut extends GraphicsGroup {
     public static final int SUN_COST = 50;
     private static final double RECHARGE_TIME_SECONDS = 30000;
     
-    public int health = 54;
+    public int health = 4000;
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup wallnut;

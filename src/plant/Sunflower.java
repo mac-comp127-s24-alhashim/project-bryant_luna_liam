@@ -15,7 +15,7 @@ public class Sunflower extends GraphicsGroup {
     private static final double RECHARGE_TIME= 24000;
     private static final double SUN_PRODUCTION_RATE = 24000;
     
-    public int health = 6;
+    public int health = 300;
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup sunflower;

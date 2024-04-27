@@ -37,6 +37,10 @@ public class Explosion extends GraphicsGroup {
         addToCanvas();
     }
 
+    public int getDamage() {
+        return EXPLOSION_DAMAGE;
+    }
+
     public void addToCanvas() {
         canvas.add(explosion);
     }
@@ -45,12 +49,12 @@ public class Explosion extends GraphicsGroup {
         canvas.remove(explosion);
     }
 
-    public void dealDamage(ZombieManager zombieManager) {
-        for (NormalZombie zombie : zombieManager.getZombies()) {
-            if (zombie.checkCollisions(explosion)) {
-                zombie.reduceHealth(EXPLOSION_DAMAGE);
-            }
-        }
-    }
+    // public void dealDamage(ZombieManager zombieManager) {
+    //     for (NormalZombie zombie : zombieManager.getZombies()) {
+    //         if (zombie.checkCollisions(explosion)) {
+    //             zombie.reduceHealth(EXPLOSION_DAMAGE);
+    //         }
+    //     }
+    // }
     
 }

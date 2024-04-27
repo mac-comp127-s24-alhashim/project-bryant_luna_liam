@@ -17,9 +17,9 @@ public class Peashooter extends GraphicsGroup {
     public static final int SUN_COST = 100;
     private final int RECHARGE_TIME_SECONDS = 7500;
     private final int PEA_SHOOTING_RATE = 1500;
-    final static int PEASHOOTER_DAMAGE = 1;
+    final static int PEASHOOTER_DAMAGE = 20;
     
-    public int health = 6;
+    public int health = 300;
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup peashooter;
@@ -32,23 +32,6 @@ public class Peashooter extends GraphicsGroup {
         add(peashooterSprite);
         PvZ.sunCount -= SUN_COST;
     }
-
-    // /**
-    //  * Activates the pea shooting when there's a zombie in the Peashooter's lane.  
-    //  */
-    // public void runScheduledTasks () {
-    //     if ((PvZ.time % PEA_SHOOTING_RATE) == 0) action();
-    //     for (Projectile pea : peas) pea.updatePosition();
-    // }
-    
-    // /**
-    //  * Shoots a pea.
-    //  */
-    // public void action() {
-    //     Projectile pea = new Projectile(getPosition(), PEASHOOTER_DAMAGE, PEA_SPRITE_PATH);
-    //     peas.add(pea);
-    //     pea.addToCanvas();    
-    // }
 
     /**
      * Substracts the Peashooter's health by one.

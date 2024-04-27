@@ -11,7 +11,7 @@ import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 import plantsvszombies.Sun;
-import zombies.NormalZombie;
+import zombies.Zombie;
 
 /**
  * Manages the placement and logic of plants. Handles projectiles and explosions
@@ -119,14 +119,13 @@ public class PlantManager {
     /**
      * Meant to be run every 7 frames. Handles movement of projectiles.
      */
-    public void moveProjectiles(NormalZombie zombie) {
+    public void moveProjectiles(Zombie zombie) {
         if (projectiles != null) {
             Iterator<Projectile> iterator = projectiles.iterator();
             Projectile projectile;
             while (iterator.hasNext()) {
                 projectile = iterator.next();
-                damageZombies(projectile, zombie);
-                if (projectile.getX() > PvZ.CANVAS_WIDTH) {
+                if (projectile.getX() > PvZ.CANVAS_WIDTH || damageZombieProjectile(projectile, zombie)) {
                     iterator.remove();
                     canvas.remove(projectile);
                 } else projectile.moveBy(1, 0);
@@ -134,14 +133,19 @@ public class PlantManager {
         }
     }
 
-    private void damageZombies(Projectile projectile, NormalZombie zombie) {
-        if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(projectile.getPosition())) {
+    private Boolean damageZombieProjectile(Projectile projectile, Zombie zombie) {
+        if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
             zombie.reduceHealth(projectile.getDamage());
-            System.out.print("BAZINGA!");
+            return true;
         }
-        else {
-            System.out.println("NOT BAZINGA!");
+        else return false;
+    }
+
+    private Boolean damageZombieExplosion(Explosion explosion, Zombie zombie) {
+        if (canvas.getElementAt(explosion.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
+            zombie.reduceHealth(explosion.getDamage());
+            return true;
         }
-        System.out.println(canvas.getElementAt(projectile.getPosition()));
+        else return false;
     }
 }
