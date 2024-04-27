@@ -78,8 +78,8 @@ public class PvZ {
                 zombieManager.moveZombies();
             }
 
-            // Tasks to run every 3 seconds
-            if ((frame % 180) == 0) {
+            // Tasks to run every 1.5 seconds
+            if ((frame % 90) == 0) {
                 if (zombieManager.getZombies().size() > 0) {
                 plantManager.shootProjectile();
                 }
