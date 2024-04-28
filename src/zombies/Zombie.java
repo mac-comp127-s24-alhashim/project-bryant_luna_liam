@@ -16,19 +16,17 @@ public class Zombie extends GraphicsGroup {
     static final double ZOMBIE_WIDTH = zombieSprite.getWidth();
     static final double ZOMBIE_HEIGHT = zombieSprite.getHeight();
     Random random = new Random();
+    Boolean eating = false;
     int zombieHealth = 181;
     int coneHealth = 370;
     int bucketHealth = 1100;
     int explosiveHealth = 335;
     int zombieAttack = 100;
     int explosiveAttack = 4000;
-
     int zombieType = 0; // 0 = NORMAL | 1 = CONE | 2 = BUCKET | 3 = EXPLOSIVE
 
     public Zombie(double x, double y) {
-
         setPosition(x, y);
-
         if (random.nextInt(25) == 0) {
             zombieType = 3;
         }
@@ -51,16 +49,17 @@ public class Zombie extends GraphicsGroup {
         }
         else {
             add(explosiveSprite);
-            System.out.println("EXPLOSIVE ZOMBIE");
         }
     }
 
     public void move() {
-        if (zombieType == 3) {
-            moveBy(-0.1875, 0);
-        }
-        else {
-            moveBy(-0.046875, 0);
+        if (!eating) {
+            if (zombieType == 3) {
+                moveBy(-0.1875, 0);
+            }
+            else {
+                moveBy(-0.046875, 0);
+            }
         }
     }
 
@@ -84,13 +83,8 @@ public class Zombie extends GraphicsGroup {
         }
     }
 
-    // public boolean checkCollisions(GraphicsObject object) {
-    //     if (getElementAt(getPosition()) == object) return true;
-    //     return false;
-    // }
-
     private void die() {
-        remove(zombieSprite);
+        removeAll();
     }
 
     private void coneDie() {
@@ -104,8 +98,39 @@ public class Zombie extends GraphicsGroup {
     }
 
     private void explosiveDie() {
-        remove(explosiveSprite);
+        removeAll();
         // EXPLODES
+    }
+
+    public int getHealth() {
+        if (zombieType != 3) {
+            return zombieHealth;
+        }
+        else {
+            return explosiveHealth;
+        }
+    }
+
+    public int getDamage() {
+        if (zombieType != 3) {
+            return zombieAttack;
+        }
+        else {
+            return explosiveAttack;
+        }
+    }
+
+    public boolean getEatingState() {
+        return eating;
+    }
+
+    public void setEatingState() {
+        if (eating) {
+            eating = false;
+        }
+        else {
+            eating = true;
+        }
     }
     
 }

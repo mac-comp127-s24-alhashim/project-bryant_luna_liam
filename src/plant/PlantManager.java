@@ -2,15 +2,12 @@ package plant;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
-import plantsvszombies.Sun;
 import zombies.Zombie;
 
 /**
@@ -23,6 +20,8 @@ public class PlantManager {
     // Plants with logic
     List<Sunflower> sunflowers;
     List<Peashooter> peashooters;
+    List<Wallnut> wallnuts;
+    List<PotatoMine> potatoMines;
     List<CherryBomb> cherrybombs;
 
     // Plant creations
@@ -141,11 +140,19 @@ public class PlantManager {
         else return false;
     }
 
-    private Boolean damageZombieExplosion(Explosion explosion, Zombie zombie) {
-        if (canvas.getElementAt(explosion.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
-            zombie.reduceHealth(explosion.getDamage());
-            return true;
-        }
-        else return false;
-    }
+    // private Boolean damagePlant(Sunflower sunflower, Peashooter peashooter, Wallnut wallnut, Zombie zombie) {
+    //     if (canvas.getElementAt(sunflower.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
+    //         sunflower.reduceHealth(zombie.getDamage());
+    //         return true;
+    //     }
+    //     else return false;
+    // }
+
+    // private Boolean damageZombieExplosion(Explosion explosion, Zombie zombie) {
+    //     if (canvas.getElementAt(explosion.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
+    //         zombie.reduceHealth(explosion.getDamage());
+    //         return true;
+    //     }
+    //     else return false;
+    // }
 }

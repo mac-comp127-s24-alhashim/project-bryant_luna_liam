@@ -5,7 +5,10 @@ import java.util.Random;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Point;
-
+import plant.Projectile;
+import plant.Sunflower;
+import plant.Peashooter;
+import plant.Wallnut;
 import plantsvszombies.GrassTile;
 import plantsvszombies.Lawn;
 import plantsvszombies.PvZ;
@@ -64,4 +67,25 @@ public class ZombieManager {
     public ArrayList<Zombie> getZombies() {
         return zombieList;
     }
+
+    public void removeZombie(Zombie zombie) {
+        if (zombie.getHealth() <= 0) {
+            zombieList.remove(zombie);
+            canvas.remove(zombie);
+        }
+    }
+
+    public void eatPlant(Zombie zombie, Sunflower sunflower, Peashooter peashooter, Wallnut wallnut) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'eatPlant'");
+    }
+
+        private Boolean damageZombieProjectile(Projectile projectile, Zombie zombie) {
+        if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
+            zombie.reduceHealth(projectile.getDamage());
+            return true;
+        }
+        else return false;
+    }
+
 }

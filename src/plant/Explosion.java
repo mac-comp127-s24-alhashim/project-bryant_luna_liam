@@ -9,7 +9,6 @@ import zombies.*;
 
 import java.awt.Color;
 
-
 public class Explosion extends GraphicsGroup {
 
     private final Color EXPLOSION_COLOR = new Color(255, 87, 0, 128);

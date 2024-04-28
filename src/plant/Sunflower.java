@@ -31,12 +31,13 @@ public class Sunflower extends GraphicsGroup {
         add(sunflowerSprite);
     }
 
-    public void runScheduledPlantTasks() {
-        if ((PvZ.frame % SUN_PRODUCTION_RATE) == 0) action();
+    public void reduceHealth(int damage) {
+        health -= damage;
+        if (health <= 0) die();
     }
 
-    public void action() {
-        Sun sun = new Sun(getCenter(), false);
+    private void die() {
+        removeAll();
     }
 
     public int getSunCost() {
