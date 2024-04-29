@@ -19,7 +19,7 @@ public class Sunflower extends GraphicsGroup {
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup sunflower;
-    private Image sunflowerSprite;
+    Image sunflowerSprite;
 
     public Sunflower() {
         loadSprite();
@@ -36,7 +36,7 @@ public class Sunflower extends GraphicsGroup {
         if (health <= 0) die();
     }
 
-    private void die() {
+    void die() {
         removeAll();
     }
 

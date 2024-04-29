@@ -42,7 +42,7 @@ public class PvZ {
 
     // Player Statistics
     private static String playerName;
-    public static int sunCount = 9999;
+    public static int sunCount = 900;
     private static int zombiesKilled = 0;
     private final short maxSun = 9999;
     Random random = new Random();
@@ -134,7 +134,10 @@ public class PvZ {
 
             
             if (UI.objInMotion == false) {
-                if (clickedObject.equals(UI.shovelSprite) || UI.seedPackets.contains(clickedObject)) {
+                if (clickedObject.equals(UI.shovelSprite)) {
+                    UI.followMouse(clickedObject, true);
+                    UI.shovelMode = true;
+                } else if (UI.seedPackets.contains(clickedObject)) {
                     UI.followMouse(clickedObject, true);
                 }
             } else {
@@ -142,7 +145,9 @@ public class PvZ {
                 UI.objInMotion = false;
 
                 Point plantPoint = Lawn.getPlantPoint(handler.getPosition());
-                if (plantPoint != null) { // Out of bounds check
+                if (UI.shovelMode) {
+                    plantManager.removePlant(clickedObject);
+                } else if (plantPoint != null) { // Out of bounds check
                     if (clickedObject.equals(UI.sunflowerPacket)) {
                         plantManager.addPlant(0, plantPoint);
                     } else if (clickedObject.equals(UI.peashooterPacket)) {

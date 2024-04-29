@@ -17,7 +17,7 @@ public class Wallnut extends GraphicsGroup {
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup wallnut;
-    private Image wallnutSprite;
+    Image wallnutSprite;
 
     public Wallnut() {
         wallnutSprite = new Image(SPRITE_PATH);
@@ -30,10 +30,6 @@ public class Wallnut extends GraphicsGroup {
         if (health <= 0) die();
     }
 
-    private void die() {
-        removeAll();
-    }
-
     public int getHealth() {
         return health;
     }
@@ -44,6 +40,10 @@ public class Wallnut extends GraphicsGroup {
 
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
+    }
+
+    public void die() {
+        removeAll();
     }
 }
 
