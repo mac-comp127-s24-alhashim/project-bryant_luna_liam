@@ -55,10 +55,10 @@ public class Zombie extends GraphicsGroup {
     public void move() {
         if (!eating) {
             if (zombieType == 3) {
-                moveBy(-0.1875, 0);
+                moveBy(-0.1875 / 1.5, 0);
             }
             else {
-                moveBy(-0.046875, 0);
+                moveBy(-0.046875 / 1.5, 0);
             }
         }
     }
