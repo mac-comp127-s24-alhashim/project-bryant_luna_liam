@@ -106,7 +106,7 @@ public class PlantManager {
      * Summons a projectile.
      */
     public void shootProjectile() {
-        if (peashooters != null) { // Check for sunflowers
+        if (peashooters != null) { // Check for peashooters
             for (Peashooter peashooter : peashooters) {
                 Projectile projectile = new Projectile(peashooter.getPosition(), Peashooter.PEASHOOTER_DAMAGE, Peashooter.PEA_SPRITE_PATH);
                 projectiles.add(projectile);
@@ -138,6 +138,14 @@ public class PlantManager {
             return true;
         }
         else return false;
+    }
+
+    public void armPotatoMine() {
+        if (potatoMines != null) {
+            for (PotatoMine potatoMine : potatoMines) {
+                potatoMine.armUp();
+            }
+        }
     }
 
     // private Boolean damagePlant(Sunflower sunflower, Peashooter peashooter, Wallnut wallnut, Zombie zombie) {

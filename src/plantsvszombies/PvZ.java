@@ -42,7 +42,7 @@ public class PvZ {
 
     // Player Statistics
     private static String playerName;
-    public static int sunCount = 9999;
+    public static int sunCount = 0;
     private static int zombiesKilled = 0;
     private final short maxSun = 9999;
     Random random = new Random();
@@ -103,6 +103,7 @@ public class PvZ {
             // Tasks to run every 15 seconds
             if ((frame % 900) == 0) {
                 zombieManager.zombieSpawn();
+                plantManager.armPotatoMine();
             }
         });
 

@@ -24,7 +24,7 @@ public class ZombieManager {
     CanvasWindow canvas;
     
     public ZombieManager(CanvasWindow canvas) {
-        GRACE_TIME = 0;
+        GRACE_TIME = 450;
         spawnRate = 20000;
         this.canvas = canvas;
         tileList.add(Lawn.getGrassTilePosition(9));
@@ -80,12 +80,12 @@ public class ZombieManager {
         throw new UnsupportedOperationException("Unimplemented method 'eatPlant'");
     }
 
-        private Boolean damageZombieProjectile(Projectile projectile, Zombie zombie) {
-        if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
-            zombie.reduceHealth(projectile.getDamage());
-            return true;
-        }
-        else return false;
-    }
+    // private Boolean damageZombieProjectile(Projectile projectile, Zombie zombie) {
+    //     if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
+    //         zombie.reduceHealth(projectile.getDamage());
+    //         return true;
+    //     }
+    //     else return false;
+    // }
 
 }
