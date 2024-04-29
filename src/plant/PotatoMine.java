@@ -20,7 +20,7 @@ public class PotatoMine extends GraphicsGroup {
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup potatoMine;
-    private Image potatoMineSprite;
+    Image potatoMineSprite;
     private Boolean isBuried;
     private Explosion explosion;
 
@@ -60,6 +60,10 @@ public class PotatoMine extends GraphicsGroup {
 
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
+    }
+
+    public void die() {
+        removeAll();
     }
 
 

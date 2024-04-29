@@ -23,7 +23,7 @@ public class Peashooter extends GraphicsGroup {
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup peashooter;
-    private Image peashooterSprite;
+    Image peashooterSprite;
     private List<Projectile> peas;
 
     public Peashooter() {
@@ -36,17 +36,19 @@ public class Peashooter extends GraphicsGroup {
     /**
      * Substracts the Peashooter's health by one.
      */
-    public void receiveDamage() {
-        health--;
-        checkDeath();
+    public void reduceHealth(int damage) {
+        health -= damage;
+        if (health <= 0) die();
     }
 
     /**
      * If Peashooter's health goes below zero, it is removed from canvas.
      */
-    public void checkDeath() {
-        if (health <= 0) {
-            remove(peashooterSprite);
-        }
+    void die() {
+        removeAll();
+    }
+
+    public int getHealth() {
+        return health;
     }
 }

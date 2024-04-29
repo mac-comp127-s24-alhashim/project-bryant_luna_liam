@@ -17,12 +17,21 @@ public class Wallnut extends GraphicsGroup {
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup wallnut;
-    private Image wallnutSprite;
+    Image wallnutSprite;
 
     public Wallnut() {
         wallnutSprite = new Image(SPRITE_PATH);
         add(wallnutSprite);
         PvZ.sunCount -= SUN_COST;
+    }
+
+    public void reduceHealth(int damage) {
+        health -= damage;
+        if (health <= 0) die();
+    }
+
+    public int getHealth() {
+        return health;
     }
 
     public int getSunCost() {
@@ -31,6 +40,10 @@ public class Wallnut extends GraphicsGroup {
 
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
+    }
+
+    public void die() {
+        removeAll();
     }
 }
 

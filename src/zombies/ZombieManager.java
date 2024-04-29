@@ -24,7 +24,7 @@ public class ZombieManager {
     CanvasWindow canvas;
     
     public ZombieManager(CanvasWindow canvas) {
-        GRACE_TIME = 450;
+        GRACE_TIME = 0;//0;
         spawnRate = 20000;
         this.canvas = canvas;
         tileList.add(Lawn.getGrassTilePosition(9));
@@ -73,11 +73,6 @@ public class ZombieManager {
             zombieList.remove(zombie);
             canvas.remove(zombie);
         }
-    }
-
-    public void eatPlant(Zombie zombie, Sunflower sunflower, Peashooter peashooter, Wallnut wallnut) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eatPlant'");
     }
 
     // private Boolean damageZombieProjectile(Projectile projectile, Zombie zombie) {

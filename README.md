@@ -2,7 +2,9 @@
 Team: Bryant, Luna, & Liam
 Team Name: BryantLunaLiam
 ## Project Description!
-Our project consists of a demake (a remake developed on inferior infrastructure) of the popular game Plants Vs. Zombies. It will feature the tower defence elements of Plants Vz. Zombies, such as planting plants, managning sun production, and eliminating zombies.
+Our project consists of a demake (a remake developed on inferior infrastructure) of the popular game Plants Vs. Zombies. It will feature the tower defense elements of Plants vs. Zombies, such as planting plants, managning sun production, and eliminating zombies.
+## Requiremenets!
+Java 17 or greater. Dependencies: Macalester Kilt Graphics ([edu.macalester.graphics](https://github.com/mac-comp127/kilt-graphics))
 ## Why we chose this project!
 We chose this project because we thought it'd be fun to think how the core features of Plants Vs. Zombies would work on Java! Also, I think Plants Vs. Zombies isn't far off from the projects we've done for this class in an internal level.
 ## Project inspirations!

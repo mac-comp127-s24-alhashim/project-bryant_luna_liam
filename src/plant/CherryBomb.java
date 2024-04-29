@@ -18,7 +18,7 @@ public class CherryBomb extends GraphicsGroup {
     private CanvasWindow canvas;
     private Point location;
     private GraphicsGroup cherryBomb;
-    private Image cherryBombSprite;
+    Image cherryBombSprite;
     private Explosion explosion;
 
     public CherryBomb() {
@@ -38,6 +38,10 @@ public class CherryBomb extends GraphicsGroup {
 
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
+    }
+
+    public void die() {
+        removeAll();
     }
 
 }

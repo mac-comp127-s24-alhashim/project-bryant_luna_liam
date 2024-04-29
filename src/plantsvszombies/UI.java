@@ -25,6 +25,7 @@ public class UI extends GraphicsGroup {
     private final Color FONT_COLOR = new Color(41, 41, 41);
     private final CanvasWindow canvas;
     static boolean objInMotion = false;
+    public static boolean shovelMode = false;
     private static GraphicsObject currentObjInMotion;
 
     // Background UI elements
