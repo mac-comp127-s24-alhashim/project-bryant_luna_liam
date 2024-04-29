@@ -25,6 +25,19 @@ public class Wallnut extends GraphicsGroup {
         PvZ.sunCount -= SUN_COST;
     }
 
+    public void reduceHealth(int damage) {
+        health -= damage;
+        if (health <= 0) die();
+    }
+
+    private void die() {
+        removeAll();
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
     public int getSunCost() {
         return SUN_COST;
     }

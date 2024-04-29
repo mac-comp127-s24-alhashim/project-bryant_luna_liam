@@ -22,7 +22,7 @@ public class PlantManager {
     List<Peashooter> peashooters;
     List<Wallnut> wallnuts;
     List<PotatoMine> potatoMines;
-    List<CherryBomb> cherrybombs;
+    List<CherryBomb> cherryBombs;
 
     // Plant creations
     public static List<Projectile> projectiles;
@@ -32,7 +32,9 @@ public class PlantManager {
         canvas = cv;
         sunflowers = new ArrayList<Sunflower>();
         peashooters = new ArrayList<Peashooter>();
-        cherrybombs = new ArrayList<CherryBomb>();
+        cherryBombs = new ArrayList<CherryBomb>();
+        wallnuts = new ArrayList<Wallnut>();
+        potatoMines = new ArrayList<PotatoMine>();
         projectiles = new ArrayList<Projectile>();
     }
 
@@ -64,21 +66,24 @@ public class PlantManager {
                 if (PvZ.sunCount >= Wallnut.SUN_COST) {
                     Wallnut wallnut= new Wallnut();
                     wallnut.setPosition(position);
+                    wallnuts.add(wallnut);
                     canvas.add(wallnut);
                 }
                 break;
             case 3:
                 if (PvZ.sunCount >= PotatoMine.SUN_COST) {
-                    PotatoMine potatomine= new PotatoMine();
-                    potatomine.setPosition(position);
-                    canvas.add(potatomine);
+                    PotatoMine potatoMine= new PotatoMine();
+                    potatoMine.setPosition(position);
+                    potatoMines.add(potatoMine);
+                    canvas.add(potatoMine);
                 }
                 break;
             case 4:
                 if (PvZ.sunCount >= CherryBomb.SUN_COST) {
-                    CherryBomb cherrybomb= new CherryBomb();
-                    cherrybomb.setPosition(position);
-                    canvas.add(cherrybomb);
+                    CherryBomb cherryBomb = new CherryBomb();
+                    cherryBomb.setPosition(position);
+                    cherryBombs.add(cherryBomb);
+                    canvas.add(cherryBomb);
                 }
                 break;
             default:
@@ -140,13 +145,55 @@ public class PlantManager {
         else return false;
     }
 
+    public void damagePlant(Zombie zombie) {
+        for (Sunflower sunflower : sunflowers) {
+            if (canvas.getElementAt(sunflower.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
+                zombie.setEatingState(true);
+                sunflower.reduceHealth(zombie.getDamage());
+                if (sunflower.getHealth() <= 0) {
+                    sunflowers.remove(sunflower);
+                }
+            }
+            else {
+                zombie.setEatingState(false);
+            }
+        }
+        for (Peashooter peashooter : peashooters) {
+            if (canvas.getElementAt(peashooter.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
+                zombie.setEatingState(true);
+                peashooter.reduceHealth(zombie.getDamage());
+                if (peashooter.getHealth() <= 0) {
+                    peashooters.remove(peashooter);
+                }            
+            }
+            else {
+                zombie.setEatingState(false);
+            }
+        }
+        for (Wallnut wallnut : wallnuts) {
+            if (canvas.getElementAt(wallnut.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
+                zombie.setEatingState(true);
+                wallnut.reduceHealth(zombie.getDamage());
+                if (wallnut.getHealth() <= 0) {
+                    wallnuts.remove(wallnut);
+                }
+            }
+            else {
+                zombie.setEatingState(false);
+            }
+        }
+    }
+
     public void armPotatoMine() {
         if (potatoMines != null) {
             for (PotatoMine potatoMine : potatoMines) {
                 potatoMine.armUp();
+                System.out.println("ARM POTATO MINE");
             }
         }
     }
+
+    
 
     // private Boolean damagePlant(Sunflower sunflower, Peashooter peashooter, Wallnut wallnut, Zombie zombie) {
     //     if (canvas.getElementAt(sunflower.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {

@@ -42,7 +42,7 @@ public class PvZ {
 
     // Player Statistics
     private static String playerName;
-    public static int sunCount = 0;
+    public static int sunCount = 9999;
     private static int zombiesKilled = 0;
     private final short maxSun = 9999;
     Random random = new Random();
@@ -67,6 +67,9 @@ public class PvZ {
             if ((frame % 1) == 0) {
                 for (Zombie zombie : zombieManager.getZombies()) {                
                     plantManager.moveProjectiles(zombie); 
+                    if (zombie.getHealth() <= 0) {
+                        zombieManager.getZombies().remove(zombie);
+                    }
                 }
                 if (gameSun != null) {
                     gameSun.moveBy(0, 0.33);
@@ -82,13 +85,11 @@ public class PvZ {
             if ((frame % 90) == 0) {
                 if (zombieManager.getZombies().size() > 0) {
                 plantManager.shootProjectile();
-                }
                 for (Zombie zombie : zombieManager.getZombies()) {
-                    if (zombie.getEatingState()) {
-                        zombieManager.eatPlant(zombie, null, null, null);
-                    }
+                    plantManager.damagePlant(zombie);
                 }
             }
+            
 
             // Tasks to run every 24 seconds
             if ((frame % 1440) == 0) {
@@ -105,6 +106,8 @@ public class PvZ {
                 zombieManager.zombieSpawn();
                 plantManager.armPotatoMine();
             }
+        
+        }
         });
 
         /*
@@ -159,6 +162,9 @@ public class PvZ {
 
     public static void main(String[] args) {
         playerName = JOptionPane.showInputDialog("What is your name?");
+        // if (playerName == null) {
+        //     playerName = "Nobody";
+        // }
         PvZ plantsVsZombies = new PvZ();
     }
 

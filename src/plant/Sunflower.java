@@ -40,6 +40,10 @@ public class Sunflower extends GraphicsGroup {
         removeAll();
     }
 
+    public int getHealth() {
+        return health;
+    }
+
     public int getSunCost() {
         return SUN_COST;
     }
