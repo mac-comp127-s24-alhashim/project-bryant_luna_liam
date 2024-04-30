@@ -8,10 +8,10 @@
 First, download Visual Studio Code from the [official website](https://code.visualstudio.com/) and follow the installation instructions for your operating system.
 
 ## Open Visual Studio Code
-Once installed, launch Visual Studio Code from your applications or desktop.
+Once installed, launch Visual Studio Code from your computer.
 
 ## Open Directory with Downloaded PvZ Files
-Navigate to the directory where you downloaded the Plants vs Zombies (PvZ) Java files using the file explorer in Visual Studio Code.
+Open the directory where you downloaded the Plants vs Zombies (PvZ) Java files using the file explorer in Visual Studio Code.
 
 <!-- Game Play -->
 
@@ -19,7 +19,7 @@ Navigate to the directory where you downloaded the Plants vs Zombies (PvZ) Java 
 Locate the PvZ.java file within the directory you opened in Visual Studio Code.
 
 ## Click Run Button
-In Visual Studio Code, locate the "Run" button, typically found in the toolbar or under the "Run" menu. Click on it to compile and execute the PvZ.java file.
+In Visual Studio Code, find the "Run" button, typically found in the toolbar or under the "Run" menu. Click on it to compile and execute the PvZ.java file.
 
 ## Name Pop Up Screen
 Upon running the game, a pop-up screen may prompt you to enter a name for your player profile. Enter your desired name and proceed.
@@ -34,7 +34,7 @@ Continue collecting sun sprites by clicking on them until you have accumulated e
 ![Sunflower](/upscaled/SUNFLOWER_UPSCALED.png)
 
 ## Defend Your Home From Zombies!
-Deploy your chosen plants strategically to fend off the waves of zombies advancing towards your home. Use a combination of offensive and defensive plants to protect your territory.
+Plant your chosen plants strategically to fend off the waves of zombies advancing towards your home. The peashooter shoots peas, the potatomine and cherrybomb create explosions, and the wallnut serves as a shield. Use a combination of offensive and defensive plants to protect your territory!
 - ![Peashooter](/upscaled/PEASHOOTER_UPSCALED.png) ![Wall-nut](/upscaled/WALLNUT_UPSCALED.png)
 - ![Potato Mine](/upscaled/POTATOMINE_UPSCALED.png) ![Cherry Bomb](/upscaled/CHERRYBOMB_UPSCALED.png)
 
@@ -42,3 +42,10 @@ Deploy your chosen plants strategically to fend off the waves of zombies advanci
 The game will progress with waves of zombies attacking your home. Your objective is to survive each wave and prevent the zombies from breaching your defenses. Depending on your performance, you will either emerge victorious by repelling all the zombies or succumb to the zombie invasion.
 - ![Normal Zombie](/upscaled/NORMAL_ZOMBIE_UPSCALED.png) ![Cone Zombie](/upscaled/CONE_ZOMBIE_UPSCALED.png)
 - ![Bucket Zombie](/upscaled/BUCKET_ZOMBIE_UPSCALED.png)
+
+<!-- Limitations -->
+
+## Limitations
+- **No Levels**: The game does not feature multiple levels or stages. It consists of continuous waves of zombies increasing in difficulty.
+- **Limited Plant Management**: The shovel tool can remove plants from the grid, but there is no option to replant them elsewhere. Once removed, the plant is gone. The only way to replant the plant is to select it again from the menu and place it on the grid.
+- **No Pause Button**: Currently, the game does not have a pause button. Once the game starts, it progresses continuously without the ability to pause and resume.
