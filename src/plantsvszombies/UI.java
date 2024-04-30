@@ -95,7 +95,12 @@ public class UI extends GraphicsGroup {
      * Loads the name text.
      */
     private void loadNameText() {
-        nameText = new GraphicsText(PvZ.getPlayerName() + "'s House");
+        if (PvZ.getPlayerName() == null || PvZ.getPlayerName().trim().isEmpty()) {
+            nameText = new GraphicsText("Nobody's House");
+        }
+        else {
+            nameText = new GraphicsText(PvZ.getPlayerName() + "'s House");
+        }
         nameText.setFont(FontStyle.BOLD, 12);
         nameText.setFillColor(FONT_COLOR);
         nameText.setPosition(10, canvas.getHeight() * 0.9825);
