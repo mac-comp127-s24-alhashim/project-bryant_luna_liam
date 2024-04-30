@@ -1,9 +1,11 @@
 # Plants vs Zombies Java Edition
 
+![Plants vs Zombies Logo](GAME_LOGO.png)
+
 <!-- Installation -->
 
 ## Download & Install Visual Studio Code
-First, download Visual Studio Code from the [official website](https://code.visualstudio.com/) and follow the installation instructions for your operating system. 
+First, download Visual Studio Code from the [official website](https://code.visualstudio.com/) and follow the installation instructions for your operating system.
 
 ## Open Visual Studio Code
 Once installed, launch Visual Studio Code from your applications or desktop.
@@ -33,3 +35,4 @@ Deploy your chosen plants strategically to fend off the waves of zombies advanci
 
 ## Win or Lose!
 The game will progress with waves of zombies attacking your home. Your objective is to survive each wave and prevent the zombies from breaching your defenses. Depending on your performance, you will either emerge victorious by repelling all the zombies or succumb to the zombie invasion.
+
