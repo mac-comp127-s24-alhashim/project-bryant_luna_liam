@@ -20,8 +20,7 @@ public class Explosion extends GraphicsGroup {
     private double radius;
     private Point location;
 
-    public Explosion(CanvasWindow canvas, double radius, Point location, int damage) {
-        this.canvas = canvas;
+    public Explosion(double radius, Point location, int damage) {
         this.radius = radius;
         this.location = location;
         EXPLOSION_DAMAGE = damage;
@@ -33,19 +32,10 @@ public class Explosion extends GraphicsGroup {
         explosion.setFillColor(EXPLOSION_COLOR);
         explosion.setStrokeColor(EXPLOSION_OUTLINE_COLOR);
         explosion.setCenter(location.getX() + 16, location.getY() + 16);
-        addToCanvas();
     }
 
     public int getDamage() {
         return EXPLOSION_DAMAGE;
-    }
-
-    public void addToCanvas() {
-        canvas.add(explosion);
-    }
-
-    public void removeFromCavas() {
-        canvas.remove(explosion);
     }
 
     // public void dealDamage(ZombieManager zombieManager) {

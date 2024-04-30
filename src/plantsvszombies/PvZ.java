@@ -10,6 +10,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
@@ -66,10 +67,11 @@ public class PvZ {
             // Tasks to run every 1 frame
             if ((frame % 1) == 0) {
                 for (Zombie zombie : zombieManager.getZombies()) {                
-                    plantManager.moveProjectiles(zombie); 
-                    if (zombie.getHealth() <= 0) {
-                        zombieManager.getZombies().remove(zombie);
-                    }
+                    plantManager.moveProjectiles(zombie);
+                    plantManager.explode(zombie); 
+                    // if (zombie.getHealth() <= 0) {
+                    //     // zombieManager.getZombies().remove(zombie);
+                    // }
                 }
                 if (gameSun != null) {
                     gameSun.moveBy(0, 0.33);
@@ -85,11 +87,18 @@ public class PvZ {
             if ((frame % 90) == 0) {
                 if (zombieManager.getZombies().size() > 0) {
                     plantManager.shootProjectile();
+                    plantManager.createExplosions();
                 }
-                for (Zombie zombie : zombieManager.getZombies()) {
-                    plantManager.damagePlant(zombie);
+       
+                if (zombieManager.getZombies() != null) {
+                    Iterator<Zombie> iterator = zombieManager.getZombies().iterator();
+                    Zombie zombie;
+                    while (iterator.hasNext()) {
+                        zombie = iterator.next();
+                        plantManager.damagePlant(zombie);
+                    }
                 }
-            // }
+            }
             
             // Tasks to run every 24 seconds
             if ((frame % 1440) == 0) {
@@ -111,15 +120,12 @@ public class PvZ {
             // if ((frame % 3600) == 0) {
             //     if (spawnSpeed >= 300) {
             //         spawnSpeed /= 1.12;
-            //     }
-            //     else {
-            //         spawnSpeed = 300;
             //     } 
             // }
             // if ((frame % spawnSpeed) == 0) {
             //     zombieManager.zombieSpawn();
             // }
-        }
+        // }
         });
 
         /*

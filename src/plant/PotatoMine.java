@@ -14,8 +14,8 @@ public class PotatoMine extends GraphicsGroup {
     public static final int SUN_COST = 25;
     private static final double RECHARGE_TIME_SECONDS = 20000;
     private static final double ARM_TIME = 900;
-    private static final int POTATOMINE_DAMAGE = 1800;
-    private static final int POTATOMINE_EXPLOSION_RADIUS = 16;
+    public static final int POTATOMINE_DAMAGE = 1800;
+    public static final int POTATOMINE_EXPLOSION_RADIUS = 16;
     
     private CanvasWindow canvas;
     private Point location;
