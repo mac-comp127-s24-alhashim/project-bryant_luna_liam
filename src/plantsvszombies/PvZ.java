@@ -44,7 +44,7 @@ public class PvZ {
 
     // Player Statistics
     private static String playerName;
-    public static int sunCount = 900;
+    public static int sunCount = 9999;
     private static int zombiesKilled = 0;
     private final short maxSun = 9999;
     Random random = new Random();
@@ -85,18 +85,27 @@ public class PvZ {
 
             // Tasks to run every 1.5 seconds
             if ((frame % 90) == 0) {
+
                 if (zombieManager.getZombies().size() > 0) {
                     plantManager.shootProjectile();
-                    plantManager.createExplosions();
                 }
        
                 if (zombieManager.getZombies() != null) {
-                    Iterator<Zombie> iterator = zombieManager.getZombies().iterator();
+                    plantManager.createCherryBombExplosion();
+                    Iterator<Zombie> zombieIterator = zombieManager.getZombies().iterator();
                     Zombie zombie;
-                    while (iterator.hasNext()) {
-                        zombie = iterator.next();
-                        plantManager.damagePlant(zombie);
+                    while (zombieIterator.hasNext()) {
+                        zombie = zombieIterator.next();
+                        plantManager.createPotatoMineExplosion(zombie);
+                        plantManager.zombieDamagePlant(zombie);
                     }
+                    // Iterator<Explosion> explosionIterator = plantManager.getExplosions().iterator();
+                    // Explosion explosion;
+                    // while (explosionIterator.hasNext()) {
+                    //     explosion = explosionIterator.next();
+                    //     zombieManager.createZombieExplosion();
+                    //     plantManager.explosionsDamagePlant(explosion);
+                    // }
                 }
             }
             
@@ -111,7 +120,7 @@ public class PvZ {
             }
 
             // Tasks to run every 15 seconds
-            if ((frame % 900) == 0) {
+            if ((frame % 60) == 0) {
                 plantManager.armPotatoMine();
                 zombieManager.zombieSpawn();
             }

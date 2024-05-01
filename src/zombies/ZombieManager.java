@@ -5,10 +5,7 @@ import java.util.Random;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Point;
-import plant.Projectile;
-import plant.Sunflower;
-import plant.Peashooter;
-import plant.Wallnut;
+import plant.Explosion;
 import plantsvszombies.GrassTile;
 import plantsvszombies.Lawn;
 import plantsvszombies.PvZ;
@@ -20,6 +17,7 @@ public class ZombieManager {
     final int GRACE_TIME;
     int spawnRate;
     static ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
+    ArrayList<Explosion> zombieExplosions = new ArrayList<Explosion>();
     ArrayList<Point> tileList = new ArrayList<Point>();
     CanvasWindow canvas;
     
@@ -61,9 +59,23 @@ public class ZombieManager {
         }
     }
 
-    /*
-     * 
-     */
+    public void createZombieExplosion() {
+        if (zombieList != null) {
+            for (Zombie zombie : zombieList) {
+                if (!zombie.getExplodeStatus()) {
+                    Explosion explosion = new Explosion(Zombie.explosionRadius, zombie.getPosition(), Zombie.explosiveAttack);
+                    zombieExplosions.add(explosion);
+                    canvas.add(explosion);
+                    zombie.setExplodeStatus(true);
+                }
+                if ((PvZ.getFrame() % 90) == 0 && zombie.getExplodeStatus()) {
+                    zombie.die();
+                }
+                }
+              
+        }
+    }
+
     public ArrayList<Zombie> getZombies() {
         return zombieList;
     }
@@ -74,13 +86,5 @@ public class ZombieManager {
             canvas.remove(zombie);
         }
     }
-
-    // private Boolean damageZombieProjectile(Projectile projectile, Zombie zombie) {
-    //     if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
-    //         zombie.reduceHealth(projectile.getDamage());
-    //         return true;
-    //     }
-    //     else return false;
-    // }
 
 }

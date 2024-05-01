@@ -1,14 +1,8 @@
 package plant;
 
-import java.util.List;
-import java.util.ArrayList;
-
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
-import plantsvszombies.PvZ;
-import zombies.*;
 
 public class Projectile extends GraphicsGroup {
 

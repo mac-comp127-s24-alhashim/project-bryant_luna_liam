@@ -1,9 +1,7 @@
 package plant;
 
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 
 public class CherryBomb extends GraphicsGroup {
@@ -15,21 +13,14 @@ public class CherryBomb extends GraphicsGroup {
     public static final int CHERRYBOMB_DAMAGE = 1800;
     public static final int CHERRYBOMB_EXPLOSION_RADIUS = 48;
     
-    private CanvasWindow canvas;
-    private Point location;
-    private GraphicsGroup cherryBomb;
     Image cherryBombSprite;
-    private Explosion explosion;
+    Boolean hasExploded;
 
     public CherryBomb() {
+        hasExploded = false;
         cherryBombSprite = new Image(SPRITE_PATH);
         add(cherryBombSprite);
-        // explosion = new Explosion(canvas, CHERRYBOMB_EXPLOSION_RADIUS, location, CHERRYBOMB_DAMAGE);
         PvZ.sunCount -= SUN_COST;
-    }
-
-    public void action() {
-        // explosion = new Explosion(canvas, CHERRYBOMB_EXPLOSION_RADIUS, location, CHERRYBOMB_DAMAGE);
     }
 
     public int getSunCost() {
@@ -38,6 +29,14 @@ public class CherryBomb extends GraphicsGroup {
 
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
+    }
+
+    public void setExploded(Boolean exploded) {
+        hasExploded = exploded;
+    }
+
+    public Boolean getExplodeStatus() {
+        return hasExploded;
     }
 
     public void die() {

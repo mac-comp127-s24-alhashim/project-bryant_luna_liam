@@ -17,15 +17,13 @@ public class PotatoMine extends GraphicsGroup {
     public static final int POTATOMINE_DAMAGE = 1800;
     public static final int POTATOMINE_EXPLOSION_RADIUS = 16;
     
-    private CanvasWindow canvas;
-    private Point location;
-    private GraphicsGroup potatoMine;
     Image potatoMineSprite;
     private Boolean isBuried;
-    private Explosion explosion;
+    private Boolean hasExploded;
 
     public PotatoMine() {
         isBuried = true;
+        hasExploded = false;
         if (!isBuried) {
             potatoMineSprite = new Image(SPRITE_PATH);
         }
@@ -41,17 +39,16 @@ public class PotatoMine extends GraphicsGroup {
         potatoMineSprite.setImagePath(SPRITE_PATH);
     }
 
-    public void runScheduledTasks() {
-        if (!isBuried) {
-            //action();
-        }
-        else {
-            if ((PvZ.frame % ARM_TIME) == 0) action();
-        }
+    public Boolean getBuriedStatus() {
+        return isBuried;
     }
 
-    public void action() {
-        // explosion = new Explosion(canvas, POTATOMINE_EXPLOSION_RADIUS, location, POTATOMINE_DAMAGE);
+    public void setExploded(Boolean exploded) {
+        hasExploded = exploded;
+    }
+
+    public Boolean getExplodeStatus() {
+        return hasExploded;
     }
 
     public int getSunCost() {
@@ -65,7 +62,5 @@ public class PotatoMine extends GraphicsGroup {
     public void die() {
         removeAll();
     }
-
-
 
 }

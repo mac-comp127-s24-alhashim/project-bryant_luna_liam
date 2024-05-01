@@ -1,11 +1,8 @@
 package plant;
 
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
-import plantsvszombies.Sun;
 
 public class Sunflower extends GraphicsGroup {
 
@@ -16,9 +13,6 @@ public class Sunflower extends GraphicsGroup {
     private static final double SUN_PRODUCTION_RATE = 24000;
     
     public int health = 300;
-    private CanvasWindow canvas;
-    private Point location;
-    private GraphicsGroup sunflower;
     Image sunflowerSprite;
 
     public Sunflower() {

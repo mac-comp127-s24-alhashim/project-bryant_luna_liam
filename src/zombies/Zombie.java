@@ -15,14 +15,16 @@ public class Zombie extends GraphicsGroup {
     private Image explosiveSprite = new Image("zombies/EXPLOSIVE_ZOMBIE.png");
     static final double ZOMBIE_WIDTH = zombieSprite.getWidth();
     static final double ZOMBIE_HEIGHT = zombieSprite.getHeight();
+    static final int zombieAttack = 100;
+    static final int explosiveAttack = 4000;
+    static final double explosionRadius = 48;
     Random random = new Random();
     Boolean eating = false;
+    Boolean hasExploded = false;
     int zombieHealth = 181;
     int coneHealth = 370;
     int bucketHealth = 1100;
     int explosiveHealth = 335;
-    int zombieAttack = 100;
-    int explosiveAttack = 4000;
     int zombieType = 0; // 0 = NORMAL | 1 = CONE | 2 = BUCKET | 3 = EXPLOSIVE
 
     public Zombie(double x, double y) {
@@ -79,11 +81,11 @@ public class Zombie extends GraphicsGroup {
                 break;
             case 3:
                 explosiveHealth -= damage;
-                if (explosiveHealth <= 0) explosiveDie();
+                if (explosiveHealth <= 0) die();
         }
     }
 
-    private void die() {
+    public void die() {
         removeAll();
     }
 
@@ -120,12 +122,20 @@ public class Zombie extends GraphicsGroup {
         }
     }
 
-    public boolean getEatingState() {
+    public boolean getEatingStatus() {
         return eating;
     }
 
-    public void setEatingState(Boolean eat) {
+    public void setEatingStatus(Boolean eat) {
         eating = eat;
+    }
+
+    public boolean getExplodeStatus() {
+        return hasExploded;
+    }
+
+    public void setExplodeStatus(Boolean explode) {
+        hasExploded = explode;
     }
     
 }

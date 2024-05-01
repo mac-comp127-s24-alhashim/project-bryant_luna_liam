@@ -1,12 +1,10 @@
 package plant;
 
-import java.util.List;
-import java.util.ArrayList;
+// import java.util.List;
+// import java.util.ArrayList;
 
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 
 public class Peashooter extends GraphicsGroup {
@@ -20,14 +18,11 @@ public class Peashooter extends GraphicsGroup {
     final static int PEASHOOTER_DAMAGE = 20;
     
     public int health = 300;
-    private CanvasWindow canvas;
-    private Point location;
-    private GraphicsGroup peashooter;
     Image peashooterSprite;
-    private List<Projectile> peas;
+    // private List<Projectile> peas;
 
     public Peashooter() {
-        peas = new ArrayList<Projectile>();
+        // peas = new ArrayList<Projectile>();
         peashooterSprite = new Image(SPRITE_PATH);
         add(peashooterSprite);
         PvZ.sunCount -= SUN_COST;

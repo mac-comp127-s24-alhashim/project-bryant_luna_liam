@@ -1,9 +1,7 @@
 package plant;
 
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 
 public class Wallnut extends GraphicsGroup {
@@ -14,9 +12,6 @@ public class Wallnut extends GraphicsGroup {
     private static final double RECHARGE_TIME_SECONDS = 30000;
     
     public int health = 4000;
-    private CanvasWindow canvas;
-    private Point location;
-    private GraphicsGroup wallnut;
     Image wallnutSprite;
 
     public Wallnut() {

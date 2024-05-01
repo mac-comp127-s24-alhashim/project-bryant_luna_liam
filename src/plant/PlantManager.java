@@ -48,7 +48,7 @@ public class PlantManager {
     /**
      * If the sun cost requirement for the plant is met, plants the specified
      * plant.
-     * @param type 0=Sunflower, 1=Peashooter, 2=Wallnut, 3=PotatoMine, 4=CherryBomb
+     * @param type 0 = Sunflower, 1 = Peashooter, 2 = Wallnut, 3 = PotatoMine, 4 = CherryBomb
      * @param position
      */
     public void addPlant(int type, Point position) {
@@ -138,21 +138,37 @@ public class PlantManager {
      * Meant to be run every 1.5 seconds. Handles potaoto mine and cherry bomb logic:
      * Summons an explosions.
      */
-    public void createExplosions() {
+    public void createCherryBombExplosion() {
         if (cherryBombs != null) {
             for (CherryBomb cherryBomb : cherryBombs) {
-                Explosion explosion = new Explosion(CherryBomb.CHERRYBOMB_EXPLOSION_RADIUS, cherryBomb.getPosition(), CherryBomb.CHERRYBOMB_DAMAGE);
-                explosions.add(explosion);
-                canvas.add(explosion);
-                System.out.print("Created Explosion!");
-            }
+                if (!cherryBomb.getExplodeStatus()) {
+                    Explosion explosion = new Explosion(CherryBomb.CHERRYBOMB_EXPLOSION_RADIUS, cherryBomb.getPosition(), CherryBomb.CHERRYBOMB_DAMAGE);
+                    explosions.add(explosion);
+                    canvas.add(explosion);
+                    cherryBomb.setExploded(true);
+                }
+                if ((PvZ.getFrame() % 90) == 0 && cherryBomb.getExplodeStatus()) {
+                    cherryBomb.die();
+                }
+                }
+              
         }
+    }
+
+    public void createPotatoMineExplosion(Zombie zombie) {
         if (potatoMines != null) {
             for (PotatoMine potatoMine : potatoMines) {
-                Explosion explosion = new Explosion(PotatoMine.POTATOMINE_EXPLOSION_RADIUS, potatoMine.getPosition(), PotatoMine.POTATOMINE_DAMAGE);
-                explosions.add(explosion);
-                canvas.add(explosion);
-                System.out.print("Created Explosion!");
+                if (!potatoMine.getBuriedStatus() && canvas.getElementAt(potatoMine.getCenter()) == canvas.getElementAt(zombie.getCenter())) {
+                    if (!potatoMine.getExplodeStatus()) {
+                        Explosion explosion = new Explosion(PotatoMine.POTATOMINE_EXPLOSION_RADIUS, potatoMine.getPosition(), PotatoMine.POTATOMINE_DAMAGE);
+                        explosions.add(explosion);
+                        canvas.add(explosion);
+                        potatoMine.setExploded(true);
+                    }
+                    if ((PvZ.getFrame() % 90) == 0 && potatoMine.getExplodeStatus()) {
+                        potatoMine.die();
+                    }
+                }
             }
         }
     }
@@ -180,8 +196,8 @@ public class PlantManager {
             Explosion explosion;
             while (iterator.hasNext()) {
                 explosion = iterator.next();
-                System.out.print("EXPLODE!");
-                if (damageZombieExplosion(explosion, zombie)) {
+                damageZombieExplosion(explosion, zombie);
+                if ((PvZ.getFrame() % 90) == 0) {
                     iterator.remove();
                     canvas.remove(explosion);
                 }
@@ -198,27 +214,27 @@ public class PlantManager {
     }
 
     private Boolean damageZombieExplosion(Explosion explosion, Zombie zombie) {
-        if (canvas.getElementAt(explosion.getPosition()) == canvas.getElementAt(zombie.getCenter())) {
+        if (canvas.getElementAt(explosion.getCenter()) == canvas.getElementAt(zombie.getCenter())) {
             zombie.reduceHealth(explosion.getDamage());
             return true;
         }
         else return false;
     }
 
-    public void damagePlant(Zombie zombie) {
+    public void zombieDamagePlant(Zombie zombie) {
         if (sunflowers != null) {
             Iterator<Sunflower> iterator = sunflowers.iterator();
             Sunflower sunflower;
             while (iterator.hasNext()) {
                 sunflower = iterator.next();
                 if (canvas.getElementAt(sunflower.getCenter()) == canvas.getElementAt(zombie.getCenter())) {
-                    zombie.setEatingState(true);
+                    zombie.setEatingStatus(true);
                     sunflower.reduceHealth(zombie.getDamage());
                     if (sunflower.getHealth() <= 0) {
                         iterator.remove();
-                        zombie.setEatingState(false);
+                        zombie.setEatingStatus(false);
                     }
-                } else zombie.setEatingState(false);
+                } else zombie.setEatingStatus(false);
             }
         }
         if (peashooters != null) {
@@ -227,13 +243,13 @@ public class PlantManager {
             while (iterator.hasNext()) {
                 peashooter = iterator.next();
                 if (canvas.getElementAt(peashooter.getCenter()) == canvas.getElementAt(zombie.getCenter())) {
-                    zombie.setEatingState(true);
+                    zombie.setEatingStatus(true);
                     peashooter.reduceHealth(zombie.getDamage());
                     if (peashooter.getHealth() <= 0) {
                         iterator.remove();
-                        zombie.setEatingState(false);
+                        zombie.setEatingStatus(false);
                     }
-                } else zombie.setEatingState(false);
+                } else zombie.setEatingStatus(false);
             }
         }
         if (wallnuts != null) {
@@ -242,16 +258,59 @@ public class PlantManager {
             while (iterator.hasNext()) {
                 wallnut = iterator.next();
                 if (canvas.getElementAt(wallnut.getCenter()) == canvas.getElementAt(zombie.getCenter())) {
-                    zombie.setEatingState(true);
+                    zombie.setEatingStatus(true);
                     wallnut.reduceHealth(zombie.getDamage());
                     if (wallnut.getHealth() <= 0) {
                         iterator.remove();
-                        zombie.setEatingState(false);
+                        zombie.setEatingStatus(false);
                     }
-                } else zombie.setEatingState(false);
+                } else zombie.setEatingStatus(false);
             }
         }
     }
+
+    public void explosionsDamagePlant(Explosion explosion) {
+        if (sunflowers != null) {
+            Iterator<Sunflower> iterator = sunflowers.iterator();
+            Sunflower sunflower;
+            while (iterator.hasNext()) {
+                sunflower = iterator.next();
+                if (canvas.getElementAt(sunflower.getCenter()) == canvas.getElementAt(explosion.getCenter())) {
+                    sunflower.reduceHealth(explosion.getDamage());
+                    if (sunflower.getHealth() <= 0) {
+                        iterator.remove();
+                    }
+                }
+            }
+        }
+        if (peashooters != null) {
+            Iterator<Peashooter> iterator = peashooters.iterator();
+            Peashooter peashooter;
+            while (iterator.hasNext()) {
+                peashooter = iterator.next();
+                if (canvas.getElementAt(peashooter.getCenter()) == canvas.getElementAt(explosion.getCenter())) {
+                    peashooter.reduceHealth(explosion.getDamage());
+                    if (peashooter.getHealth() <= 0) {
+                        iterator.remove();
+                    }
+                } 
+            }
+        }
+        if (wallnuts != null) {
+            Iterator<Wallnut> iterator = wallnuts.iterator();
+            Wallnut wallnut;
+            while (iterator.hasNext()) {
+                wallnut = iterator.next();
+                if (canvas.getElementAt(wallnut.getCenter()) == canvas.getElementAt(explosion.getCenter())) {
+                    wallnut.reduceHealth(explosion.getDamage());
+                    if (wallnut.getHealth() <= 0) {
+                        iterator.remove();
+                    }
+                }
+            }
+        }
+    }
+
 
     public void armPotatoMine() {
         if (potatoMines != null) {
@@ -338,5 +397,9 @@ public class PlantManager {
 
     public List<CherryBomb> getCherryBombs() {
         return cherryBombs;
+    }
+
+    public List<Explosion> getExplosions() {
+        return explosions;
     }
 }
