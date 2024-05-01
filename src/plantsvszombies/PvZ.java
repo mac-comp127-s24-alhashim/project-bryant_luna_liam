@@ -81,6 +81,9 @@ public class PvZ {
                     }
                 }
                 zombieManager.moveZombies();
+                if (frame % 600 == 0) {
+                    checkGameStatus();
+                }
             }
 
             // Tasks to run every 1.5 seconds
@@ -241,5 +244,21 @@ public class PvZ {
             sunCount += 25;
         }
     }
+
+    private void checkGameStatus() {
+        // Check if all zombies are defeated
+        if (zombieManager.getZombies().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Congratulations, you have defeated all the zombies! You win!");
+            System.exit(0); // Terminate the game
+        }
+    
+        // Check if any zombie has reached the end of the lawn
+        for (Zombie zombie : zombieManager.getZombies()) {
+            if (zombie.getPosition().getX() <= 0) {
+                JOptionPane.showMessageDialog(null, "Oh no, a zombie reached your house! Game over!");
+                System.exit(0); // Terminate the game
+            }
+        }
+}
 }
 
