@@ -11,6 +11,9 @@ public class Projectile extends GraphicsGroup {
     
     private Image projectileSprite;
 
+    /**
+     * Constructs a projectile
+     */
     public Projectile(Point location, int damage, String spritePath) {
         PROJECTILE_DAMAGE = damage;
         PROJECTILE_SPRITE_PATH = spritePath;
@@ -20,6 +23,10 @@ public class Projectile extends GraphicsGroup {
         add(projectileSprite);
     }
 
+    /**
+     * Returns damage
+     * @return
+     */
     public int getDamage() {
         return PROJECTILE_DAMAGE;
     }

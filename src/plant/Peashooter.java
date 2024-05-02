@@ -42,7 +42,10 @@ public class Peashooter extends GraphicsGroup {
     void die() {
         removeAll();
     }
-
+    /**
+     * Gets plant health
+     * @return 
+     */
     public int getHealth() {
         return health;
     }

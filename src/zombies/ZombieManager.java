@@ -22,7 +22,7 @@ public class ZombieManager {
     CanvasWindow canvas;
     
     public ZombieManager(CanvasWindow canvas) {
-        GRACE_TIME = 0;//0;
+        GRACE_TIME = 0;
         spawnRate = 20000;
         this.canvas = canvas;
         tileList.add(Lawn.getGrassTilePosition(9));

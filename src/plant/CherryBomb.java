@@ -16,6 +16,9 @@ public class CherryBomb extends GraphicsGroup {
     Image cherryBombSprite;
     Boolean hasExploded;
 
+    /**
+     * Constructs a cherrybomb 
+     */
     public CherryBomb() {
         hasExploded = false;
         cherryBombSprite = new Image(SPRITE_PATH);
@@ -23,22 +26,36 @@ public class CherryBomb extends GraphicsGroup {
         PvZ.sunCount -= SUN_COST;
     }
 
+    /**
+     * Gets the sun cost
+     * @return
+     */
     public int getSunCost() {
         return SUN_COST;
     }
-
+    /**
+     * Gets the recharge time
+     * @return
+     */
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
     }
-
+    /**
+     * Updates whether cherrybomb has exploded or not
+     */
     public void setExploded(Boolean exploded) {
         hasExploded = exploded;
     }
-
+    /**
+     * Gets the exploded status
+     */
     public Boolean getExplodeStatus() {
         return hasExploded;
     }
 
+    /**
+     * Removes cherrybomb
+     */
     public void die() {
         removeAll();
     }
