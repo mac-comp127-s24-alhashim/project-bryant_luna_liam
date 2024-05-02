@@ -285,7 +285,7 @@ public class PlantManager {
             PotatoMine potatoMine;
             while (iterator.hasNext()) {
                 potatoMine = iterator.next();
-                potatoMine.armUp();
+                potatoMine.arm();
             }
         }
     }

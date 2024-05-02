@@ -17,7 +17,7 @@ public class GrassTile extends GraphicsGroup {
     private Rectangle grassTile;
 
     /**
-     * Constructs a grass tile
+     * Constructs a grass tile.
      */
     public GrassTile(int x, int y, int tileNumber) {
         grassTile = new Rectangle(x, y, TILE_SIZE, TILE_SIZE);
@@ -29,8 +29,9 @@ public class GrassTile extends GraphicsGroup {
         grassTile.setStrokeColor(OUTLINE_COLOR);
         add(grassTile);
     }
+
     /**
-     * Returns a grass tile
+     * Returns this grass tile's Rectangle GraphicsObject.
      * @return
      */
     public Rectangle getGrassTile() {

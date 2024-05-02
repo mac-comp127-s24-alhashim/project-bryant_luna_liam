@@ -6,6 +6,9 @@ import edu.macalester.graphics.Point;
 
 import java.awt.Color;
 
+/**
+ * An explosion that harms zombies and plants around it.
+ */
 public class Explosion extends GraphicsGroup {
 
     private final Color EXPLOSION_COLOR = new Color(255, 87, 0, 128);
@@ -15,8 +18,12 @@ public class Explosion extends GraphicsGroup {
     private Ellipse explosion;
     private double radius;
     private Point location;
+
     /**
-     * Constructs explosion
+     * Constructs a new explosion.
+     * @param radius The radius of the explosion, in pixels.
+     * @param location The location where the explosion shuld be made.
+     * @param damage The amount of damage this explosion should deal to entities in it.
      */
     public Explosion(double radius, Point location, int damage) {
         this.radius = radius;
@@ -25,8 +32,9 @@ public class Explosion extends GraphicsGroup {
         explosion = new Ellipse(0, 0, radius * 2, radius * 2);
         createExplosionDrawing();
     }
+
     /**
-     * Creates explosion drawing.
+     * Creates Kilt Graphics objects representing the explosion.
      */
     private void createExplosionDrawing() {
         explosion.setFillColor(EXPLOSION_COLOR);
@@ -36,18 +44,18 @@ public class Explosion extends GraphicsGroup {
     }
 
     /**
-     * Gets damage
+     * Gets this explosion's dealing damage.
      * @return
      */
     public int getDamage() {
         return EXPLOSION_DAMAGE;
     }
+
     /**
-     * Gets radius
+     * Gets the radius of this explosion.
      * @return
      */
     public double getRadius() {
         return radius;
     }
-    
 }

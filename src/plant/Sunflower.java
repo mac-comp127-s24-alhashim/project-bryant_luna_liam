@@ -4,7 +4,9 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import plantsvszombies.PvZ;
 
-
+/**
+ * A sunflower plant. It generates suns for the player.
+ */
 public class Sunflower extends GraphicsGroup {
 
     private static final String SPRITE_PATH = "plants/SUNFLOWER.png";
@@ -15,7 +17,7 @@ public class Sunflower extends GraphicsGroup {
     Image sunflowerSprite;
 
     /**
-     * Constructs a sunflower
+     * Constructs a sunflower.
      */
     public Sunflower() {
         loadSprite();
@@ -23,7 +25,7 @@ public class Sunflower extends GraphicsGroup {
     }
 
     /**
-     * Loads sunflower sprite
+     * Loads this sunflower's sprite.
      */
     public void loadSprite() {
         sunflowerSprite = new Image(SPRITE_PATH);
@@ -31,21 +33,21 @@ public class Sunflower extends GraphicsGroup {
     }
 
     /**
-     * Reduces health and sets that if health is zero to die
+     * Reduces this sunflower's health.
      */
     public void reduceHealth(int damage) {
         health -= damage;
         if (health <= 0) die();
     }
     /**
-     * Removes plant from canvas
+     * Removes this sunflower's sprite.
      */
     void die() {
         removeAll();
     }
 
     /**
-     * Gets health
+     * Gets this sunflower's health.
      * @return
      */
     public int getHealth() {
@@ -53,7 +55,7 @@ public class Sunflower extends GraphicsGroup {
     }
 
     /**
-     * Returns sun cost
+     * Returns this sunflower's sun cost.
      * @return
      */
     public int getSunCost() {

@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 /**
  * The game of Plants. vs Zombies, programmed in Java.
  * 
- * Authors: Bryant Juarez, Luna Muñoz-Maldonado, & William Acosta, Macalester College, COMP 127, Prof.
- * Amin G. Alhashim, PhD, 6σ
+ * Authors: Bryant Juarez, Luna Muñoz-Maldonado, & William Acosta.
+ * Macalester College, COMP 127, Prof. Amin G. Alhashim, PhD, 6σ
  */
 public class PvZ {
     public static final int CANVAS_WIDTH = 320;
@@ -43,7 +43,7 @@ public class PvZ {
     private final short maxSun;
     
     /**
-     * Constructs PvZ game
+     * Constructs a new PvZ instance.
      */
     public PvZ() {
         frame = 0;
@@ -108,13 +108,7 @@ public class PvZ {
             // Tasks to run every 90 frames (1.5 seconds)
             if ((frame % 90) == 0) {
                 checkLossStatus();
-                 
-                // Makes peashooters shoot peas
-                // if (zombieManager.getZombies().size() > 0) {
-                //     plantManager.shootPeas();
-                // }
 
-                // 
                 if (zombieManager.getZombies() != null) {
                     plantManager.explodeCherryBombs();
                     Iterator<Zombie> zombieIterator = zombieManager.getZombies().iterator();

@@ -7,6 +7,10 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import plantsvszombies.PvZ;
 
+/**
+ * A peashooter plant. It's an aggressive plant that shoots peas
+ * periodically that deal damage to zombies.
+ */
 public class Peashooter extends GraphicsGroup {
 
     private static final String SPRITE_PATH = "plants/PEASHOOTER.png";
@@ -17,10 +21,11 @@ public class Peashooter extends GraphicsGroup {
     
     public int health = 300;
     Image peashooterSprite;
-    // private List<Projectile> peas;
 
+    /**
+     * Constructs a peashooter.
+     */
     public Peashooter() {
-        // peas = new ArrayList<Projectile>();
         peashooterSprite = new Image(SPRITE_PATH);
         add(peashooterSprite);
         PvZ.sunCount -= SUN_COST;
@@ -35,13 +40,13 @@ public class Peashooter extends GraphicsGroup {
     }
 
     /**
-     * If Peashooter's health goes below zero, it is removed from canvas.
+     * Removes this peashooter's sprite.
      */
     void die() {
         removeAll();
     }
     /**
-     * Gets plant health
+     * Gets this peashooter's health.
      * @return 
      */
     public int getHealth() {

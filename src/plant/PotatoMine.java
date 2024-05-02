@@ -4,6 +4,10 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import plantsvszombies.PvZ;
 
+/**
+ * A potato mine plant. It's an aggressive plant that when placed takes some
+ * time to arm, then once armed, upon impact with a Zombie it creates an explosion.
+ */
 public class PotatoMine extends GraphicsGroup {
     
     private static final String SPRITE_PATH = "plants/POTATOMINE.png";
@@ -19,7 +23,7 @@ public class PotatoMine extends GraphicsGroup {
     private Boolean hasExploded;
 
     /**
-     * Constructs a potato mine
+     * Constructs a potato mine.
      */
     public PotatoMine() {
         isBuried = true;
@@ -35,15 +39,15 @@ public class PotatoMine extends GraphicsGroup {
     }
     
     /**
-     * Determines whether a potato mine is buried or not
+     * Arm this potato mine.
      */
-    public void armUp() {
+    public void arm() {
         isBuried = false;
         potatoMineSprite.setImagePath(SPRITE_PATH);
     }
 
     /**
-     * Gets buried status
+     * Gets this potato mine's buried status.
      * @return
      */
     public Boolean getBuriedStatus() {
@@ -51,14 +55,14 @@ public class PotatoMine extends GraphicsGroup {
     }
 
     /**
-     * Sets a potato mine as exploded
+     * Sets this potato mine's status to exploded.
      */
     public void setExploded(Boolean exploded) {
         hasExploded = exploded;
     }
 
     /**
-     * Gets exploded status
+     * Gets this potato mine's exploded status.
      * @return
      */
     public Boolean getExplodeStatus() {
@@ -66,7 +70,7 @@ public class PotatoMine extends GraphicsGroup {
     }
 
     /**
-     * Gets sun cost
+     * Gets the sun cost for this potato mine.
      * @return
      */
     public int getSunCost() {
@@ -74,7 +78,7 @@ public class PotatoMine extends GraphicsGroup {
     }
 
     /**
-     * Gets recharge time
+     * Gets this potato mine's recharge time.
      * @return
      */
     public double getRechargeTime() {
@@ -82,10 +86,9 @@ public class PotatoMine extends GraphicsGroup {
     }
 
     /**
-     * Removes potato mine from canvas
+     * Removes this potato mine's sprite.
      */
     public void die() {
         removeAll();
     }
-
 }

@@ -5,7 +5,7 @@ import edu.macalester.graphics.*;
 import plantsvszombies.PvZ;
 
 /**
- * A normal zombie. No special abilities.
+ * A zombie that eats plants. Can have varying abilities and protection.
  */
 public class Zombie extends GraphicsGroup {
 
@@ -32,7 +32,7 @@ public class Zombie extends GraphicsGroup {
     int zombieType = 0;
 
     /**
-     * Constructs Zombie and can have special abilities with a 2% chance of big zombie, 4% chance of explosive
+     * Constructs Zombie. A zombie can have special abilities with a 2% chance of big zombie, 4% chance of explosive
      * zombie, 60% chance of being a normal zombie, 30% chance of being a cone zombie, and a 10% chance
      * of being a bucket zombie.
      */
@@ -69,7 +69,7 @@ public class Zombie extends GraphicsGroup {
     }
 
     /**
-     * Moves zombie
+     * Moves this zombie.
      */
     public void move() {
         if (!eating) {
@@ -84,7 +84,8 @@ public class Zombie extends GraphicsGroup {
     }
 
     /**
-     * Reduces health per zombie criteria
+     * Reduces health per zombie criteria. Cones and Buckets grant zombies
+     * additional protection against damage.
      */
     public void reduceHealth(int damage) {
         switch (zombieType) {
@@ -115,7 +116,7 @@ public class Zombie extends GraphicsGroup {
     }
 
     /**
-     * Removes zombie from the canvas.
+     * Removes this zombie.
      */
     public void die() {
         removeAll();
@@ -139,7 +140,7 @@ public class Zombie extends GraphicsGroup {
     }
 
     /**
-     * Gets health
+     * Gets this zombie's health.
      * 
      * @return
      */
@@ -154,7 +155,7 @@ public class Zombie extends GraphicsGroup {
     }
 
     /**
-     * Gets damage 
+     * Gets this zombie's damage value.
      * @return
      */
     public int getDamage() {
@@ -167,7 +168,7 @@ public class Zombie extends GraphicsGroup {
     }
 
     /**
-     * Gets zombie eating plant status
+     * Returns true if this zombie is eating a plant.
      * 
      * @return
      */
@@ -176,14 +177,15 @@ public class Zombie extends GraphicsGroup {
     }
 
     /**
-     * Sets zombie eating plant status
+     * Sets this zombie's eating status.
+     * @param eat
      */
     public void setEatingStatus(Boolean eat) {
         eating = eat;
     }
 
     /**
-     * Gets exploded status
+     * Gets this zombie's explosion status.
      * 
      * @return hitByExplosion;
      */
@@ -192,7 +194,7 @@ public class Zombie extends GraphicsGroup {
     }
 
     /**
-     * Sets zombie exploded status
+     * Sets this zombie's explosion status.
      */
     public void setExplodedStatus(Boolean exploded) {
         hitByExplosion = exploded;

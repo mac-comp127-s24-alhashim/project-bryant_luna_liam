@@ -15,8 +15,6 @@ public class Lawn {
     
     private CanvasWindow canvas;
     private static List<GrassTile> tileList;
-
-    // Part of a quick and dirty fix, see below
     private static List<Point> pointList;
     private static GraphicsGroup grassTiles;
 
@@ -61,8 +59,9 @@ public class Lawn {
     public static Point getGrassTilePosition(int n) {
         return pointList.get(n);
     }
+
     /**
-     * Generates lawn and adds it to the canvas
+     * Generates the lawn and adds it to the given canvas.
      */
     public void generateLawn() {
         for (int i = 0; i < MAX_ROWS; i++) {
@@ -73,9 +72,6 @@ public class Lawn {
                 GrassTile grassTile = new GrassTile(x, y, tileNumber);
                 tileList.add(grassTile);
                 grassTiles.add(grassTile);
-
-                // This is a quick and dirty fix for not being able to
-                // get the position of a grass tile on the screen, for some reason
                 Point tilePosition = new Point(x, y);
                 pointList.add(tilePosition);
             }

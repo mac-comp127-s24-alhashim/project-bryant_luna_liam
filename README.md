@@ -47,7 +47,7 @@ In Visual Studio Code, find the "Run" button, typically found in the toolbar or 
 ## Name Pop Up Screen
 Upon running the game, a pop-up screen may prompt you to enter a name for your player profile. Enter your desired name and proceed.
 
-## Click On Sun Sprites- They are your currency!
+## Click On Sun Sprites - They are your currency!
 In the game interface, click on the sun sprites that appear on the screen. These sun sprites serve as your currency, which you'll use to plant various plants for defense.
 
 ![Sun Sprite](/upscaled/SUN_UPSCALED.png)
@@ -58,7 +58,7 @@ Continue collecting sun sprites by clicking on them until you have accumulated e
 ![Sunflower](/upscaled/SUNFLOWER_UPSCALED.png)
 
 ## Defend Your Home From Zombies!
-Plant your chosen plants strategically to fend off the waves of zombies advancing towards your home. The peashooter shoots peas, the potatomine and cherrybomb create explosions, and the wallnut serves as a shield. Use a combination of offensive and defensive plants to protect your territory!
+Click on a seed packet, then click on a tile to place a plant! Plant your chosen plants strategically to fend off the waves of zombies advancing towards your home. The peashooter shoots peas, the potatomine and cherrybomb create explosions, and the wallnut serves as a shield. Use a combination of offensive and defensive plants to protect your territory! Use the shovel to remove a plant by clicking on it then clicking on the plant to remove.
 - ![Peashooter](/upscaled/PEASHOOTER_UPSCALED.png) ![Wall-nut](/upscaled/WALLNUT_UPSCALED.png)
 - ![Potato Mine](/upscaled/POTATOMINE_UPSCALED.png) ![Cherry Bomb](/upscaled/CHERRYBOMB_UPSCALED.png)
 

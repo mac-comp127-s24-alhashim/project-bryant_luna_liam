@@ -4,6 +4,10 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import plantsvszombies.PvZ;
 
+/**
+ * A wallnut plant. It's a defensive plant that acts as a shield
+ * to stall zombies.
+ */
 public class Wallnut extends GraphicsGroup {
 
     private static final String SPRITE_PATH = "plants/WALLNUT.png";
@@ -15,7 +19,7 @@ public class Wallnut extends GraphicsGroup {
     Image wallnutSprite;
 
     /**
-     * Constructs wallnut
+     * Constructs a wallnut.
      */
     public Wallnut() {
         wallnutSprite = new Image(SPRITE_PATH);
@@ -24,14 +28,15 @@ public class Wallnut extends GraphicsGroup {
     }
 
     /**
-     * Reduces health and sets that if health is zero to die
+     * Reduces this wallnut's health. 
      */
     public void reduceHealth(int damage) {
         health -= damage;
         if (health <= 0) die();
     }
+
     /**
-     * Gets health
+     * Gets this wallnut's health.
      * @return
      */
     public int getHealth() {
@@ -39,21 +44,23 @@ public class Wallnut extends GraphicsGroup {
     }
 
      /**
-     * Returns sun cost
+     * Returns the sun cost of this wallnut.
      * @return
      */
     public int getSunCost() {
         return SUN_COST;
     }
+
      /**
-     * Returns recharge time
+     * Returns the recharge time of this wallnut.
      * @return
      */
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
     }
+
     /**
-     * Removes plant from canvas
+     * Removes this wallnut's sprite.
      */
     public void die() {
         removeAll();

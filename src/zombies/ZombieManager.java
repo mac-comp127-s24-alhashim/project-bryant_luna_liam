@@ -22,7 +22,7 @@ public class ZombieManager {
     CanvasWindow canvas;
     
     /**
-     * Manages zombies
+     * Creates a new zombie manager.
      */
     public ZombieManager(CanvasWindow canvas) {
         
@@ -41,13 +41,13 @@ public class ZombieManager {
     }
 
     /*
-     * Moves all the zombies on the canvas.
+     * Moves all the zombies.
      */
     public void moveZombies() {
         for (Zombie zombie : zombieList) zombie.move();
     }
     
-    /*
+    /**
      * If all conditions are right, spawns a zombie.
      * Zombies will not spawn within the set grace time, and
      * one zombie will spawn at the set spawn rate.
@@ -66,7 +66,7 @@ public class ZombieManager {
     }
 
     /**
-     * Gets all zombies through zombie list
+     * Returns all zombies.
      * @return
      */
     public ArrayList<Zombie> getZombies() {
@@ -74,7 +74,8 @@ public class ZombieManager {
     }
 
     /**
-     * Removes zombie from canvas once its health is below zero
+     * Removes the specified zombie.
+     * @param zombie The zombie to remove.
      */
     public void removeZombie(Zombie zombie) {
         if (zombie.getHealth() <= 0) {
