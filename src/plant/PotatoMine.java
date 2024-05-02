@@ -1,9 +1,7 @@
 package plant;
 
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 import plantsvszombies.PvZ;
 
 public class PotatoMine extends GraphicsGroup {
@@ -13,7 +11,6 @@ public class PotatoMine extends GraphicsGroup {
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_POTATOMINE.png";
     public static final int SUN_COST = 25;
     private static final double RECHARGE_TIME_SECONDS = 20000;
-    private static final double ARM_TIME = 900;
     public static final int POTATOMINE_DAMAGE = 1800;
     public static final int POTATOMINE_EXPLOSION_RADIUS = 16;
     
@@ -36,6 +33,7 @@ public class PotatoMine extends GraphicsGroup {
         add(potatoMineSprite);
         PvZ.sunCount -= SUN_COST;
     }
+    
     /**
      * Determines whether a potato mine is buried or not
      */

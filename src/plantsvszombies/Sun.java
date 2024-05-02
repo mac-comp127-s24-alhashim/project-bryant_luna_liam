@@ -8,12 +8,9 @@ import edu.macalester.graphics.*;
 public class Sun extends GraphicsGroup {
     
     private final int SUN_VALUE = 25;
-    private CanvasWindow canvas;
     private Point location;
     static Image sunSprite;
-    private GraphicsGroup sun;
     private boolean spawnType;
-    private double time;
 
     /**
      * Creates a sun.
@@ -39,15 +36,18 @@ public class Sun extends GraphicsGroup {
         PvZ.sunCount += SUN_VALUE;
         remove(sunSprite);
     }
-
+    /**
+     * Loads sun sprite 
+     */
     private void loadSprite() {
         sunSprite = new Image("game/SUN.png");
         setCenter(location);
         add(sunSprite);
     }
-
+    /**
+     * Updates position of sun and makes it so that the sun will not move if it is not spawned by the game.
+     */
     public void updatePosition() {
-        // The sun will not move if it is not spawned by the game.
         if (spawnType == true) {
             moveBy(0, 1);
         }

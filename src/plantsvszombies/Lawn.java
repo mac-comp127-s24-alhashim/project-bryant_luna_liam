@@ -29,7 +29,6 @@ public class Lawn {
         pointList = new ArrayList<Point>();
         grassTiles = new GraphicsGroup();
         this.canvas = canvas;
-        generateLawn();
     }
 
     /**
@@ -62,8 +61,10 @@ public class Lawn {
     public static Point getGrassTilePosition(int n) {
         return pointList.get(n);
     }
-
-    private void generateLawn() {
+    /**
+     * Generates lawn and adds it to the canvas
+     */
+    public void generateLawn() {
         for (int i = 0; i < MAX_ROWS; i++) {
             int y = START_Y + (GrassTile.TILE_SIZE * i);
             for (int n = 0; n < MAX_COLUMNS; n++) {
