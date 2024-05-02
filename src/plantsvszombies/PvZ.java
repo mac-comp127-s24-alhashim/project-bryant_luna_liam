@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 
 
 /**
- * The game of Plants. vs Zombies, programmed in Java.
+ * The game of Plants vs. Zombies, programmed in Java.
  * 
  * Authors: Bryant Juarez, Luna Muñoz-Maldonado, & William Acosta.
  * Macalester College, COMP 127, Prof. Amin G. Alhashim, PhD, 6σ
