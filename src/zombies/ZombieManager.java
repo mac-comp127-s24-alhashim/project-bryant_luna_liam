@@ -16,14 +16,22 @@ import plantsvszombies.PvZ;
 public class ZombieManager {
     final int GRACE_TIME;
     int spawnRate;
-    static ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
-    ArrayList<Explosion> zombieExplosions = new ArrayList<Explosion>();
-    ArrayList<Point> tileList = new ArrayList<Point>();
+    static ArrayList<Zombie> zombieList;
+    ArrayList<Explosion> zombieExplosions;
+    ArrayList<Point> tileList;
     CanvasWindow canvas;
     
+    /**
+     * Manages zombies
+     */
     public ZombieManager(CanvasWindow canvas) {
+        
         GRACE_TIME = 0;
         spawnRate = 20000;
+        zombieList = new ArrayList<Zombie>();
+        zombieExplosions = new ArrayList<Explosion>();
+        tileList = new ArrayList<Point>();
+
         this.canvas = canvas;
         tileList.add(Lawn.getGrassTilePosition(9));
         tileList.add(Lawn.getGrassTilePosition(19));
@@ -46,11 +54,9 @@ public class ZombieManager {
      */
     public void zombieSpawn() {
         Random random = new Random();
-        if (PvZ.getFrame() >= GRACE_TIME) {
+        if (PvZ.frame >= GRACE_TIME) {
             Point chosenPos = tileList.get(random.nextInt((4 - 0) + 1) + 0);
             double x = chosenPos.getX() + (GrassTile.TILE_SIZE - (GrassTile.TILE_SIZE * 0.25));
-            // Weird bug where zombies spawn one tile under, dirty
-            // fix is to just subtract a tile
             double y = ((Zombie.ZOMBIE_HEIGHT - GrassTile.TILE_SIZE) + chosenPos.getY()) - GrassTile.TILE_SIZE;
             Zombie zombie = new Zombie(x, y);
             zombieList.add(zombie);
@@ -59,7 +65,10 @@ public class ZombieManager {
         }
     }
 
-    public void createZombieExplosion() {
+    /**
+     * Creates zombie explosion
+     */
+    public void explodeExplosiveZombie() {
         if (zombieList != null) {
             for (Zombie zombie : zombieList) {
                 if (!zombie.getExplodeStatus()) {
@@ -68,7 +77,7 @@ public class ZombieManager {
                     canvas.add(explosion);
                     zombie.setExplodeStatus(true);
                 }
-                if ((PvZ.getFrame() % 90) == 0 && zombie.getExplodeStatus()) {
+                if ((PvZ.frame % 90) == 0 && zombie.getExplodeStatus()) {
                     zombie.die();
                 }
                 }
@@ -76,10 +85,17 @@ public class ZombieManager {
         }
     }
 
+    /**
+     * Gets all zombies through zombie list
+     * @return
+     */
     public ArrayList<Zombie> getZombies() {
         return zombieList;
     }
 
+    /**
+     * Removes zombie from canvas once its health is below zero
+     */
     public void removeZombie(Zombie zombie) {
         if (zombie.getHealth() <= 0) {
             zombieList.remove(zombie);

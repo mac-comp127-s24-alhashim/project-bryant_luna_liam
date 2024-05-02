@@ -8,7 +8,6 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Image;
 import edu.macalester.graphics.Point;
-import edu.macalester.graphics.GraphicsGroup;
 import plantsvszombies.PvZ;
 import plantsvszombies.UI;
 import zombies.Zombie;
@@ -20,7 +19,7 @@ import zombies.Zombie;
 public class PlantManager {
     CanvasWindow canvas;
 
-    // Plants with logic
+    // Lists of plants
     public List<Sunflower> sunflowers;
     List<Peashooter> peashooters;
     List<Wallnut> wallnuts;
@@ -32,6 +31,8 @@ public class PlantManager {
     public static List<Projectile> projectiles;
     public static List<Explosion> explosions;
 
+    // Current plant statuses
+    boolean cherryBombExploding;
 
     public PlantManager(CanvasWindow cv) {
         canvas = cv;
@@ -46,8 +47,8 @@ public class PlantManager {
     }
 
     /**
-     * If the sun cost requirement for the plant is met, plants the specified
-     * plant.
+     * Plants the specified plant.
+     * Will not do anything if the player does not have enough suns.
      * @param type 0 = Sunflower, 1 = Peashooter, 2 = Wallnut, 3 = PotatoMine, 4 = CherryBomb
      * @param position
      */
@@ -104,7 +105,7 @@ public class PlantManager {
     }
 
     /**
-     * Meant to be run every 24 seconds. Handles sunflower logic:
+     * Meant to be run every 2160 frames. Handles sunflower logic:
      * Summons a sun on the sunflower.
      */
     public void produceSunflowerSuns() {
@@ -119,42 +120,50 @@ public class PlantManager {
     }
 
     /**
-     * Meant to be run every 1.5 seconds. Handles peashooter logic:
-     * Summons a projectile.
+     * Meant to be run every 90 frames. Handles peashooter logic:
+     * Summons a pea projectile.
      */
-    public void shootProjectile() {
+    public void shootPeas(Zombie zombie) {
         if (peashooters != null) { // Check for peashooters
             for (Peashooter peashooter : peashooters) {
-                // if (peashooter.getY() == zombie.getY() + zombie.getHeight() / 3) {
+                if (peashooter.getY() == zombie.getY() + zombie.getHeight() / 3) {
                     Projectile projectile = new Projectile(peashooter.getPosition(), Peashooter.PEASHOOTER_DAMAGE, Peashooter.PEA_SPRITE_PATH);
                     projectiles.add(projectile);
                     canvas.add(projectile);
-                // }
+                }      
             }
         }
     }
 
     /**
-     * Meant to be run every 1.5 seconds. Handles potaoto mine and cherry bomb logic:
-     * Summons an explosions.
+     * Meant to be run every 90 frames. If there is a cherry bomb placed, it explodes it.
      */
-    public void createCherryBombExplosion() {
+    public void explodeCherryBombs() {
         if (cherryBombs != null) {
-            for (CherryBomb cherryBomb : cherryBombs) {
-                if (!cherryBomb.getExplodeStatus()) {
+            Iterator<CherryBomb> iterator = cherryBombs.iterator();
+            while (iterator.hasNext()) {
+                CherryBomb cherryBomb = iterator.next();
+                // On the explosion of a cherry bomb, the cherry bombs do not immediatealy
+                // die - they will wait around until the next time this function
+                // runs.
+                if (cherryBombExploding) {
+                    // if ((PvZ.frame % 90) == 0 && cherryBomb.getExplodeStatus()) {
+                        cherryBomb.die();
+                        iterator.remove();
+                        cherryBombExploding = false;
+                } else {
                     Explosion explosion = new Explosion(CherryBomb.CHERRYBOMB_EXPLOSION_RADIUS, cherryBomb.getPosition(), CherryBomb.CHERRYBOMB_DAMAGE);
                     explosions.add(explosion);
                     canvas.add(explosion);
-                    cherryBomb.setExploded(true);
-                }
-                if ((PvZ.getFrame() % 90) == 0 && cherryBomb.getExplodeStatus()) {
-                    cherryBomb.die();
+                    cherryBombExploding = true;
                 }
             }       
         }
     }
+
     /**
-     * Creates Potato Mine explosion when it sprouts and removes it form canvas.
+     * Meant to be run every 90 frames. If the given zombie is near any potato mine,
+     * and the potato mine is armed, it causes it to explode.
      */
     public void createPotatoMineExplosion(Zombie zombie) {
         if (potatoMines != null) {
@@ -166,7 +175,7 @@ public class PlantManager {
                         canvas.add(explosion);
                         potatoMine.setExploded(true);
                     }
-                    if ((PvZ.getFrame() % 90) == 0 && potatoMine.getExplodeStatus()) {
+                    if ((PvZ.frame % 90) == 0 && potatoMine.getExplodeStatus()) {
                         potatoMine.die();
                     }
                 }
@@ -201,7 +210,7 @@ public class PlantManager {
             while (iterator.hasNext()) {
                 explosion = iterator.next();
                 damageZombieExplosion(explosion, zombie);
-                if ((PvZ.getFrame() % 90) == 0) {
+                if ((PvZ.frame % 90) == 0) {
                     iterator.remove();
                     canvas.remove(explosion);
                 }
@@ -209,7 +218,7 @@ public class PlantManager {
         }
     }
     /** 
-     * Detects if a plant projectile intersects a zombie object and inflicts damage upon if so.
+     * Detects if a pea projectile intersects a zombie object and inflicts damage upon if so.
      */
     private Boolean damageZombieProjectile(Projectile projectile, Zombie zombie) {
         if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
@@ -229,6 +238,7 @@ public class PlantManager {
         }
         else return false;
     }
+    
     /**
     * Causes zombie contact with plant to inflict damage upon the plant, as it eats it 
     */
@@ -326,7 +336,7 @@ public class PlantManager {
     }
 
     /**
-     * Activates Potato Mine
+     * Arms all potato mines, which makes them able to explode upon contact with a Zombie.
      */
     public void armPotatoMine() {
         if (potatoMines != null) {
@@ -440,6 +450,7 @@ public class PlantManager {
      *  Gets the list of explosions.
      * @return
      */
+
     public List<Explosion> getExplosions() {
         return explosions;
     }

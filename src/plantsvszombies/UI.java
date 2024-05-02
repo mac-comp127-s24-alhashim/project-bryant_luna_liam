@@ -10,7 +10,6 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.GraphicsText;
 import edu.macalester.graphics.Image;
-import edu.macalester.graphics.Point;
 import plant.CherryBomb;
 import plant.Peashooter;
 import plant.PotatoMine;
@@ -95,11 +94,11 @@ public class UI extends GraphicsGroup {
      * Loads the name text.
      */
     private void loadNameText() {
-        if (PvZ.getPlayerName() == null || PvZ.getPlayerName().trim().isEmpty()) {
+        if (PvZ.playerName == null || PvZ.playerName.trim().isEmpty()) {
             nameText = new GraphicsText("Nobody's House");
         }
         else {
-            nameText = new GraphicsText(PvZ.getPlayerName() + "'s House");
+            nameText = new GraphicsText(PvZ.playerName + "'s House");
         }
         nameText.setFont(FontStyle.BOLD, 12);
         nameText.setFillColor(FONT_COLOR);

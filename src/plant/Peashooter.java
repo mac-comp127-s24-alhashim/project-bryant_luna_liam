@@ -13,8 +13,6 @@ public class Peashooter extends GraphicsGroup {
     public static final String SEED_SPRITE_PATH = "game/SEEDPACKET_PEASHOOTER.png";
     public final static String PEA_SPRITE_PATH = "plants/PEASHOOTER_PEA.png";
     public static final int SUN_COST = 100;
-    private final int RECHARGE_TIME_SECONDS = 7500;
-    private final int PEA_SHOOTING_RATE = 1500;
     final static int PEASHOOTER_DAMAGE = 20;
     
     public int health = 300;
