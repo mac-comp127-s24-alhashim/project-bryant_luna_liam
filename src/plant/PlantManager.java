@@ -126,11 +126,11 @@ public class PlantManager {
     public void shootPeas(Zombie zombie) {
         if (peashooters != null) { // Check for peashooters
             for (Peashooter peashooter : peashooters) {
-                if (peashooter.getY() == zombie.getY() + zombie.getHeight() / 3) {
+                // if (peashooter.getY() == zombie.getY() + zombie.getHeight() / 3) {
                     Projectile projectile = new Projectile(peashooter.getPosition(), Peashooter.PEASHOOTER_DAMAGE, Peashooter.PEA_SPRITE_PATH);
                     projectiles.add(projectile);
                     canvas.add(projectile);
-                }      
+                // }      
             }
         }
     }
@@ -451,7 +451,7 @@ public class PlantManager {
      * @return
      */
 
-    public List<Explosion> getExplosions() {
+   public List<Explosion> getExplosions() {
         return explosions;
     }
 }
