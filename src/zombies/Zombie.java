@@ -79,7 +79,7 @@ public class Zombie extends GraphicsGroup {
             } else if (zombieType == 4) {
                 moveBy(-0.0234375, 0);
             } else {
-                moveBy(-0.1876, 0); // -0.046875
+                moveBy(-0.046875, 0); 
             }
         }
     }

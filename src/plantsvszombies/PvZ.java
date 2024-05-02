@@ -81,7 +81,10 @@ public class PvZ {
                 Zombie zombie;
                 while (iterator.hasNext()) {
                     zombie = iterator.next();
-                    zombieManager.removeZombie(zombie);
+                    if (zombie.getHealth() <= 0) {
+                        iterator.remove();
+                        canvas.remove(zombie);
+                    }
                 }
                 
 
@@ -180,6 +183,7 @@ public class PvZ {
 
                     Point plantPoint = Lawn.getPlantPoint(handler.getPosition());
                     if (UI.shovelMode) {
+                        UI.shovelMode = false;
                         plantManager.removePlant(clickedObject);
                     } else if (plantPoint != null) { // Out of bounds check
                         if (clickedObject.equals(UI.sunflowerPacket)) {
