@@ -26,7 +26,7 @@ public class ZombieManager {
      */
     public ZombieManager(CanvasWindow canvas) {
         
-        GRACE_TIME = 0;
+        GRACE_TIME = 300;
         spawnRate = 20000;
         zombieList = new ArrayList<Zombie>();
         zombieExplosions = new ArrayList<Explosion>();
@@ -82,5 +82,4 @@ public class ZombieManager {
             canvas.remove(zombie);
         }
     }
-
 }

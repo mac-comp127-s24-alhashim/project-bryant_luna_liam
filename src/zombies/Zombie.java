@@ -2,6 +2,7 @@ package zombies;
 
 import java.util.Random;
 import edu.macalester.graphics.*;
+import plantsvszombies.PvZ;
 
 /**
  * A normal zombie. No special abilities.
@@ -39,27 +40,26 @@ public class Zombie extends GraphicsGroup {
     public Zombie(double x, double y) {
         setPosition(x, y);
 
-        if (random.nextInt(30) == 0) {
-            zombieType = 4;
-        }
-        if (random.nextInt(15) == 0) {
-            zombieType = 3;
-        }
+        int specialZombieChance = random.nextInt(10);
 
-        if (zombieType == 3) {
-            add(fastSprite);
-        }
-        else if (zombieType == 4) {
+        // 60% chance of being a normal zombie, 30% of being a fast zombie, 10% of being a cyborg zombie.
+        if (specialZombieChance == 9) {
+            zombieType = 4;
             add(cyborgSprite);
         }
+        else if (specialZombieChance <= 8 && specialZombieChance >= 6) {
+            zombieType = 3;
+            add(fastSprite);
+        }        
         else {
             add(zombieSprite);
-            int randomNumber = random.nextInt(10);
-            if (randomNumber <= 8 && randomNumber >= 6) {
+            int normalZombieChance = random.nextInt(10);
+            // 60% chance of being a normal zombie, 30% of being a conehead zombie, 10% of being a buckethead zombie.
+            if (normalZombieChance <= 8 && normalZombieChance >= 6) {
                 add(coneSprite);
                 coneSprite.moveBy(0, -10);
                 zombieType = 1;
-            } else if (randomNumber == 9) {
+            } else if (normalZombieChance == 9) {
                 add(bucketSprite);
                 bucketSprite.moveBy(0, -5);
                 zombieType = 2;
@@ -120,6 +120,7 @@ public class Zombie extends GraphicsGroup {
      */
     public void die() {
         removeAll();
+        PvZ.zombiesKilled++;
     }
 
     /**
@@ -146,7 +147,7 @@ public class Zombie extends GraphicsGroup {
     public int getHealth() {
         if (zombieType == 3) {
             return fastHealth;
-        } else if (zombieType == 3) {
+        } else if (zombieType == 4) {
             return cyborgHealth;
         } else {
             return zombieHealth;
