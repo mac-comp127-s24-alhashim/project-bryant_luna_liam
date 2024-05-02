@@ -66,7 +66,12 @@ Plant your chosen plants strategically to fend off the waves of zombies advancin
 The game will progress with waves of zombies attacking your home. Your objective is to survive each wave and prevent the zombies from breaching your defenses. Depending on your performance, you will repel all the zombies per wave or succumb to the zombie invasion.
 - ![Normal Zombie](/upscaled/NORMAL_ZOMBIE_UPSCALED.png) ![Cone Zombie](/upscaled/CONE_ZOMBIE_UPSCALED.png)
 - ![Bucket Zombie](/upscaled/BUCKET_ZOMBIE_UPSCALED.png)
-- ![Game Sample](sample.png)
+
+## Game Preview
+
+- ![Game Sample](/upscaled/sample.png)
+- **Video Gameplay** ([Video Link](https://vimeo.com/942094996?share=copy))
+
 <!-- Limitations -->
 
 ## Limitations
