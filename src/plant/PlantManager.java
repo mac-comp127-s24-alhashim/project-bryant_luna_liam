@@ -150,8 +150,7 @@ public class PlantManager {
                 if ((PvZ.getFrame() % 90) == 0 && cherryBomb.getExplodeStatus()) {
                     cherryBomb.die();
                 }
-                }
-              
+            }       
         }
     }
 
