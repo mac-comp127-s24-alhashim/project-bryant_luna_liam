@@ -62,11 +62,11 @@ Plant your chosen plants strategically to fend off the waves of zombies advancin
 - ![Peashooter](/upscaled/PEASHOOTER_UPSCALED.png) ![Wall-nut](/upscaled/WALLNUT_UPSCALED.png)
 - ![Potato Mine](/upscaled/POTATOMINE_UPSCALED.png) ![Cherry Bomb](/upscaled/CHERRYBOMB_UPSCALED.png)
 
-## Win or Lose!
-The game will progress with waves of zombies attacking your home. Your objective is to survive each wave and prevent the zombies from breaching your defenses. Depending on your performance, you will either emerge victorious by repelling all the zombies or succumb to the zombie invasion.
+## Do NOT Let the Zombies Take For As Long As You Can!
+The game will progress with waves of zombies attacking your home. Your objective is to survive each wave and prevent the zombies from breaching your defenses. Depending on your performance, you will repel all the zombies per wave or succumb to the zombie invasion.
 - ![Normal Zombie](/upscaled/NORMAL_ZOMBIE_UPSCALED.png) ![Cone Zombie](/upscaled/CONE_ZOMBIE_UPSCALED.png)
 - ![Bucket Zombie](/upscaled/BUCKET_ZOMBIE_UPSCALED.png)
-
+- ![Game Sample](sample.png)
 <!-- Limitations -->
 
 ## Limitations

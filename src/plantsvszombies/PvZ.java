@@ -50,6 +50,7 @@ public class PvZ {
         maxSun = 9999;
         gameSun = null;
         random = new Random();
+        sunflowerSuns = new ArrayList<Image>();
 
         canvas = new CanvasWindow("Plants vs. Zombies: Java Edition", CANVAS_WIDTH, CANVAS_HEIGHT);
         ui = new UI(canvas);
@@ -59,7 +60,6 @@ public class PvZ {
         lawn.generateLawn();
         zombieManager = new ZombieManager(canvas);
         plantManager = new PlantManager(canvas);
-        sunflowerSuns = new ArrayList<Image>();
         canvas.add(ui);
     }
 
@@ -74,7 +74,7 @@ public class PvZ {
             if ((frame % 1) == 0) {
                 for (Zombie zombie : zombieManager.getZombies()) {
                     plantManager.moveProjectiles(zombie);
-                    plantManager.explode(zombie);
+                    plantManager.runExplosionLogic(zombie);
                 }
 
                 // Handles motion of game sun and removes if out of bounds.

@@ -184,7 +184,7 @@ public class PlantManager {
     }
 
     /**
-     * Moves all projeectiles by 1 pixel.
+     * Moves all projectiles by 1 pixel. If the projectile is out of bounds, it deletes it.
      */
     public void moveProjectiles(Zombie zombie) {
         if (projectiles != null) {
@@ -203,7 +203,7 @@ public class PlantManager {
     /**
      * Causes the plant to explode, creating the explosion and inflicts damage on surrounding zombies.
      */
-    public void explode(Zombie zombie) {
+    public void runExplosionLogic(Zombie zombie) {
         if (explosions != null) {
             Iterator<Explosion> iterator = explosions.iterator();
             Explosion explosion;
@@ -291,51 +291,6 @@ public class PlantManager {
     }
     
     /**
-     * Inflicts damage on plants when another plant explodes in its surrounding radius
-     */ 
-    public void explosionsDamagePlant(Explosion explosion) {
-        if (sunflowers != null) {
-            Iterator<Sunflower> iterator = sunflowers.iterator();
-            Sunflower sunflower;
-            while (iterator.hasNext()) {
-                sunflower = iterator.next();
-                if (canvas.getElementAt(sunflower.getCenter()) == canvas.getElementAt(explosion.getCenter())) {
-                    sunflower.reduceHealth(explosion.getDamage());
-                    if (sunflower.getHealth() <= 0) {
-                        iterator.remove();
-                    }
-                }
-            }
-        }
-        if (peashooters != null) {
-            Iterator<Peashooter> iterator = peashooters.iterator();
-            Peashooter peashooter;
-            while (iterator.hasNext()) {
-                peashooter = iterator.next();
-                if (canvas.getElementAt(peashooter.getCenter()) == canvas.getElementAt(explosion.getCenter())) {
-                    peashooter.reduceHealth(explosion.getDamage());
-                    if (peashooter.getHealth() <= 0) {
-                        iterator.remove();
-                    }
-                } 
-            }
-        }
-        if (wallnuts != null) {
-            Iterator<Wallnut> iterator = wallnuts.iterator();
-            Wallnut wallnut;
-            while (iterator.hasNext()) {
-                wallnut = iterator.next();
-                if (canvas.getElementAt(wallnut.getCenter()) == canvas.getElementAt(explosion.getCenter())) {
-                    wallnut.reduceHealth(explosion.getDamage());
-                    if (wallnut.getHealth() <= 0) {
-                        iterator.remove();
-                    }
-                }
-            }
-        }
-    }
-
-    /**
      * Arms all potato mines, which makes them able to explode upon contact with a Zombie.
      */
     public void armPotatoMine() {
@@ -405,53 +360,5 @@ public class PlantManager {
                 break;
             }
         }
-    }
-
-    /**
-     * Gets the list of sunflowers.
-     * @return
-     */
-    public List<Sunflower> getSunflowers() {
-        return sunflowers;
-    }
-    
-    /**
-     * Gets the list of Peashooters.
-     * @return
-     */
-    public List<Peashooter> getPeashooters() {
-        return peashooters;
-    }
-
-    /**
-     * Gets the list of walnuts.
-     * @return
-     */
-    public List<Wallnut> getWallnuts() {
-        return wallnuts;
-    }
-    
-    /**
-     *  Gets the list of potatomines.
-     * @return
-     */
-    public List<PotatoMine> getPotatoMines() {
-        return potatoMines;
-    }
-
-    /**
-     *  Gets the list of cherrybombs.
-     * @return
-     */
-    public List<CherryBomb> getCherryBombs() {
-        return cherryBombs;
-    }
-    /**
-     *  Gets the list of explosions.
-     * @return
-     */
-
-   public List<Explosion> getExplosions() {
-        return explosions;
     }
 }
