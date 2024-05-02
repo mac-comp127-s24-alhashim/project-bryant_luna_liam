@@ -49,6 +49,7 @@ Upon running the game, a pop-up screen may prompt you to enter a name for your p
 
 ## Click On Sun Sprites- They are your currency!
 In the game interface, click on the sun sprites that appear on the screen. These sun sprites serve as your currency, which you'll use to plant various plants for defense.
+
 ![Sun Sprite](/upscaled/SUN_UPSCALED.png)
 
 ## Collect Enough Suns To Plant Plants Of Your Choice
