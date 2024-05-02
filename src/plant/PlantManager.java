@@ -132,26 +132,6 @@ public class PlantManager {
      * Meant to be run every 90 frames. If there is a cherry bomb placed, it explodes it.
      */
     public void explodeCherryBombs() {
-        // if (cherryBombs != null) {
-        //     Iterator<CherryBomb> iterator = cherryBombs.iterator();
-        //     while (iterator.hasNext()) {
-        //         CherryBomb cherryBomb = iterator.next();
-        //         // On the explosion of a cherry bomb, the cherry bombs do not immediatealy
-        //         // die - they will wait around until the next time this function
-        //         // runs.
-        //         if (cherryBombExploding) {
-        //             // if ((PvZ.frame % 90) == 0 && cherryBomb.getExplodeStatus()) {
-        //                 cherryBomb.die();
-        //                 iterator.remove();
-        //                 cherryBombExploding = false;
-        //         } else {
-        //             Explosion explosion = new Explosion(CherryBomb.CHERRYBOMB_EXPLOSION_RADIUS, cherryBomb.getPosition(), CherryBomb.CHERRYBOMB_DAMAGE);
-        //             explosions.add(explosion);
-        //             canvas.add(explosion);
-        //             cherryBombExploding = true;
-        //         }
-        //     }       
-        // }
         if (cherryBombs != null) {
             for (CherryBomb cherryBomb : cherryBombs) {
                 if (!cherryBomb.getExplodeStatus()) {
@@ -164,8 +144,7 @@ public class PlantManager {
                     cherryBomb.die();
                 }
             }
-        }
-              
+        }    
     }
 
     /**
@@ -217,7 +196,7 @@ public class PlantManager {
             while (iterator.hasNext()) {
                 explosion = iterator.next();
                 damageZombieExplosion(explosion, zombie);
-                if ((PvZ.frame % 90) == 0) {
+                if ((PvZ.frame % 2) == 0) {
                     iterator.remove();
                     canvas.remove(explosion);
                 }

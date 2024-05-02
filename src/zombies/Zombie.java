@@ -19,16 +19,15 @@ public class Zombie extends GraphicsGroup {
     static final double ZOMBIE_HEIGHT = zombieSprite.getHeight();
     static final int zombieAttack = 100;
     static final int cyborgAttack = 2000;
-    static final double explosionRadius = 48;
 
     Random random = new Random();
     Boolean eating = false;
-    Boolean hasExploded = false;
-    int zombieHealth = 181;
-    int coneHealth = 370;
-    int bucketHealth = 1100;
-    int fastHealth = 335;
-    int cyborgHealth = 3600;
+    Boolean hitByExplosion = false;
+    int zombieHealth = 362;
+    int coneHealth = 740;
+    int bucketHealth = 2200;
+    int fastHealth = 670;
+    int cyborgHealth = 7200;
     // 0 = NORMAL | 1 = CONE | 2 = BUCKET | 3 = FAST | 4 = BIG
     int zombieType = 0;
 
@@ -186,17 +185,17 @@ public class Zombie extends GraphicsGroup {
     /**
      * Gets exploded status
      * 
-     * @return
+     * @return hitByExplosion;
      */
-    public boolean getExplodeStatus() {
-        return hasExploded;
+    public boolean getExplodedStatus() {
+        return hitByExplosion;
     }
 
     /**
      * Sets zombie exploded status
      */
-    public void setExplodeStatus(Boolean explode) {
-        hasExploded = explode;
+    public void setExplodedStatus(Boolean exploded) {
+        hitByExplosion = exploded;
     }
 
 }

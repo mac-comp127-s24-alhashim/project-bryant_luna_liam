@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 /**
  * The game of Plants. vs Zombies, programmed in Java.
  * 
- * Authors: Bryant Juarez, Luna Muñoz-Maldonado, William Acosta Macalester College, COMP 127, Prof.
+ * Authors: Bryant Juarez, Luna Muñoz-Maldonado, & William Acosta, Macalester College, COMP 127, Prof.
  * Amin G. Alhashim, PhD, 6σ
  */
 public class PvZ {
@@ -74,7 +74,6 @@ public class PvZ {
             frame++;
 
             if ((frame % 1) == 0) {
-
                 if (zombieManager.getZombies().size() > 0) {
                     for (Zombie zombie : zombieManager.getZombies()) {
                         plantManager.moveProjectiles(zombie);
@@ -95,7 +94,6 @@ public class PvZ {
                     }
                 }
                 
-
                 // Handles motion of game sun and removes if out of bounds.
                 if (gameSun != null) {
                     gameSun.moveBy(0, 0.33);
@@ -107,9 +105,7 @@ public class PvZ {
                 zombieManager.moveZombies();
             }
             
-
             // Tasks to run every 90 frames (1.5 seconds)
-            System.out.println(zombiesKilled);
             if ((frame % 90) == 0) {
                 checkLossStatus();
                  
@@ -147,7 +143,8 @@ public class PvZ {
                 plantManager.armPotatoMine();
             }
 
-            int interval = Math.max(100, 1000 - (zombiesKilled - 8) * 100);
+            // Spawn zombies.
+            int interval = Math.max(30, 1200 - (zombiesKilled - 8) * 60);
             if ((frame % interval) == 0) {
                 zombieManager.zombieSpawn();
             }
