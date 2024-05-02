@@ -39,6 +39,7 @@ public class PvZ {
     // Player Statistics
     static String playerName;
     public static int sunCount;
+    public static int zombiesKilled;
     private final short maxSun;
     
     /**
@@ -46,6 +47,7 @@ public class PvZ {
      */
     public PvZ() {
         frame = 0;
+        zombiesKilled = 0;
         sunCount = 0;
         maxSun = 9999;
         gameSun = null;
@@ -72,9 +74,15 @@ public class PvZ {
             frame++;
 
             if ((frame % 1) == 0) {
-                for (Zombie zombie : zombieManager.getZombies()) {
-                    plantManager.moveProjectiles(zombie);
-                    plantManager.runExplosionLogic(zombie);
+
+                if (zombieManager.getZombies().size() > 0) {
+                    for (Zombie zombie : zombieManager.getZombies()) {
+                        plantManager.moveProjectiles(zombie);
+                        plantManager.runExplosionLogic(zombie);
+                    }
+                }
+                else {
+                    plantManager.removeAllPlantCreations();
                 }
 
                 Iterator<Zombie> iterator = zombieManager.getZombies().iterator();
@@ -101,6 +109,7 @@ public class PvZ {
             
 
             // Tasks to run every 90 frames (1.5 seconds)
+            System.out.println(zombiesKilled);
             if ((frame % 90) == 0) {
                 checkLossStatus();
                  
@@ -133,9 +142,13 @@ public class PvZ {
                 spawnGameSun();
             }
 
-            // Tasks to run every 15 seconds
+            // Tasks to run every 900 frames (15 seconds)
             if ((frame % 900) == 0) {
                 plantManager.armPotatoMine();
+            }
+
+            int interval = Math.max(100, 1000 - (zombiesKilled - 8) * 100);
+            if ((frame % interval) == 0) {
                 zombieManager.zombieSpawn();
             }
         });
@@ -236,7 +249,7 @@ public class PvZ {
         // Check if any zombie has reached the end of the lawn
         for (Zombie zombie : zombieManager.getZombies()) {
             if (zombie.getPosition().getX() <= 0) {
-                JOptionPane.showMessageDialog(null, "Oh no, a zombie reached your house! Game over!");
+                JOptionPane.showMessageDialog(null, "THE ZOMBIES HAVE ATE YOUR BRAINS!");
                 System.exit(0); // Terminate the game
             }
         }

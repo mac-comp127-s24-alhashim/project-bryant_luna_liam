@@ -95,10 +95,10 @@ public class UI extends GraphicsGroup {
      */
     private void loadNameText() {
         if (PvZ.playerName == null || PvZ.playerName.trim().isEmpty()) {
-            nameText = new GraphicsText("Nobody's House");
+            nameText = new GraphicsText("Nobody's Lawn");
         }
         else {
-            nameText = new GraphicsText(PvZ.playerName + "'s House");
+            nameText = new GraphicsText(PvZ.playerName + "'s Lawn");
         }
         nameText.setFont(FontStyle.BOLD, 12);
         nameText.setFillColor(FONT_COLOR);

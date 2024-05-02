@@ -329,10 +329,8 @@ public class PlantManager {
         while (iterator2.hasNext()) {
             Peashooter plant = iterator2.next();
             if (plant.peashooterSprite == clickedObject) {
-                System.out.println("found peashooter");
                 plant.die();
                 iterator2.remove();
-                System.out.println("exiting shovel mode");
                 UI.shovelMode = false;
                 break;
             }
@@ -366,6 +364,24 @@ public class PlantManager {
                 UI.shovelMode = false;
                 break;
             }
+        }
+    }
+
+    /**
+     * Removes all plant creations from their respective list and canvas.
+     */
+    public void removeAllPlantCreations() {
+        Iterator<Projectile> projectileIterator = projectiles.iterator();
+        Iterator<Explosion> explosionIterator = explosions.iterator();
+        while (projectileIterator.hasNext()) {
+            Projectile projectile = projectileIterator.next();
+            canvas.remove(projectile);
+            projectileIterator.remove();
+        }
+        while (explosionIterator.hasNext()) {
+            Explosion explosion = explosionIterator.next();
+            canvas.remove(explosion);
+            explosionIterator.remove();
         }
     }
 }
