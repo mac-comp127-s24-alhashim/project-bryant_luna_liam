@@ -4,6 +4,9 @@ import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Image;
 import plantsvszombies.PvZ;
 
+/**
+ * Constructs a sunflower
+ */
 public class Sunflower extends GraphicsGroup {
 
     private static final String SPRITE_PATH = "plants/SUNFLOWER.png";

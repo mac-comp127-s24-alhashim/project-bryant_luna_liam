@@ -15,7 +15,9 @@ public class Explosion extends GraphicsGroup {
     private Ellipse explosion;
     private double radius;
     private Point location;
-
+    /**
+     * Constructs explosion
+     */
     public Explosion(double radius, Point location, int damage) {
         this.radius = radius;
         this.location = location;
@@ -23,7 +25,9 @@ public class Explosion extends GraphicsGroup {
         explosion = new Ellipse(0, 0, radius * 2, radius * 2);
         createExplosionDrawing();
     }
-
+    /**
+     * Creates explosion drawing.
+     */
     private void createExplosionDrawing() {
         explosion.setFillColor(EXPLOSION_COLOR);
         explosion.setStrokeColor(EXPLOSION_OUTLINE_COLOR);
@@ -31,8 +35,19 @@ public class Explosion extends GraphicsGroup {
         add(explosion);
     }
 
+    /**
+     * Gets damage
+     * @return
+     */
     public int getDamage() {
         return EXPLOSION_DAMAGE;
+    }
+    /**
+     * Gets radius
+     * @return
+     */
+    public double getRadius() {
+        return radius;
     }
     
 }

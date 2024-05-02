@@ -1,20 +1,17 @@
 package plantsvszombies;
 
 import edu.macalester.graphics.*;
-import plant.*;
+import plant.PlantManager;
+import zombies.Zombie;
+import zombies.ZombieManager;
 
 import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import javax.swing.JOptionPane;
 
-import zombies.*;
 
 /**
  * The game of Plants. vs Zombies, programmed in Java.
@@ -25,19 +22,15 @@ import zombies.*;
 public class PvZ {
     public static final int CANVAS_WIDTH = 320;
     public static final int CANVAS_HEIGHT = 240;
-
-    private static CanvasWindow canvas = new CanvasWindow("Plants vs. Zombies: Java Edition", CANVAS_WIDTH,
-        CANVAS_HEIGHT);;
-
-    public static long frame = 0;
+    public static long frame;
+    private static CanvasWindow canvas;
 
     // Game elements
-    private UI ui = new UI(canvas);
+    private UI ui;
     private ZombieManager zombieManager;
     private Lawn lawn;
-    private Image background = new Image("game/LAWN.png");
+    private Image background;
     private PlantManager plantManager;
-    private int spawnSpeed = 1500;
 
     public static List<Image> sunflowerSuns;
     public Image gameSun;
@@ -45,35 +38,46 @@ public class PvZ {
 
     // Player Statistics
     private static String playerName;
-    public static int sunCount = 9999;
-    private static int zombiesKilled = 0;
-    private final short maxSun = 9999;
-    Random random = new Random();
+    public static int sunCount;
+    private static int zombiesKilled;
+    private final short maxSun;
+    Random random;
 
     // ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
 
     public PvZ() {
+        frame = 0;
+        sunCount = 500;
+        maxSun = 9999;
+        zombiesKilled = 0;
+        gameSun = null;
+        random = new Random();
+
+        canvas = new CanvasWindow("Plants vs. Zombies: Java Edition", CANVAS_WIDTH, CANVAS_HEIGHT);
+        ui = new UI(canvas);
+        background = new Image("game/LAWN.png");
         canvas.add(background);
         lawn = new Lawn(canvas);
-        gameSun = null; // No suns when constructed
         zombieManager = new ZombieManager(canvas);
         plantManager = new PlantManager(canvas);
         sunflowerSuns = new ArrayList<Image>();
         canvas.add(ui);
+    }
 
-        // Gets called every millisecond
+    /**
+     * Uses Kilt Graphics' canvas.animate function to call the game's logic.
+     * Animate runs these tasks up to 60 frames per second.
+     */
+    public void startAnimation() {
         canvas.animate(runnable -> {
             frame++;
 
-            // Tasks to run every 1 frame
             if ((frame % 1) == 0) {
                 for (Zombie zombie : zombieManager.getZombies()) {
                     plantManager.moveProjectiles(zombie);
                     plantManager.explode(zombie);
-                    // if (zombie.getHealth() <= 0) {
-                    // // zombieManager.getZombies().remove(zombie);
-                    // }
                 }
+
                 if (gameSun != null) {
                     gameSun.moveBy(0, 0.33);
                     if (gameSun.getY() >= PvZ.CANVAS_HEIGHT) {
@@ -81,6 +85,7 @@ public class PvZ {
                         gameSun = null;
                     }
                 }
+                
                 zombieManager.moveZombies();
                 if (frame % 600 == 0) {
                     checkGameStatus();
@@ -89,7 +94,6 @@ public class PvZ {
 
             // Tasks to run every 1.5 seconds
             if ((frame % 90) == 0) {
-
                 if (zombieManager.getZombies().size() > 0) {
                     plantManager.shootProjectile();
                 }
@@ -103,13 +107,6 @@ public class PvZ {
                         plantManager.createPotatoMineExplosion(zombie);
                         plantManager.zombieDamagePlant(zombie);
                     }
-                    // Iterator<Explosion> explosionIterator = plantManager.getExplosions().iterator();
-                    // Explosion explosion;
-                    // while (explosionIterator.hasNext()) {
-                    // explosion = explosionIterator.next();
-                    // zombieManager.createZombieExplosion();
-                    // plantManager.explosionsDamagePlant(explosion);
-                    // }
                 }
             }
 
@@ -128,38 +125,23 @@ public class PvZ {
                 plantManager.armPotatoMine();
                 zombieManager.zombieSpawn();
             }
-
-            // Zombie Spawn
-            // if ((frame % 3600) == 0) {
-            // if (spawnSpeed >= 300) {
-            // spawnSpeed /= 1.12;
-            // }
-            // }
-            // if ((frame % spawnSpeed) == 0) {
-            // zombieManager.zombieSpawn();
-            // }
-            // }
         });
+    }
 
-        /*
-         * Determines what element is under the mouse when a click occurs, and runs that element's task for
-         * clicks accordingly.
-         */
+    public void handleClicks() {
+/*
+        * Determines what element is under the mouse when a click occurs, and runs that element's task for
+        * clicks accordingly.
+        */
         canvas.onClick(handler -> {
-
-            // NULL HANDLER
-            if (handler.getPosition().getX() > 320 || handler.getPosition().getY() > 240) {
-                // NOTHING
-            } else {
+            // Checks if the player clicked outside of the window when resized
+            if (handler.getPosition().getX() <= 320 && handler.getPosition().getY() <= 240) {
                 GraphicsObject clickedObject = canvas.getElementAt(handler.getPosition());
-                Image sunImage = new Image("game/SUN.png");
 
                 // Check if the clicked object is a sun produced by a sunflower
                 if (sunflowerSuns.contains(clickedObject)) {
                     canvas.remove(clickedObject);
                     collectSun();
-                    // // Only one sun generated by the game can be on the canvas
-                    // ui.update();
                 }
 
                 if (clickedObject.equals(gameSun)) {
@@ -202,10 +184,7 @@ public class PvZ {
         });
     }
 
-    public static void main(String[] args) {
-        playerName = JOptionPane.showInputDialog("What is your name?");
-        PvZ plantsVsZombies = new PvZ();
-    }
+   
 
     /**
      * Returns the elapsed program time, in seconds.
@@ -238,6 +217,7 @@ public class PvZ {
         }
     }
 
+    /* Collects sun */
     private void collectSun() {
         if (sunCount >= maxSun) {
             sunCount = maxSun;
@@ -258,6 +238,13 @@ public class PvZ {
                 System.exit(0); // Terminate the game
             }
         }
+    }
+    
+     public static void main(String[] args) {
+        playerName = JOptionPane.showInputDialog("What is your name?");
+        PvZ plantsVsZombies = new PvZ();
+        plantsVsZombies.startAnimation();
+        plantsVsZombies.handleClicks();
     }
 }
 

@@ -21,6 +21,9 @@ public class PotatoMine extends GraphicsGroup {
     private Boolean isBuried;
     private Boolean hasExploded;
 
+    /**
+     * Constructs a potato mine
+     */
     public PotatoMine() {
         isBuried = true;
         hasExploded = false;
@@ -33,32 +36,56 @@ public class PotatoMine extends GraphicsGroup {
         add(potatoMineSprite);
         PvZ.sunCount -= SUN_COST;
     }
-
+    /**
+     * Determines whether a potato mine is buried or not
+     */
     public void armUp() {
         isBuried = false;
         potatoMineSprite.setImagePath(SPRITE_PATH);
     }
 
+    /**
+     * Gets buried status
+     * @return
+     */
     public Boolean getBuriedStatus() {
         return isBuried;
     }
 
+    /**
+     * Sets a potato mine as exploded
+     */
     public void setExploded(Boolean exploded) {
         hasExploded = exploded;
     }
 
+    /**
+     * Gets exploded status
+     * @return
+     */
     public Boolean getExplodeStatus() {
         return hasExploded;
     }
 
+    /**
+     * Gets sun cost
+     * @return
+     */
     public int getSunCost() {
         return SUN_COST;
     }
 
+    /**
+     * Gets recharge time
+     * @return
+     */
     public double getRechargeTime() {
         return RECHARGE_TIME_SECONDS;
     }
 
+    /**
+     * Removes potato mine from canvas
+     */
     public void die() {
         removeAll();
     }

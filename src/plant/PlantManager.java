@@ -153,7 +153,9 @@ public class PlantManager {
             }       
         }
     }
-
+    /**
+     * Creates Potato Mine explosion when it sprouts and removes it form canvas.
+     */
     public void createPotatoMineExplosion(Zombie zombie) {
         if (potatoMines != null) {
             for (PotatoMine potatoMine : potatoMines) {
@@ -173,7 +175,7 @@ public class PlantManager {
     }
 
     /**
-     * Meant to be run every 7 frames. Handles movement of projectiles.
+     * Moves all projeectiles by 1 pixel.
      */
     public void moveProjectiles(Zombie zombie) {
         if (projectiles != null) {
@@ -188,7 +190,10 @@ public class PlantManager {
             }
         }
     }
-
+    
+    /**
+     * Causes the plant to explode, creating the explosion and inflicts damage on surrounding zombies.
+     */
     public void explode(Zombie zombie) {
         if (explosions != null) {
             Iterator<Explosion> iterator = explosions.iterator();
@@ -203,7 +208,9 @@ public class PlantManager {
             }
         }
     }
-
+    /** 
+     * Detects if a plant projectile intersects a zombie object and inflicts damage upon if so.
+     */
     private Boolean damageZombieProjectile(Projectile projectile, Zombie zombie) {
         if (canvas.getElementAt(projectile.getPosition()) == canvas.getElementAt(zombie.getX(), zombie.getY() + zombie.getHeight() / 3)) {
             zombie.reduceHealth(projectile.getDamage());
@@ -212,14 +219,19 @@ public class PlantManager {
         else return false;
     }
 
+    /**
+     * Detects if a plant explosion intersects a zombie objects and inflicts damage upon if so.
+     */
     private Boolean damageZombieExplosion(Explosion explosion, Zombie zombie) {
-        if (canvas.getElementAt(explosion.getCenter()) == canvas.getElementAt(zombie.getCenter())) {
+        if (Math.hypot(zombie.getCenter().getX() - explosion.getCenter().getX(), zombie.getCenter().getY() - explosion.getCenter().getY()) <= explosion.getRadius() + zombie.getWidth() / 2) {
             zombie.reduceHealth(explosion.getDamage());
             return true;
         }
         else return false;
     }
-
+    /**
+    * Causes zombie contact with plant to inflict damage upon the plant, as it eats it 
+    */
     public void zombieDamagePlant(Zombie zombie) {
         if (sunflowers != null) {
             Iterator<Sunflower> iterator = sunflowers.iterator();
@@ -267,7 +279,10 @@ public class PlantManager {
             }
         }
     }
-
+    
+    /**
+     * Inflicts damage on plants when another plant explodes in its surrounding radius
+     */ 
     public void explosionsDamagePlant(Explosion explosion) {
         if (sunflowers != null) {
             Iterator<Sunflower> iterator = sunflowers.iterator();
@@ -310,7 +325,9 @@ public class PlantManager {
         }
     }
 
-
+    /**
+     * Activates Potato Mine
+     */
     public void armPotatoMine() {
         if (potatoMines != null) {
             Iterator<PotatoMine> iterator = potatoMines.iterator();
@@ -321,9 +338,11 @@ public class PlantManager {
             }
         }
     }
-
+    
+    /*
+    * Iterates through all plants to find the plant based on the graphics object given.
+    */
     public void removePlant(GraphicsObject clickedObject) {
-        // Iterates through all plants to find the plant based on the graphics object given.
         Iterator<Sunflower> iterator = sunflowers.iterator();
         while (iterator.hasNext()) {
             Sunflower plant = iterator.next();
@@ -378,26 +397,49 @@ public class PlantManager {
         }
     }
 
+    /**
+     * Gets the list of sunflowers.
+     * @return
+     */
     public List<Sunflower> getSunflowers() {
         return sunflowers;
     }
-
+    
+    /**
+     * Gets the list of Peashooters.
+     * @return
+     */
     public List<Peashooter> getPeashooters() {
         return peashooters;
     }
 
+    /**
+     * Gets the list of walnuts.
+     * @return
+     */
     public List<Wallnut> getWallnuts() {
         return wallnuts;
     }
-
+    
+    /**
+     *  Gets the list of potatomines.
+     * @return
+     */
     public List<PotatoMine> getPotatoMines() {
         return potatoMines;
     }
 
+    /**
+     *  Gets the list of cherrybombs.
+     * @return
+     */
     public List<CherryBomb> getCherryBombs() {
         return cherryBombs;
     }
-
+    /**
+     *  Gets the list of explosions.
+     * @return
+     */
     public List<Explosion> getExplosions() {
         return explosions;
     }
