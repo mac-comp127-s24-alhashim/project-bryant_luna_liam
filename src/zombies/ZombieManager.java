@@ -66,26 +66,6 @@ public class ZombieManager {
     }
 
     /**
-     * Creates zombie explosion
-     */
-    public void explodeExplosiveZombie() {
-        if (zombieList != null) {
-            for (Zombie zombie : zombieList) {
-                if (!zombie.getExplodeStatus()) {
-                    Explosion explosion = new Explosion(Zombie.explosionRadius, zombie.getPosition(), Zombie.explosiveAttack);
-                    zombieExplosions.add(explosion);
-                    canvas.add(explosion);
-                    zombie.setExplodeStatus(true);
-                }
-                if ((PvZ.frame % 90) == 0 && zombie.getExplodeStatus()) {
-                    zombie.die();
-                }
-                }
-              
-        }
-    }
-
-    /**
      * Gets all zombies through zombie list
      * @return
      */

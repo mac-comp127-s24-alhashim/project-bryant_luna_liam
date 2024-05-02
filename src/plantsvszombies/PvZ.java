@@ -46,7 +46,7 @@ public class PvZ {
      */
     public PvZ() {
         frame = 0;
-        sunCount = 500;
+        sunCount = 0;
         maxSun = 9999;
         gameSun = null;
         random = new Random();
@@ -77,6 +77,14 @@ public class PvZ {
                     plantManager.runExplosionLogic(zombie);
                 }
 
+                Iterator<Zombie> iterator = zombieManager.getZombies().iterator();
+                Zombie zombie;
+                while (iterator.hasNext()) {
+                    zombie = iterator.next();
+                    zombieManager.removeZombie(zombie);
+                }
+                
+
                 // Handles motion of game sun and removes if out of bounds.
                 if (gameSun != null) {
                     gameSun.moveBy(0, 0.33);
@@ -85,7 +93,6 @@ public class PvZ {
                         gameSun = null;
                     }
                 }
-                
                 zombieManager.moveZombies();
             }
             
@@ -106,7 +113,7 @@ public class PvZ {
                     Zombie zombie;
                     while (zombieIterator.hasNext()) {
                         zombie = zombieIterator.next();
-                        plantManager.shootPeas(zombie);
+                        plantManager.shootPeas();
                         plantManager.createPotatoMineExplosion(zombie);
                         plantManager.zombieDamagePlant(zombie);
                     }
@@ -130,12 +137,11 @@ public class PvZ {
             }
         });
     }
-
+    /*
+     * Determines what element is under the mouse when a click occurs, and runs that element's task for
+     * clicks accordingly.
+     */
     public void handleClicks() {
-/*
-        * Determines what element is under the mouse when a click occurs, and runs that element's task for
-        * clicks accordingly.
-        */
         canvas.onClick(handler -> {
             // Checks if the player clicked outside of the window when resized
             if (handler.getPosition().getX() <= 320 && handler.getPosition().getY() <= 240) {

@@ -25,7 +25,6 @@ public class PlantManager {
     List<Wallnut> wallnuts;
     List<PotatoMine> potatoMines;
     List<CherryBomb> cherryBombs;
-    public List<Image> plantImages;
 
     // Plant creations
     public static List<Projectile> projectiles;
@@ -43,7 +42,8 @@ public class PlantManager {
         cherryBombs = new ArrayList<CherryBomb>();
         projectiles = new ArrayList<Projectile>();
         explosions = new ArrayList<Explosion>();
-        plantImages = new ArrayList<Image>();
+
+        cherryBombExploding = false;
     }
 
     /**
@@ -60,7 +60,6 @@ public class PlantManager {
                     sunflower.setPosition(position);
                     sunflowers.add(sunflower);
                     canvas.add(sunflower);
-                    plantImages.add(sunflower.sunflowerSprite);
                     }
                 break;
             case 1:
@@ -69,7 +68,6 @@ public class PlantManager {
                     peashooter.setPosition(position);
                     peashooters.add(peashooter);
                     canvas.add(peashooter);
-                    plantImages.add(peashooter.peashooterSprite);
                     }
                 break;
             case 2:
@@ -78,7 +76,6 @@ public class PlantManager {
                     wallnut.setPosition(position);
                     wallnuts.add(wallnut);
                     canvas.add(wallnut);
-                    plantImages.add(wallnut.wallnutSprite);
                 }
                 break;
             case 3:
@@ -87,7 +84,6 @@ public class PlantManager {
                     potatomine.setPosition(position);
                     potatoMines.add(potatomine);
                     canvas.add(potatomine);
-                    plantImages.add(potatomine.potatoMineSprite);
                 }
                 break;
             case 4:
@@ -96,7 +92,6 @@ public class PlantManager {
                     cherrybomb.setPosition(position);
                     cherryBombs.add(cherrybomb);
                     canvas.add(cherrybomb);
-                    plantImages.add(cherrybomb.cherryBombSprite);
                 }
                 break;
             default:
@@ -123,14 +118,12 @@ public class PlantManager {
      * Meant to be run every 90 frames. Handles peashooter logic:
      * Summons a pea projectile.
      */
-    public void shootPeas(Zombie zombie) {
+    public void shootPeas() {
         if (peashooters != null) { // Check for peashooters
             for (Peashooter peashooter : peashooters) {
-                // if (peashooter.getY() == zombie.getY() + zombie.getHeight() / 3) {
                     Projectile projectile = new Projectile(peashooter.getPosition(), Peashooter.PEASHOOTER_DAMAGE, Peashooter.PEA_SPRITE_PATH);
                     projectiles.add(projectile);
                     canvas.add(projectile);
-                // }      
             }
         }
     }
@@ -139,26 +132,40 @@ public class PlantManager {
      * Meant to be run every 90 frames. If there is a cherry bomb placed, it explodes it.
      */
     public void explodeCherryBombs() {
+        // if (cherryBombs != null) {
+        //     Iterator<CherryBomb> iterator = cherryBombs.iterator();
+        //     while (iterator.hasNext()) {
+        //         CherryBomb cherryBomb = iterator.next();
+        //         // On the explosion of a cherry bomb, the cherry bombs do not immediatealy
+        //         // die - they will wait around until the next time this function
+        //         // runs.
+        //         if (cherryBombExploding) {
+        //             // if ((PvZ.frame % 90) == 0 && cherryBomb.getExplodeStatus()) {
+        //                 cherryBomb.die();
+        //                 iterator.remove();
+        //                 cherryBombExploding = false;
+        //         } else {
+        //             Explosion explosion = new Explosion(CherryBomb.CHERRYBOMB_EXPLOSION_RADIUS, cherryBomb.getPosition(), CherryBomb.CHERRYBOMB_DAMAGE);
+        //             explosions.add(explosion);
+        //             canvas.add(explosion);
+        //             cherryBombExploding = true;
+        //         }
+        //     }       
+        // }
         if (cherryBombs != null) {
-            Iterator<CherryBomb> iterator = cherryBombs.iterator();
-            while (iterator.hasNext()) {
-                CherryBomb cherryBomb = iterator.next();
-                // On the explosion of a cherry bomb, the cherry bombs do not immediatealy
-                // die - they will wait around until the next time this function
-                // runs.
-                if (cherryBombExploding) {
-                    // if ((PvZ.frame % 90) == 0 && cherryBomb.getExplodeStatus()) {
-                        cherryBomb.die();
-                        iterator.remove();
-                        cherryBombExploding = false;
-                } else {
+            for (CherryBomb cherryBomb : cherryBombs) {
+                if (!cherryBomb.getExplodeStatus()) {
                     Explosion explosion = new Explosion(CherryBomb.CHERRYBOMB_EXPLOSION_RADIUS, cherryBomb.getPosition(), CherryBomb.CHERRYBOMB_DAMAGE);
                     explosions.add(explosion);
                     canvas.add(explosion);
-                    cherryBombExploding = true;
+                    cherryBomb.setExploded(true);
                 }
-            }       
+                if ((PvZ.frame % 90) == 0 && cherryBomb.getExplodeStatus()) {
+                    cherryBomb.die();
+                }
+            }
         }
+              
     }
 
     /**
